@@ -42,11 +42,16 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public void UsunKonto(Konto konto)
         {
+            StanGotowki += konto.StanKonta;
             ListaKont.Remove(konto);
         }
 
         public void WyplaczKonta(Konto konto, decimal kwota)
         {
+            if(konto.StanKonta < kwota)
+            {
+                throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{konto.StanKonta}");
+            }
             konto.StanKonta -= kwota;
             StanGotowki += kwota;
         }

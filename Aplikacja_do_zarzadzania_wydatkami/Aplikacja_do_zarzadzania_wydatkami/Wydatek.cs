@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
+    enum KategoriaWydatku { Spożywcze, Ubrania, Buty, Opłaty, Rozrywka, Elektronika, Uroda, DoDomu, Inne }
     public abstract class Wydatek
     {
         private decimal kwota;
