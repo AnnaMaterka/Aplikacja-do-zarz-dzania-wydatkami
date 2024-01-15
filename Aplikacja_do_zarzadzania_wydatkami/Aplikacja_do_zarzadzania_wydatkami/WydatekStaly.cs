@@ -22,7 +22,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         Rozrywka,
         Inne
     }
-    public class WydatekStaly
+    public class WydatekStaly : ICloneable
     {
         private CyklWydatku cyklWydatku;
         private bool OplaconyWBiezacymCyklu;
@@ -44,11 +44,12 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public DateTime Deadline { get => deadline; set => deadline = value; }
         public KategoriaWydatkuSt Kategoria { get => kategoria; set => kategoria = value; }
 
-        public WydatekRaz Zaplac(decimal kwota, KategoriaWydatku k)
+        public object Clone()
         {
-            WydatekRaz wydatek = new WydatekRaz(kwota, DateTime.Today, k); //do poprawy
-            this.OplaconyWBiezacymCyklu = true;
-            return wydatek;
+            WydatekStaly x = (WydatekStaly)this.MemberwiseClone();
+            x.OplaconyWBiezacymCyklu = false;
+            return x;
         }
+
     }
 }
