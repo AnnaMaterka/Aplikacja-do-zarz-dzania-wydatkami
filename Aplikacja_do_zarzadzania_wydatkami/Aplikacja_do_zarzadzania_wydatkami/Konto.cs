@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public string NazwaBanku { get => nazwaBanku; init => nazwaBanku = value; }
         public decimal StanKonta { get => stanKonta; set => stanKonta = value; }
+
     }
 }
