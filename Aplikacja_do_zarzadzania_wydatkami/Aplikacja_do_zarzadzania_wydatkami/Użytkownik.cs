@@ -9,7 +9,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     public class Uzytkownik
     {
         private decimal stanGotowki;
-        List<Konto> listaKont;
+        private List<Konto> listaKont;
         private List<WydatekRaz> listaWydatkowRaz;
         private List<WydatekStaly> listaWydatkowSt;
         private List<WplywRaz> listaWplywow;
