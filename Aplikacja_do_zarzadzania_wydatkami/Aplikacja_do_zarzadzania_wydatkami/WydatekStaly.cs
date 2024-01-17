@@ -25,7 +25,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     public class WydatekStaly
     {
         private CyklWydatku cyklWydatku;
-        private bool OplaconyWBiezacymCyklu;
+        private bool oplaconyWBiezacymCyklu;
         private bool stalaKwota;
         private decimal kwota;
         private DateTime deadline;
@@ -34,15 +34,15 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public WydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, KategoriaWydatkuSt kategoria)
         {
             this.cyklWydatku = cyklWydatku;
-            OplaconyWBiezacymCyklu = oplaconyWBiezacymCyklu;
+            this.oplaconyWBiezacymCyklu = oplaconyWBiezacymCyklu;
             this.stalaKwota = stalaKwota;
-            this.kwota = kwota;
+            this.kwota = stalaKwota?kwota:0;
             this.deadline = deadline;
             this.kategoria = kategoria;
         }
 
         public CyklWydatku CyklWydatku { get => cyklWydatku; set => cyklWydatku = value; }
-        public bool OplaconyWBiezacymCyklu1 { get => OplaconyWBiezacymCyklu; set => OplaconyWBiezacymCyklu = value; }
+        public bool OplaconyWBiezacymCyklu { get => oplaconyWBiezacymCyklu; set => oplaconyWBiezacymCyklu = value; }
         public bool StalaKwota { get => stalaKwota; set => stalaKwota = value; }
         public decimal Kwota
         {

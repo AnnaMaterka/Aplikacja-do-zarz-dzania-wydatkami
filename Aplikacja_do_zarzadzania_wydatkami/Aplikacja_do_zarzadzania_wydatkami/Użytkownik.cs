@@ -84,7 +84,25 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public void NowyWydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, KategoriaWydatkuSt kategoria)
         {
-            WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria)
+            WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
+            this.ListaWydatkowSt.Add(wydatek);
+        }
+
+        public void OplacWydatekStaly(WydatekStaly wydatek, bool PlatnoscZKonta, Konto konto)
+        {
+            if (PlatnoscZKonta)
+            {
+                konto.StanKonta -= wydatek.Kwota;
+            }
+            else
+            {
+                this.StanGotowki -= wydatek.Kwota;
+            }
+            KategoriaWydatku k = KategoriaWydatku.Inne; // Tu trzeba zmienić
+            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, k);
+            this.ListaWydatkowRaz.Add(nowy);
+            wydatek.OplaconyWBiezacymCyklu = true;
+        
         }
 
     }

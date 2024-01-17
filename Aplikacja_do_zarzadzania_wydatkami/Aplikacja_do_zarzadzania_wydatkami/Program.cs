@@ -1,8 +1,11 @@
-﻿internal class Program
+﻿namespace Aplikacja_do_zarzadzania_wydatkami
 {
-    private static void Main()
+    internal class Program
     {
-        Konto k1 = new("Bank1", 100.00);
-
+        private static void Main()
+        {
+            //Konto k1 = new("Bank1", (decimal)100.00);
+            Console.Write(DateTime.Today.ToString("yyyyMM"));
+        }
     }
 }
