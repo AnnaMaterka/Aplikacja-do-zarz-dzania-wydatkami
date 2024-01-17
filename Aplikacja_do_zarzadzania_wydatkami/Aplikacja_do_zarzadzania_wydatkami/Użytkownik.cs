@@ -68,8 +68,24 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             StanGotowki -= kwota;
         }
 
-        //public void NowyWydatek()
+        public void NowyWydatekGotowka(decimal kwota, DateTime data, KategoriaWydatku kategoria)
+        {
+            this.StanGotowki -= kwota;
+            WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
+            this.ListaWydatkowRaz.Add(wydatek);
+        }
 
+        public void NowyWydatekKonto(decimal kwota, DateTime data, KategoriaWydatku kategoria, Konto konto)
+        {
+            konto.StanKonta -= kwota;
+            WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
+            this.ListaWydatkowRaz.Add(wydatek);
+        }
+
+        public void NowyWydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, KategoriaWydatkuSt kategoria)
+        {
+            WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria)
+        }
 
     }
 }

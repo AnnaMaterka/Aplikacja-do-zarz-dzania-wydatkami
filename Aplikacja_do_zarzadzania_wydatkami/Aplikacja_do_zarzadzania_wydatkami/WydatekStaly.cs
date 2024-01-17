@@ -22,7 +22,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         Rozrywka,
         Inne
     }
-    public class WydatekStaly : ICloneable
+    public class WydatekStaly
     {
         private CyklWydatku cyklWydatku;
         private bool OplaconyWBiezacymCyklu;
@@ -30,6 +30,16 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private decimal kwota;
         private DateTime deadline;
         private KategoriaWydatkuSt kategoria;
+
+        public WydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, KategoriaWydatkuSt kategoria)
+        {
+            this.cyklWydatku = cyklWydatku;
+            OplaconyWBiezacymCyklu = oplaconyWBiezacymCyklu;
+            this.stalaKwota = stalaKwota;
+            this.kwota = kwota;
+            this.deadline = deadline;
+            this.kategoria = kategoria;
+        }
 
         public CyklWydatku CyklWydatku { get => cyklWydatku; set => cyklWydatku = value; }
         public bool OplaconyWBiezacymCyklu1 { get => OplaconyWBiezacymCyklu; set => OplaconyWBiezacymCyklu = value; }
@@ -43,13 +53,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
         public DateTime Deadline { get => deadline; set => deadline = value; }
         public KategoriaWydatkuSt Kategoria { get => kategoria; set => kategoria = value; }
-
-        public object Clone()
-        {
-            WydatekStaly x = (WydatekStaly)this.MemberwiseClone();
-            x.OplaconyWBiezacymCyklu = false;
-            return x;
-        }
 
     }
 }
