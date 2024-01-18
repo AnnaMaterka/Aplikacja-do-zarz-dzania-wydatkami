@@ -20,10 +20,7 @@ C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzad
 C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\obj\Debug\net6.0\Aplikacja_do_zarzadzania_wydatkami.dll
 C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\obj\Debug\net6.0\refint\Aplikacja_do_zarzadzania_wydatkami.dll
 C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\obj\Debug\net6.0\Aplikacja_do_zarzadzania_wydatkami.pdb
-C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\bin\Debug\net6.0\Aplikacja_do_zarzadzania_wydatkami.exe
 C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\bin\Debug\net6.0\Aplikacja_do_zarzadzania_wydatkami.deps.json
-C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\bin\Debug\net6.0\Aplikacja_do_zarzadzania_wydatkami.runtimeconfig.json
 C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\bin\Debug\net6.0\Aplikacja_do_zarzadzania_wydatkami.dll
 C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\bin\Debug\net6.0\Aplikacja_do_zarzadzania_wydatkami.pdb
-C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\obj\Debug\net6.0\Aplikacja_do_zarzadzania_wydatkami.genruntimeconfig.cache
 C:\Users\dmazu\Desktop\c#\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\obj\Debug\net6.0\ref\Aplikacja_do_zarzadzania_wydatkami.dll

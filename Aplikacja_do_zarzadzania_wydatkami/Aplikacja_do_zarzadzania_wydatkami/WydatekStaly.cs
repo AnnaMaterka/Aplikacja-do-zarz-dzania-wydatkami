@@ -16,28 +16,28 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         Gaz,
         Internet,
         Telewizja,
+        Abonament,
         Śmieci,
         Czynsz,
         RataKredytu,
         Rozrywka,
         Inne
     }
-    public class WydatekStaly
+    public class WydatekStaly: Wydatek
     {
         private CyklWydatku cyklWydatku;
         private bool oplaconyWBiezacymCyklu;
         private bool stalaKwota;
         private decimal kwota;
-        private DateTime deadline;
+        private DateTime data;
         private KategoriaWydatkuSt kategoria;
 
-        public WydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, KategoriaWydatkuSt kategoria)
+        public WydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime data, KategoriaWydatkuSt kategoria) :base(kwota, data)
         {
             this.cyklWydatku = cyklWydatku;
             this.oplaconyWBiezacymCyklu = oplaconyWBiezacymCyklu;
             this.stalaKwota = stalaKwota;
             this.kwota = stalaKwota?kwota:0;
-            this.deadline = deadline;
             this.kategoria = kategoria;
         }
 
@@ -51,7 +51,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 if (StalaKwota) { kwota = value; }
             }
         }
-        public DateTime Deadline { get => deadline; set => deadline = value; }
+        public DateTime Data { get => data; set => data = value; }
         public KategoriaWydatkuSt Kategoria { get => kategoria; set => kategoria = value; }
 
     }

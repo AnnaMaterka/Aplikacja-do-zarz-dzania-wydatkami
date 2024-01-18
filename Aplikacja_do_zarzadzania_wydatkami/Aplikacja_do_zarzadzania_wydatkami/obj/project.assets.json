@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dmazu\\Desktop\\Projekt\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj",
+      "projectUniqueName": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj",
       "projectName": "Aplikacja_do_zarzadzania_wydatkami",
-      "projectPath": "C:\\Users\\dmazu\\Desktop\\Projekt\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj",
+      "projectPath": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj",
       "packagesPath": "C:\\Users\\dmazu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dmazu\\Desktop\\Projekt\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\obj\\",
+      "outputPath": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dmazu\\AppData\\Roaming\\NuGet\\NuGet.Config",

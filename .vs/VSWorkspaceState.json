@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Aplikacja_do_zarzadzania_wydatkami",
+    "\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami"
   ],
-  "SelectedNode": "\\Aplikacja_do_zarzadzania_wydatkami.sln",
+  "SelectedNode": "\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Użytkownik.cs",
   "PreviewInSolutionExplorer": false
 }

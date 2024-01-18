@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0-windows7.0": {
+      "Aplikacja_do_zarzadzania_wydatkami/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Aplikacja_do_zarzadzania_wydatkami.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Aplikacja_do_zarzadzania_wydatkami.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Aplikacja_do_zarzadzania_wydatkami/1.0.0": {
+      "type": "project",
+      "path": "../Aplikacja_do_zarzadzania_wydatkami/Aplikacja_do_zarzadzania_wydatkami.csproj",
+      "msbuildProject": "../Aplikacja_do_zarzadzania_wydatkami/Aplikacja_do_zarzadzania_wydatkami.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0-windows7.0": [
+      "Aplikacja_do_zarzadzania_wydatkami >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\dmazu\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\gui.csproj",
+      "projectName": "gui",
+      "projectPath": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\gui.csproj",
+      "packagesPath": "C:\\Users\\dmazu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\dmazu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "projectReferences": {
+            "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj": {
+              "projectPath": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0-windows7.0": {
+        "targetAlias": "net6.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
