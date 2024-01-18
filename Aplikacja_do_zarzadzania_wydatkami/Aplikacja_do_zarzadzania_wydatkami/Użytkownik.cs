@@ -58,6 +58,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             ListaKont.Remove(konto);
         }
 
+        // WyplaczKonta służy do wypłacania, np w bankomacie
+        //pieniądze na koncie są zamieniane na gotówkę
         public void WyplaczKonta(Konto konto, decimal kwota, DateTime data, string kategoria)
         {
             if (konto.StanKonta < kwota)
@@ -66,59 +68,54 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             }
             konto.StanKonta -= kwota;
             StanGotowki += kwota;
-            WydatekRaz w = new(kwota, data, kategoria);
-            ListaWydatkowRaz.Add(w);
         }
 
+        // WplacnaKonto służy do wpłacania, np w bankomacie
+        // gotówkę zamieniamy na środki na koncie
         public void WplacnaKonto(Konto konto, decimal kwota, DateTime data, string kategoria)
         {
             konto.StanKonta += kwota;
             StanGotowki -= kwota;
-            WplywRaz w = new(kwota, data, kategoria);
-            listaWplywow.Add(w);
         }
 
         public void WplywGotowki(decimal kwota)
         {
             StanGotowki += kwota;
         }
-        /*
-        public void NowyWydatekGotowka(decimal kwota, DateTime data, KategoriaWydatku kategoria)
+        // dotyczy zakupów gotówką
+        public void NowyWydatekGotowka(decimal kwota, DateTime data, string kategoria)
         {
             this.StanGotowki -= kwota;
             WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
             this.ListaWydatkowRaz.Add(wydatek);
         }
-
-        public void NowyWydatekKonto(decimal kwota, DateTime data, KategoriaWydatku kategoria, Konto konto)
+        //dotyczy zakupów kartą
+        public void NowyWydatekKonto(decimal kwota, DateTime data, string kategoria, Konto konto)
         {
             konto.StanKonta -= kwota;
             WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
             this.ListaWydatkowRaz.Add(wydatek);
         }
-        */
+        
         public void NowyWydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, KategoriaWydatkuSt kategoria)
         {
             WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
             this.ListaWydatkowSt.Add(wydatek);
         }
 
-        /*public void OplacWydatekStaly(WydatekStaly wydatek, bool PlatnoscZKonta, Konto konto)
+        public void OplacWydatekStaly(WydatekStaly wydatek, Konto konto)
         {
-            if (PlatnoscZKonta)
+            if (konto.StanKonta < wydatek.Kwota)
             {
-                konto.StanKonta -= wydatek.Kwota;
+                throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{konto.StanKonta}");
             }
-            else
-            {
-                this.StanGotowki -= wydatek.Kwota;
-            }
-            KategoriaWydatku k = KategoriaWydatku.Inne; // Tu trzeba zmienić
-            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, k);
+            konto.StanKonta -= wydatek.Kwota;
+            KategoriaWydatkuSt k = KategoriaWydatkuSt.Inne; // Tu trzeba zmienić
+            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, k.ToString());
             this.ListaWydatkowRaz.Add(nowy);
             wydatek.OplaconyWBiezacymCyklu = true;
         
-        }*/
+        }
 
     }
 }
