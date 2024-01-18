@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
     //public enum KategoriaWydatku { Spożywcze, Ubrania, Buty, Opłaty, Rozrywka, Elektronika, Uroda, DoDomu, Inne }
-    public class WydatekRaz : Wydatek
+    public class WydatekRaz : Wydatek, ICloneable, IComparable<WydatekRaz>, IEquatable<WydatekRaz>
     {
         private decimal kwota;
         private DateTime data;
@@ -28,5 +28,22 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             this.kategoria = kategoria;
         }
         public string Kategoria { get => kategoria; set => kategoria = value; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public int CompareTo(WydatekRaz? other)
+        {
+            if (this.Kategoria.CompareTo(other.Kategoria) == 0) { return -this.Kwota.CompareTo(other.Kwota); }
+            return this.Kategoria.CompareTo(other.Kategoria);
+        }
+
+        public bool Equals(WydatekRaz? other)
+        {
+            if(this.Kategoria.Equals(other!.Kategoria) && this.Kwota.Equals(other.Kwota)){ return true; }
+            return false;
+        }
     }
 }
