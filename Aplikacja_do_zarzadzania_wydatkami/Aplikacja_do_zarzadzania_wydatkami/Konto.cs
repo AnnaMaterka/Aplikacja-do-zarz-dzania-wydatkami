@@ -14,8 +14,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public Konto(string nazwaBanku, decimal stanKonta)
         {
-            this.NazwaBanku = nazwaBanku;
-            this.StanKonta = stanKonta;
+            NazwaBanku = nazwaBanku;
+            StanKonta = stanKonta;
         }
 
         public string NazwaBanku { get => nazwaBanku; init => nazwaBanku = value; }
