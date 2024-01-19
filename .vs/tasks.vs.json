@@ -5,6 +5,11 @@
       "taskLabel": "zadanie-Dane",
       "appliesTo": "Aplikacja_do_zarzadzania_wydatkami/Aplikacja_do_zarzadzania_wydatkami/Dane.cs",
       "type": "launch"
+    },
+    {
+      "taskLabel": "zadanie-Dane",
+      "appliesTo": "Aplikacja_do_zarzadzania_wydatkami/Aplikacja_do_zarzadzania_wydatkami/Dane.cs",
+      "type": "launch"
     }
   ]
 }

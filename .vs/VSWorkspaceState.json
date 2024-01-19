@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Aplikacja_do_zarzadzania_wydatkami",
+    "\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami",
+    "\\Aplikacja_do_zarzadzania_wydatkami\\gui"
   ],
+  "SelectedNode": "\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.sln",
   "PreviewInSolutionExplorer": false
 }

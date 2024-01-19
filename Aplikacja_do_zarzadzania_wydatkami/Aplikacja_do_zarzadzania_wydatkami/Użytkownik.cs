@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
@@ -173,6 +175,24 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             }
             */
         }
+
+        // konfiguracja dzięki której możemy połączyć się z bazą danych
+        // Data Source=nazwa naszego serwera
+        // Integrated Security=True - łączymy się za pomocą konta domenowego a nie za pomocą login i hasło?
+        private string conString = "Data Source=ACERVERO\\SQLEXPRESS; Initial Catalog=DaneAplikacjaDoZarzadzaniaWydatkami, Integrated Security=True;";
+
+        //private void ModyfikacjaDanych(string zapytanie)
+        //{
+        //    using (SqlConnection sCon = new SqlConnection(conString))
+        //    {
+        //        SqlCommand cmd = new SqlCommand(zapytanie, sCon);
+        //        sCon.Open();
+        //        cmd.ExecuteNonQuery();
+        //        sCon.Close();
+        //    }
+        //}
+
+
 
     }
 }
