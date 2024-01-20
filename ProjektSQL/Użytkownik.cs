@@ -12,49 +12,56 @@ using ProjektSQL;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
-    public class Uzytkownik
+    public class Uzytkownik :Aktualizacja
     {
         private string imie;
         private decimal stanGotowki;
         List<Konto> listaKont;
-        private List<WydatekRaz> listaWydatkowRaz;
-        private List<WydatekStaly> listaWydatkowSt;
-        private List<WplywRaz> listaWplywowRaz;
-        private List<WplywStaly> listaWplywowSt;
-        private List<Oszczednosc> listaOszczednosci;
+        //private List<WydatekRaz> listaWydatkowRaz;
+        //private List<WydatekStaly> listaWydatkowSt;
+        //private List<WplywRaz> listaWplywowRaz;
+        //private List<WplywStaly> listaWplywowSt;
+        //private List<Oszczednosc> listaOszczednosci;
 
         [Key]
         public int IdUzytkownika { get; set; }
         public virtual List<Sesja> Sesje { get; set; }
-
+        public virtual List<WydatekRaz> WydatkiGotowka { get; set; }
+        public virtual List<WplywRaz> WplywyGotowka { get; set; }
+        public virtual List<Oszczednosc> OszczednosciWGotowce { get; set; }
 
         public Uzytkownik()
         {
             ListaKont = new List<Konto>();
-            ListaWydatkowRaz = new List<WydatekRaz>();
-            ListaWydatkowSt = new List<WydatekStaly>();
-            ListaWplywowRaz = new List<WplywRaz>();
-            ListaWplywowSt = new List<WplywStaly>();
-            ListaOszczednosci = new List<Oszczednosc>();
+            StanGotowki = 0;
+            //ListaWydatkowRaz = new List<WydatekRaz>();
+            //ListaWydatkowSt = new List<WydatekStaly>();
+            //ListaWplywowRaz = new List<WplywRaz>();
+            //ListaWplywowSt = new List<WplywStaly>();
+            //ListaOszczednosci = new List<Oszczednosc>();
             Imie = "Podane imie";
         }
-        public Uzytkownik(decimal stanGotowki) :this()
+        public Uzytkownik(decimal stanGotowki) : this()
         {
             StanGotowki = stanGotowki;
+        }
+        public Uzytkownik(string imie) : this()
+        {
+            Imie = imie;
         }
         public Uzytkownik(decimal stanGotowki, string imie) : this()
         {
             StanGotowki = stanGotowki;
             Imie = imie;
         }
+        public string Imie { get => imie; set => imie = value; }
         public decimal StanGotowki { get => stanGotowki; set => stanGotowki = value; }
         public List<Konto> ListaKont { get => listaKont; set => listaKont = value; }
-        public List<WydatekRaz> ListaWydatkowRaz { get => listaWydatkowRaz; set => listaWydatkowRaz = value; }
-        public List<WydatekStaly> ListaWydatkowSt { get => listaWydatkowSt; set => listaWydatkowSt = value; }
-        internal List<WplywRaz> ListaWplywowRaz { get => listaWplywowRaz; set => listaWplywowRaz = value; }
-        internal List<WplywStaly> ListaWplywowSt { get => listaWplywowSt; set => listaWplywowSt = value; }
-        internal List<Oszczednosc> ListaOszczednosci { get => listaOszczednosci; set => listaOszczednosci = value; }
-        public string Imie { get => imie; set => imie = value; }
+        //public List<WydatekRaz> ListaWydatkowRaz { get => listaWydatkowRaz; set => listaWydatkowRaz = value; }
+        //public List<WydatekStaly> ListaWydatkowSt { get => listaWydatkowSt; set => listaWydatkowSt = value; }
+        //internal List<WplywRaz> ListaWplywowRaz { get => listaWplywowRaz; set => listaWplywowRaz = value; }
+        //internal List<WplywStaly> ListaWplywowSt { get => listaWplywowSt; set => listaWplywowSt = value; }
+        //internal List<Oszczednosc> ListaOszczednosci { get => listaOszczednosci; set => listaOszczednosci = value; }
 
         public void ZapiszDoBazy()
         {
@@ -68,7 +75,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public decimal SumaNaKontach()
         {
             decimal suma = 0;
-            foreach(Konto k in listaKont)
+            foreach (Konto k in listaKont)
             {
                 suma += k.StanKonta;
             }
@@ -111,45 +118,57 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             StanGotowki -= kwota;
         }
 
-        public void WplywGotowki(decimal kwota)
+        public void WplywGotowki(decimal kwota, DateTime data, Kategoria kategoria)
         {
             StanGotowki += kwota;
+            WplywRaz wplyw = new(kwota, data, kategoria);
+            this.WplywyGotowka.Add(wplyw);
+            OnPropertyChanged(nameof(StanGotowki));
         }
         // dotyczy zakupów gotówką
         public void NowyWydatekGotowka(decimal kwota, DateTime data, Kategoria kategoria)
         {
             this.StanGotowki -= kwota;
             WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
-            this.ListaWydatkowRaz.Add(wydatek);
+            //this.ListaWydatkowRaz.Add(wydatek);
+            this.WydatkiGotowka.Add(wydatek);
+            OnPropertyChanged(nameof(StanGotowki));
         }
         //dotyczy zakupów kartą
-        public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria, Konto konto)
-        {
-            konto.StanKonta -= kwota;
-            WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
-            this.ListaWydatkowRaz.Add(wydatek);
-        }
-        
-        public void NowyWydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
-        {
-            WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
-            this.ListaWydatkowSt.Add(wydatek);
-        }
+        //public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria, Konto konto)
+        //{
+        //    konto.StanKonta -= kwota;
+        //    WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
+        //    this.ListaWydatkowRaz.Add(wydatek);
+        //}
 
-        public void OplacWydatekStaly(WydatekStaly wydatek, Konto konto)
-        {
-            if (konto.StanKonta < wydatek.Kwota)
-            {
-                throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{konto.StanKonta}");
-            }
-            konto.StanKonta -= wydatek.Kwota;
-            //KategoriaWydatkuSt k = KategoriaWydatkuSt.Inne; // Tu trzeba zmienić
-            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria);
-            this.ListaWydatkowRaz.Add(nowy);
-            wydatek.OplaconyWBiezacymCyklu = true;
-        
-        }
+        //public void NowyWydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
+        //{
+        //    WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
+        //    this.ListaWydatkowSt.Add(wydatek);
+        //}
 
+        //public void OplacWydatekStaly(WydatekStaly wydatek, Konto konto)
+        //{
+        //    if (konto.StanKonta < wydatek.Kwota)
+        //    {
+        //        throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{konto.StanKonta}");
+        //    }
+        //    konto.StanKonta -= wydatek.Kwota;
+        //    //KategoriaWydatkuSt k = KategoriaWydatkuSt.Inne; // Tu trzeba zmienić
+        //    WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria);
+        //    this.ListaWydatkowRaz.Add(nowy);
+        //    wydatek.OplaconyWBiezacymCyklu = true;
+
+        //}
+        public void OdlozGotowke(int kwota, string cel)
+        {
+            this.StanGotowki -= kwota;
+            DateTime data = DateTime.Today;
+            Oszczednosc odlozona = new(kwota, data, cel);
+            this.OszczednosciWGotowce.Add(odlozona);
+            OnPropertyChanged(nameof(StanGotowki));
+        }
         public bool ZapisXML(string nazwa)
         {
             try
@@ -167,7 +186,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             using StreamReader sr = new StreamReader(nazwa);
             XmlSerializer xs = new(typeof(Uzytkownik));
             Uzytkownik u = (Uzytkownik?)xs.Deserialize(sr)!;
-            if(u != null) { return u; }
+            if (u != null) { return u; }
             else { throw new Exception(); }
         }
 
@@ -180,13 +199,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             string rok = data.Year.ToString();
             htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla miesiąca {miesiac} roku {rok}</h1>";
             decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowMies(rokmiesiac));
-            sumaWplywow += ListaWplywowRaz.Where(WplywRaz => WplywRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WplywRaz => WplywRaz.Kwota);
+            sumaWplywow += WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WplywRaz => WplywRaz.Kwota);
             htmlContent += $"<h2>Suma wpływów: <b>{sumaWplywow}</b></h2>";
             decimal sumaWydatkow = ListaKont.Sum(Konto => Konto.SumaWydatkowMies(rokmiesiac));
-            sumaWydatkow += ListaWydatkowRaz.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WydatekRaz => WydatekRaz.Kwota);
+            sumaWydatkow += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WydatekRaz => WydatekRaz.Kwota);
             htmlContent += $"<h2>Suma wydatków: <b>{sumaWydatkow}</b></h2>";
             decimal sumaOszczednosci = ListaKont.Sum(Konto => Konto.SumaOszczednosciMies(rokmiesiac));
-            sumaOszczednosci += ListaOszczednosci.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyyMM") == rokmiesiac).Sum(Oszczednosc => Oszczednosc.Kwota);
+            sumaOszczednosci += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyyMM") == rokmiesiac).Sum(Oszczednosc => Oszczednosc.Kwota);
             htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{sumaOszczednosci}</b></h2>";
             htmlContent += "</body></html>";
 
@@ -200,13 +219,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             DateTime data = DateTime.ParseExact(rok, "yyyyMM", CultureInfo.InvariantCulture);
             htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla roku {rok}</h1>";
             decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowRok(rok));
-            sumaWplywow += ListaWplywowRaz.Where(WplywRaz => WplywRaz.Data.ToString("yyyy") == rok).Sum(WplywRaz => WplywRaz.Kwota);
+            sumaWplywow += WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyy") == rok).Sum(WplywRaz => WplywRaz.Kwota);
             htmlContent += $"<h2>Suma wpływów: <b>{sumaWplywow}</b></h2>";
             decimal sumaWydatkow = ListaKont.Sum(Konto => Konto.SumaWydatkowRok(rok));
-            sumaWydatkow += ListaWydatkowRaz.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyy") == rok).Sum(WydatekRaz => WydatekRaz.Kwota);
+            sumaWydatkow += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyy") == rok).Sum(WydatekRaz => WydatekRaz.Kwota);
             htmlContent += $"<h2>Suma wydatków: <b>{sumaWydatkow}</b></h2>";
             decimal sumaOszczednosci = ListaKont.Sum(Konto => Konto.SumaOszczednosciRok(rok));
-            sumaOszczednosci += ListaOszczednosci.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyy") == rok).Sum(Oszczednosc => Oszczednosc.Kwota);
+            sumaOszczednosci += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyy") == rok).Sum(Oszczednosc => Oszczednosc.Kwota);
             htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{sumaOszczednosci}</b></h2>";
             htmlContent += "</body></html>";
 
