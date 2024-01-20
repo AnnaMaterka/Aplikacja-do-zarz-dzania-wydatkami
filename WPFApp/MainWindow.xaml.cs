@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Aplikacja_do_zarzadzania_wydatkami;
 using Microsoft.VisualBasic;
 using ProjektSQL;
+using static WPFApp.UtworzKonto;
 
 namespace WPFApp
 {
@@ -23,6 +24,7 @@ namespace WPFApp
     public partial class MainWindow : Window
     {
         private UzytkownikDbContext dc;
+        public Uzytkownik zalogowanyUzytkownik;
         public MainWindow()
         {
             dc = new UzytkownikDbContext();
@@ -70,11 +72,11 @@ namespace WPFApp
 
         private void Zaloguj(string imie)
         {
-            var uzytkownik = dc.Uzytkownicy.FirstOrDefault(u => u.Imie == imie);
+            zalogowanyUzytkownik = dc.Uzytkownicy.FirstOrDefault(u => u.Imie == imie);
 
-            if (uzytkownik != null)
+            if (zalogowanyUzytkownik != null)
             {
-                aktualnaSesja = new Sesja { IdUzytkownika = uzytkownik.IdUzytkownika, Zalogowany = true };
+                aktualnaSesja = new Sesja { IdUzytkownika = zalogowanyUzytkownik.IdUzytkownika, Zalogowany = true };
                 dc.Sesje.Add(aktualnaSesja);
                 dc.SaveChanges();
                 WczytajDane();
@@ -133,10 +135,12 @@ namespace WPFApp
         {
             UtworzKonto okno = new UtworzKonto();
             bool? result = okno.ShowDialog();
-            if (result == true)
-            {
-                //dodajemy konto
-            }
+            okno.DataContext = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
+
+            //if (result == true)
+            //{
+            //    //dodajemy konto
+            //}
         }
 
     }

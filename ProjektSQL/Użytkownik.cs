@@ -55,6 +55,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             //ListaWplywowSt = new List<WplywStaly>();
             //ListaOszczednosci = new List<Oszczednosc>();
             Imie = "Podane imie";
+            ListaKont = new ObservableCollection<Konto>();  // Inicjalizacja listy kont
         }
         public Uzytkownik(decimal stanGotowki) : this()
         {

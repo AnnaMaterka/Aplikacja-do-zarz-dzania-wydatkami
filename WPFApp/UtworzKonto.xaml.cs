@@ -1,60 +1,71 @@
 ﻿using Aplikacja_do_zarzadzania_wydatkami;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WPFApp
 {
-    /// <summary>
-    /// Logika interakcji dla klasy UtworzKonto.xaml
-    /// </summary>
     public partial class UtworzKonto : Window
     {
-        public UtworzKonto()
-        {
-            InitializeComponent();
-            // Inicjalizacja ViewModel
-            var viewModel = new UtworzKontoViewModel();
-            DataContext = viewModel;
+        // Inicjalizacja ViewModel
+        public UtworzKontoViewModel ViewModel { get; set; }
 
-            // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
-            viewModel.Uzytkownik = ZalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
-        }
         // Przykładowy zalogowany użytkownik (do dostosowania)
         private Uzytkownik ZalogowanyUzytkownik => new Uzytkownik { IdUzytkownika = 0000, Imie = "ZalogowanyUzytkownik" };
+        public UtworzKonto()
+{
+    InitializeComponent();
+
+    // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
+    ViewModel = new UtworzKontoViewModel { Uzytkownik = ZalogowanyUzytkownik };
+    DataContext = ViewModel;
+
+    // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
+    ViewModel.Uzytkownik = ZalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
+}
+
+        public UtworzKonto(Uzytkownik zalogowanyUzytkownik)
+        {
+            InitializeComponent();
+
+            // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
+            ViewModel = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
+            DataContext = ViewModel;
+
+            // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
+            ViewModel.Uzytkownik = ZalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
+        }
 
         private void DodajKonto_Click(object sender, RoutedEventArgs e)
         {
-            // Pobierz informacje o nowym koncie z pól wejściowych w oknie
-            string nazwaKonta = NazwaKontaTextBox.Text;
-            string nazwaBanku = NazwaBankuTextBox.Text;
-            decimal saldoPoczatkowe = Convert.ToDecimal(StanKontaTextBox.Text);
+            // Dodaj logikę sprawdzającą poprawność danych
+            if (ViewModel.IsValid())
+            {
+                // Pobierz informacje o nowym koncie z pól wejściowych w oknie
+                string nazwaKonta = ViewModel.Nazwa;
+                string nazwaBanku = ViewModel.NazwaBanku;
+                decimal saldoPoczatkowe = ViewModel.StanKonta;
 
-            // Utwórz nowe konto
-            Konto noweKonto = new Konto(nazwaBanku, saldoPoczatkowe, ZalogowanyUzytkownik, nazwaKonta);
+                // Utwórz nowe konto
+                Konto noweKonto = new Konto(nazwaBanku, saldoPoczatkowe, ViewModel.Uzytkownik, nazwaKonta);
 
-            // Dodaj konto do listy kont użytkownika
-            ZalogowanyUzytkownik.DodajKonto(noweKonto);
+                // Dodaj konto do listy kont użytkownika
+                ViewModel.Uzytkownik.DodajKonto(noweKonto);
 
-            // Zapisz zmiany w bazie danych
-            ZalogowanyUzytkownik.ZapiszDoBazy();
+                // Zapisz zmiany w bazie danych
+                ViewModel.Uzytkownik.ZapiszDoBazy();
 
-            // Zamknij okno
-            this.Close();
+                // Zamknij okno
+                this.Close();
+            }
+            else
+            {
+                // Wyświetl komunikat o błędzie walidacji
+                MessageBox.Show("Formularz zawiera błędy. Sprawdź poprawność wprowadzonych danych.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-
     }
+
     public class UtworzKontoViewModel
     {
         [Required(ErrorMessage = "Pole 'Nazwa' jest wymagane.")]
@@ -68,6 +79,11 @@ namespace WPFApp
         public decimal StanKonta { get; set; }
 
         public Uzytkownik Uzytkownik { get; set; }
-    }
 
+        public bool IsValid()
+        {
+            // Wykorzystaj Validator.TryValidateObject do walidacji obiektu
+            return Validator.TryValidateObject(this, new ValidationContext(this, null, null), null, true);
+        }
+    }
 }
