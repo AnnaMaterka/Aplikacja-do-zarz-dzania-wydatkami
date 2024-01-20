@@ -9,6 +9,7 @@ using System.IO;
 using System.Data.SqlClient;
 using System.ComponentModel.DataAnnotations;
 using ProjektSQL;
+using System.Collections.ObjectModel;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
@@ -16,7 +17,21 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     {
         private string imie;
         private decimal stanGotowki;
-        List<Konto> listaKont;
+        private ObservableCollection<Konto> listaKont;
+
+        public ObservableCollection<Konto> ListaKont
+        {
+            get => listaKont;
+            set
+            {
+                if (listaKont != value)
+                {
+                    listaKont = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         //private List<WydatekRaz> listaWydatkowRaz;
         //private List<WydatekStaly> listaWydatkowSt;
         //private List<WplywRaz> listaWplywowRaz;
@@ -32,7 +47,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public Uzytkownik()
         {
-            ListaKont = new List<Konto>();
+            //ListaKont = new List<Konto>();
             StanGotowki = 0;
             //ListaWydatkowRaz = new List<WydatekRaz>();
             //ListaWydatkowSt = new List<WydatekStaly>();
@@ -56,7 +71,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
         public string Imie { get => imie; set => imie = value; }
         public decimal StanGotowki { get => stanGotowki; set => stanGotowki = value; }
-        public List<Konto> ListaKont { get => listaKont; set => listaKont = value; }
+        //public List<Konto> ListaKont { get => listaKont; set => listaKont = value; }
         //public List<WydatekRaz> ListaWydatkowRaz { get => listaWydatkowRaz; set => listaWydatkowRaz = value; }
         //public List<WydatekStaly> ListaWydatkowSt { get => listaWydatkowSt; set => listaWydatkowSt = value; }
         //internal List<WplywRaz> ListaWplywowRaz { get => listaWplywowRaz; set => listaWplywowRaz = value; }

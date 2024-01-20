@@ -85,7 +85,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             OnPropertyChanged(nameof(StanKonta));
         }
 
-        public void NowyWydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
+        public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
         {
             WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
             //this.ListaWydatkowSt.Add(wydatek);
