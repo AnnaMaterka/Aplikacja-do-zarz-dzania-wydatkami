@@ -7,16 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <Button Content="Wyloguj" Click="Wyloguj_Click"/>
-            <DataGrid Name="dgUzytkownicy" AutoGenerateColumns="True" />
-            <DataGrid Name="dgKonta" AutoGenerateColumns="True" />
-            <TextBlock Text="Suma pieniędzy:" />
-            <TextBox Name="txtSumaPieniedzy" IsEnabled="False" />
-            <Button Content="Zaloguj" Click="Zaloguj_Click"/>
-            <Button Content="Wyloguj" Click="Wyloguj_Click"/>
-            <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Content="Zaloguj" Click="Zaloguj_Click" Height="30" Width="80"/>
+            <Button Content="Wyloguj" Click="Wyloguj_Click" Height="30" Width="80"/>
+            <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Height="30" Width="160"/>
+            <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="30" Width="160"/>
+
         </StackPanel>
+
+        <DataGrid x:Name="dgUzytkownicy" AutoGenerateColumns="True" Width="318" Margin="10,42,472,346" />
+        <DataGrid x:Name="dgKonta" AutoGenerateColumns="True" Height="47" Width="321" Margin="333,42,146,345" />
+        <TextBlock Text="Suma pieniędzy:" Height="30" Width="280" Margin="10,88,510,316" />
+        <TextBox x:Name="txtSumaPieniedzy" IsEnabled="False"  Height="30" Width="280" Margin="250,88,270,316" />
+
 
     </Grid>
 </Window>

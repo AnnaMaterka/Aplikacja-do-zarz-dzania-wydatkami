@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,9 +50,9 @@ namespace WPFApp
 
         private void WczytajDane()
         {
-            if (_aktualnaSesja != null && _aktualnaSesja.Zalogowany)
+            if (aktualnaSesja != null && aktualnaSesja.Zalogowany)
             {
-                var zalogowanyUzytkownik = dc.Uzytkownicy.Find(_aktualnaSesja.IdUzytkownika);
+                var zalogowanyUzytkownik = dc.Uzytkownicy.Find(aktualnaSesja.IdUzytkownika);
                 var kontaUzytkownika = dc.Konta.Where(k => k.IdUzytkownika == zalogowanyUzytkownik.IdUzytkownika).ToList();
 
                 dgKonta.ItemsSource = kontaUzytkownika;
@@ -64,7 +65,7 @@ namespace WPFApp
             }
         }
 
-        private Sesja _aktualnaSesja;
+        private Sesja aktualnaSesja;
 
         private void Zaloguj(string imie)
         {
@@ -72,8 +73,8 @@ namespace WPFApp
 
             if (uzytkownik != null)
             {
-                _aktualnaSesja = new Sesja { IdUzytkownika = uzytkownik.IdUzytkownika, Zalogowany = true };
-                dc.Sesje.Add(_aktualnaSesja);
+                aktualnaSesja = new Sesja { IdUzytkownika = uzytkownik.IdUzytkownika, Zalogowany = true };
+                dc.Sesje.Add(aktualnaSesja);
                 dc.SaveChanges();
                 WczytajDane();
             }
@@ -85,11 +86,11 @@ namespace WPFApp
 
         private void Wyloguj()
         {
-            if (_aktualnaSesja != null)
+            if (aktualnaSesja != null)
             {
-                _aktualnaSesja.Zalogowany = false;
+                aktualnaSesja.Zalogowany = false;
                 dc.SaveChanges();
-                _aktualnaSesja = null;
+                aktualnaSesja = null;
                 WczytajDane();
             }
         }
@@ -110,6 +111,7 @@ namespace WPFApp
                 MessageBox.Show("Użytkownik o podanym imieniu już istnieje.");
             }
         }
+
         private void Zaloguj_Click(object sender, RoutedEventArgs e)
         {
             string imie = Interaction.InputBox("Podaj swoje imię:", "Logowanie");
@@ -125,6 +127,15 @@ namespace WPFApp
         {
             string imie = Interaction.InputBox("Podaj nowe imię użytkownika:", "Rejestracja");
             ZarejestrujUzytkownika(imie);
+        }
+        private void UtworzKonto_Click(object sender, RoutedEventArgs e)
+        {
+            UtworzKonto okno = new UtworzKonto();
+            bool? result = okno.ShowDialog();
+            if (result == true)
+            {
+                //dodajemy konto
+            }
         }
 
     }
