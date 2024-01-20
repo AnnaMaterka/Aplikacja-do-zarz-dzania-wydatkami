@@ -17,6 +17,7 @@
             u1.WplywGotowki(300);
             u1.WplacnaKonto(k1, 100, new DateTime(2024, 1, 10), "prezent");
             u1.WyplaczKonta(k2, 100, DateTime.Now, "ubrania");
+
         }
     }
 }

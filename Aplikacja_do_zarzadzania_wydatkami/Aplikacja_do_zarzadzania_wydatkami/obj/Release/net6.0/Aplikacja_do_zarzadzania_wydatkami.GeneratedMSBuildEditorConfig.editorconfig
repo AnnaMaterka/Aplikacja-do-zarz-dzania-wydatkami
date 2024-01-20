@@ -8,4 +8,10 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Aplikacja_do_zarzadzania_wydatkami
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\japac\Source\Repos\AnnaMaterka\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\
+=======
+build_property.ProjectDir = C:\Users\dmazu\Desktop\projekt\AnnaMaterka\Aplikacja-do-zarz-dzania-wydatkami\Aplikacja_do_zarzadzania_wydatkami\Aplikacja_do_zarzadzania_wydatkami\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+>>>>>>> 21ed512f0d1f096e0b515da138f19b8ad34b39b6
