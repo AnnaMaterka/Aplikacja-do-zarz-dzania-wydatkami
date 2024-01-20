@@ -17,6 +17,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public DbSet<Wplyw> Wplywy { get; set; }
         public DbSet<WydatekRaz> Wydatki { get; set; }
         public DbSet<Sesja> Sesje { get; set; }
+        public DbSet<Kategoria> Kategorie { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<WydatekRaz>().ToTable("WydatkiRaz");

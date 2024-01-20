@@ -10,19 +10,21 @@ namespace WPFApp
         // Inicjalizacja ViewModel
         public UtworzKontoViewModel ViewModel { get; set; }
 
+        //private Uzytkownik zalogowanyUzytkownik; 
+
         // Przykładowy zalogowany użytkownik (do dostosowania)
-        private Uzytkownik ZalogowanyUzytkownik => new Uzytkownik { IdUzytkownika = 0000, Imie = "ZalogowanyUzytkownik" };
-        public UtworzKonto()
-{
-    InitializeComponent();
+        //private Uzytkownik zalogowanyUzytkownik => new Uzytkownik { IdUzytkownika = 0000, Imie = "ZalogowanyUzytkownik" };
+        //public UtworzKonto()
+        //{
+        //    InitializeComponent();
 
-    // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
-    ViewModel = new UtworzKontoViewModel { Uzytkownik = ZalogowanyUzytkownik };
-    DataContext = ViewModel;
+        //    // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
+        //    ViewModel = new UtworzKontoViewModel { Uzytkownik = ZalogowanyUzytkownik };
+        //    DataContext = ViewModel;
 
-    // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
-    ViewModel.Uzytkownik = ZalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
-}
+        //    // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
+        //    ViewModel.Uzytkownik = ZalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
+        //}
 
         public UtworzKonto(Uzytkownik zalogowanyUzytkownik)
         {
@@ -33,7 +35,7 @@ namespace WPFApp
             DataContext = ViewModel;
 
             // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
-            ViewModel.Uzytkownik = ZalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
+            //ViewModel.Uzytkownik = zalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
         }
 
         private void DodajKonto_Click(object sender, RoutedEventArgs e)

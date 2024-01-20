@@ -41,13 +41,12 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private DateTime data;
         private Kategoria kategoria;
 
-        public WydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime data, Kategoria kategoria) :base(kwota, data, kategoria)
+        public WydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime data, string kategoria) :base(kwota, data, kategoria)
         {
             this.cyklWydatku = cyklWydatku;
             this.oplaconyWBiezacymCyklu = oplaconyWBiezacymCyklu;
             this.stalaKwota = stalaKwota;
             this.kwota = stalaKwota?kwota:0;
-            this.kategoria = kategoria;
         }
 
         public Cykl CyklWydatku { get => cyklWydatku; set => cyklWydatku = value; }

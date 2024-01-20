@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdOszczednosci { get; set; }
-
+        [ForeignKey("Konto")]
         public int IdKonta { get; set; }
         public virtual Konto Konto { get; set; }
         public Oszczednosc(decimal kwota, DateTime data, string cel):base(kwota, data)

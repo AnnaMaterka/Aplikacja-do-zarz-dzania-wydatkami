@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Globalization;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdKonta { get; set; }
+        [ForeignKey("Uzytkownik")]
         public int IdUzytkownika { get; set; }
 
         public virtual Uzytkownik Uzytkownik { get; set; }
@@ -75,8 +77,20 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //internal List<Oszczednosc> ListaOszczednosci { get => listaOszczednosci; set => listaOszczednosci = value; }
         public string Nazwa { get => nazwa; set => nazwa = value; }
 
+        public int PobierzIdKategorii(string nazwaKategorii)
+        {
+            using (var dbContext = new UzytkownikDbContext())
+            {
+                // Sprawdź, czy istnieje kategoria o podanej nazwie
+                var kategoria = dbContext.Kategorie.FirstOrDefault(k => k.NazwaKategorii == nazwaKategorii);
+
+                // Jeśli kategoria istnieje, zwróć jej IdKategorii, w przeciwnym razie -1
+                return kategoria?.IdKategorii ?? -1;
+            }
+        }
+
         //dotyczy zakupów kartą
-        public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria)
+        public void NowyWydatekKonto(decimal kwota, DateTime data, string kategoria)
         {
             StanKonta -= kwota;
             WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
@@ -85,7 +99,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             OnPropertyChanged(nameof(StanKonta));
         }
 
-        public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
+        public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, string kategoria)
         {
             WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
             //this.ListaWydatkowSt.Add(wydatek);
@@ -100,7 +114,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{StanKonta}");
             }
             StanKonta -= wydatek.Kwota;
-            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria);
+            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria.NazwaKategorii);
             //this.ListaWydatkowRaz.Add(nowy);
             this.Wydatki.Add(nowy);
             OnPropertyChanged(nameof(StanKonta));

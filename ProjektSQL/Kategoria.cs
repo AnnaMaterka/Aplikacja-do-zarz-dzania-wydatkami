@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
+
     public class Kategoria
     {
         [Key]
@@ -26,6 +27,19 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public int IdWydatkuStalego { get; set; }
         public virtual WydatekStaly WydatekStaly { get; set; }
 
-        //public string NazwaKategorii;
+        public Kategoria SzukanieKategorii(string nazwaKategorii)
+        {
+            using (var dbContext = new UzytkownikDbContext())
+            {
+                // Sprawdź, czy istnieje kategoria o podanej nazwie
+                bool istniejeKategoria = dbContext.Kategorie.Any(k => k.NazwaKategorii == nazwaKategorii);
+                if (istniejeKategoria)
+                {
+                    Kategoria znalezionaKategoria = dbContext.Kategorie.FirstOrDefault(k => k.NazwaKategorii == nazwaKategorii);
+                    return znalezionaKategoria;
+                }
+                return new Kategoria(nazwaKategorii);
+            }
+        }
     }
 }

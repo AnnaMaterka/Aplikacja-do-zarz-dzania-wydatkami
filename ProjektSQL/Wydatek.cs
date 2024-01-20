@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,15 +12,20 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private decimal kwota;
         private DateTime data;
         private Kategoria kategoria;
+
+        [ForeignKey("Kategoria")]
+        public int IdKategorii { get; set; }
         public virtual Kategoria Kategorie { get; set; }
         public Wydatek(decimal kwota, DateTime data)
         {
             Kwota = kwota;
             Data = data;
         }
-        protected Wydatek(decimal kwota, DateTime data, Kategoria kategoria) :this(kwota, data) 
+
+
+        protected Wydatek(decimal kwota, DateTime data, string kategoria) :this(kwota, data) 
         {
-            Kategoria = kategoria;
+            Kategoria = Kategoria.SzukanieKategorii(kategoria);
         }
 
         public decimal Kwota { get => kwota; set => kwota = value; }

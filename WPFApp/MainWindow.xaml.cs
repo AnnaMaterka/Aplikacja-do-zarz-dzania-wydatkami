@@ -133,7 +133,7 @@ namespace WPFApp
         }
         private void DodajKonto_Click(object sender, RoutedEventArgs e)
         {
-            UtworzKonto okno = new UtworzKonto();
+            UtworzKonto okno = new UtworzKonto(zalogowanyUzytkownik);
             bool? result = okno.ShowDialog();
             okno.DataContext = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
 
