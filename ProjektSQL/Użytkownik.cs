@@ -8,11 +8,13 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Data.SqlClient;
 using System.ComponentModel.DataAnnotations;
+using ProjektSQL;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
     public class Uzytkownik
     {
+        private string imie;
         private decimal stanGotowki;
         List<Konto> listaKont;
         private List<WydatekRaz> listaWydatkowRaz;
@@ -23,7 +25,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdUzytkownika { get; set; }
-        public virtual List<Konto> KontaUzytkownika { get; set; }
+        public virtual List<Sesja> Sesje { get; set; }
 
 
         public Uzytkownik()
@@ -34,12 +36,17 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             ListaWplywowRaz = new List<WplywRaz>();
             ListaWplywowSt = new List<WplywStaly>();
             ListaOszczednosci = new List<Oszczednosc>();
+            Imie = "Podane imie";
         }
         public Uzytkownik(decimal stanGotowki) :this()
         {
             StanGotowki = stanGotowki;
         }
-
+        public Uzytkownik(decimal stanGotowki, string imie) : this()
+        {
+            StanGotowki = stanGotowki;
+            Imie = imie;
+        }
         public decimal StanGotowki { get => stanGotowki; set => stanGotowki = value; }
         public List<Konto> ListaKont { get => listaKont; set => listaKont = value; }
         public List<WydatekRaz> ListaWydatkowRaz { get => listaWydatkowRaz; set => listaWydatkowRaz = value; }
@@ -47,6 +54,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         internal List<WplywRaz> ListaWplywowRaz { get => listaWplywowRaz; set => listaWplywowRaz = value; }
         internal List<WplywStaly> ListaWplywowSt { get => listaWplywowSt; set => listaWplywowSt = value; }
         internal List<Oszczednosc> ListaOszczednosci { get => listaOszczednosci; set => listaOszczednosci = value; }
+        public string Imie { get => imie; set => imie = value; }
 
         public void ZapiszDoBazy()
         {

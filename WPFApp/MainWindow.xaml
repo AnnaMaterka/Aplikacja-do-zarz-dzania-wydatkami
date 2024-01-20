@@ -1,0 +1,22 @@
+﻿<Window x:Class="WPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Button Content="Wyloguj" Click="Wyloguj_Click"/>
+            <DataGrid Name="dgUzytkownicy" AutoGenerateColumns="True" />
+            <DataGrid Name="dgKonta" AutoGenerateColumns="True" />
+            <TextBlock Text="Suma pieniędzy:" />
+            <TextBox Name="txtSumaPieniedzy" IsEnabled="False" />
+            <Button Content="Zaloguj" Click="Zaloguj_Click"/>
+            <Button Content="Wyloguj" Click="Wyloguj_Click"/>
+            <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

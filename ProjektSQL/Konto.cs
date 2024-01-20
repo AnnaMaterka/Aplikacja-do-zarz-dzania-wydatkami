@@ -10,6 +10,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 {
     public class Konto
     {
+        private string nazwa;
         private string nazwaBanku;
         private decimal stanKonta;
         private Uzytkownik uzytkownik;
@@ -36,12 +37,20 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             listaWplywowRaz = new List<WplywRaz>();
             listaWplywowSt = new List<WplywStaly>();
             listaOszczednosci = new List<Oszczednosc>();
-    }
+            Nazwa = "Nazwa konta";
+        }
         public Konto(string nazwaBanku, decimal stanKonta, Uzytkownik uzytkownik) :this()
         {
             NazwaBanku = nazwaBanku;
             StanKonta = stanKonta;
             Uzytkownik1 = uzytkownik;
+        }
+        public Konto(string nazwaBanku, decimal stanKonta, Uzytkownik uzytkownik, string nazwa) : this()
+        {
+            NazwaBanku = nazwaBanku;
+            StanKonta = stanKonta;
+            Uzytkownik1 = uzytkownik;
+            Nazwa = nazwa;
         }
 
         public string NazwaBanku { get => nazwaBanku; init => nazwaBanku = value; }
@@ -52,6 +61,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         internal List<WplywRaz> ListaWplywowRaz { get => listaWplywowRaz; set => listaWplywowRaz = value; }
         internal List<WplywStaly> ListaWplywowSt { get => listaWplywowSt; set => listaWplywowSt = value; }
         internal List<Oszczednosc> ListaOszczednosci { get => listaOszczednosci; set => listaOszczednosci = value; }
+        public string Nazwa { get => nazwa; set => nazwa = value; }
 
         //dotyczy zakupów kartą
         public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria)
