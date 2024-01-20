@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Aplikacja_do_zarzadzania_wydatkami",
+    "\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami",
+    "\\Aplikacja_do_zarzadzania_wydatkami\\gui",
+    "\\ProjektSQL"
   ],
-  "SelectedNode": "\\Aplikacja_do_zarzadzania_wydatkami.sln",
+  "SelectedNode": "\\ProjektSQL\\obj",
   "PreviewInSolutionExplorer": false
 }

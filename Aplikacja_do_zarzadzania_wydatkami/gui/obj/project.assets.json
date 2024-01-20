@@ -27,19 +27,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dmazu\\.nuget\\packages\\": {}
+    "C:\\Users\\japac\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\gui.csproj",
+      "projectUniqueName": "C:\\Users\\japac\\Source\\Repos\\AnnaMaterka\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\gui.csproj",
       "projectName": "gui",
-      "projectPath": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\gui.csproj",
-      "packagesPath": "C:\\Users\\dmazu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\obj\\",
+      "projectPath": "C:\\Users\\japac\\Source\\Repos\\AnnaMaterka\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\gui.csproj",
+      "packagesPath": "C:\\Users\\japac\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\japac\\Source\\Repos\\AnnaMaterka\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\gui\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\dmazu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\japac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -53,8 +58,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj": {
-              "projectPath": "C:\\Users\\dmazu\\Desktop\\c#\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj"
+            "C:\\Users\\japac\\Source\\Repos\\AnnaMaterka\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj": {
+              "projectPath": "C:\\Users\\japac\\Source\\Repos\\AnnaMaterka\\Aplikacja-do-zarz-dzania-wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami\\Aplikacja_do_zarzadzania_wydatkami.csproj"
             }
           }
         }
@@ -87,7 +92,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
