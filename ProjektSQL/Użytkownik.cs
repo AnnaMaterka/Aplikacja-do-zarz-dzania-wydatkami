@@ -173,33 +173,45 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public void RaportMiesieczny(string rokmiesiac)
         {
-            string nazwaPliku = $"R.mies.{rokmiesiac}.txt";
-            using StreamWriter sw = new StreamWriter(nazwaPliku, true);
+            string nazwaPliku = $"{IdUzytkownika}.R.mies.{rokmiesiac}.html";
+            string htmlContent = "<html><head><title>Raport miesięczny</title></head><body>";
             DateTime data = DateTime.ParseExact(rokmiesiac, "yyyyMM", CultureInfo.InvariantCulture);
             string miesiac = data.ToString("MMMM", new CultureInfo("pl-PL"));
             string rok = data.Year.ToString();
-            sw.WriteLine($"Raport miesięczny dla miesiąca {miesiac} roku {rok}\n\n");
-            /*
-            foreach(string kategoria in Kategorie)
-            {
-                decimal suma = 0;
-                foreach(WydatekRaz w in ListaWydatkowRaz)
-                {
-                    decimal sumakat
-                    if(w.Kategoria == kategoria)
-                    {
-                        sumakat += w.Kwota;
-                    }
-                }
-                if(sumakat > 0)
-                {
-                    sw.WriteLine($"{kategoria.PadRight(40)}{suma}");
-                }
-            }
-            */
+            htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla miesiąca {miesiac} roku {rok}</h1>";
+            decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowMies(rokmiesiac));
+            sumaWplywow += ListaWplywowRaz.Where(WplywRaz => WplywRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WplywRaz => WplywRaz.Kwota);
+            htmlContent += $"<h2>Suma wpływów: <b>{sumaWplywow}</b></h2>";
+            decimal sumaWydatkow = ListaKont.Sum(Konto => Konto.SumaWydatkowMies(rokmiesiac));
+            sumaWydatkow += ListaWydatkowRaz.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WydatekRaz => WydatekRaz.Kwota);
+            htmlContent += $"<h2>Suma wydatków: <b>{sumaWydatkow}</b></h2>";
+            decimal sumaOszczednosci = ListaKont.Sum(Konto => Konto.SumaOszczednosciMies(rokmiesiac));
+            sumaOszczednosci += ListaOszczednosci.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyyMM") == rokmiesiac).Sum(Oszczednosc => Oszczednosc.Kwota);
+            htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{sumaOszczednosci}</b></h2>";
+            htmlContent += "</body></html>";
+
+            File.WriteAllText(nazwaPliku, htmlContent);
         }
 
+        public void RaportRoczny(string rok)
+        {
+            string nazwaPliku = $"{IdUzytkownika}.R.rocz.{rok}.html";
+            string htmlContent = "<html><head><title>Raport roczny</title></head><body>";
+            DateTime data = DateTime.ParseExact(rok, "yyyyMM", CultureInfo.InvariantCulture);
+            htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla roku {rok}</h1>";
+            decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowRok(rok));
+            sumaWplywow += ListaWplywowRaz.Where(WplywRaz => WplywRaz.Data.ToString("yyyy") == rok).Sum(WplywRaz => WplywRaz.Kwota);
+            htmlContent += $"<h2>Suma wpływów: <b>{sumaWplywow}</b></h2>";
+            decimal sumaWydatkow = ListaKont.Sum(Konto => Konto.SumaWydatkowRok(rok));
+            sumaWydatkow += ListaWydatkowRaz.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyy") == rok).Sum(WydatekRaz => WydatekRaz.Kwota);
+            htmlContent += $"<h2>Suma wydatków: <b>{sumaWydatkow}</b></h2>";
+            decimal sumaOszczednosci = ListaKont.Sum(Konto => Konto.SumaOszczednosciRok(rok));
+            sumaOszczednosci += ListaOszczednosci.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyy") == rok).Sum(Oszczednosc => Oszczednosc.Kwota);
+            htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{sumaOszczednosci}</b></h2>";
+            htmlContent += "</body></html>";
 
+            File.WriteAllText(nazwaPliku, htmlContent);
+        }
 
     }
 }

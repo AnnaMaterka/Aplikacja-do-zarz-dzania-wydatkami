@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -124,6 +125,38 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             htmlContent += "</body></html>";
 
             File.WriteAllText(nazwaPliku, htmlContent);
+        }
+
+        public delegate decimal SumaZaOkres(string okres);
+
+        public decimal SumaWplywowMies(string rokmies)
+        {
+            return Wplywy.Where(WplywRaz => WplywRaz.Data.ToString("yyyyMM") == rokmies).Sum(WplywRaz => WplywRaz.Kwota);
+        }
+
+        public decimal SumaWydatkowMies(string rokmies)
+        {
+            return Wydatki.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyyMM") == rokmies).Sum(WydatekRaz => WydatekRaz.Kwota);
+        }
+
+        public decimal SumaOszczednosciMies(string rokmies)
+        {
+            return Oszczednosci.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyyMM") == rokmies).Sum(Oszczednosc => Oszczednosc.Kwota);
+        }
+
+        public decimal SumaWplywowRok(string rok)
+        {
+            return Wplywy.Where(WplywRaz => WplywRaz.Data.ToString("yyyy") == rok).Sum(WplywRaz => WplywRaz.Kwota);
+        }
+
+        public decimal SumaWydatkowRok(string rok)
+        {
+            return Wydatki.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyy") == rok).Sum(WydatekRaz => WydatekRaz.Kwota);
+        }
+
+        public decimal SumaOszczednosciRok(string rok)
+        {
+            return Oszczednosci.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyy") == rok).Sum(Oszczednosc => Oszczednosc.Kwota);
         }
     }
 }
