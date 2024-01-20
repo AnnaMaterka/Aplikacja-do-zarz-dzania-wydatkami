@@ -6,19 +6,111 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Templates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="CornflowerBlue">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="230,0,0,0">
             <Button Content="Zaloguj" Click="Zaloguj_Click" Height="30" Width="80"/>
             <Button Content="Wyloguj" Click="Wyloguj_Click" Height="30" Width="80"/>
             <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Height="30" Width="160"/>
             <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="30" Width="160"/>
 
         </StackPanel>
+        <!--// menu panel //-->
+        <StackPanel Background="DarkCyan"
+                    Width="230"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Left">
 
-        <DataGrid x:Name="dgUzytkownicy" AutoGenerateColumns="True" Width="318" Margin="10,42,472,346" />
-        <DataGrid x:Name="dgKonta" AutoGenerateColumns="True" Height="47" Width="321" Margin="333,42,146,345" />
-        <TextBlock Text="Suma pieniędzy:" Height="30" Width="280" Margin="10,88,510,316" />
-        <TextBox x:Name="txtSumaPieniedzy" IsEnabled="False"  Height="30" Width="280" Margin="250,88,270,316" />
+            <!--// channel1 name //-->
+            <!--// main menu //-->
+
+            <!--// channel1 name //-->
+
+            <Grid Height="50">
+
+                <Border Background="LightBlue" />
+                <TextBlock Text=" Menu "
+                           Foreground="DarkCyan"
+                           FontFamily="Fonts/#Switzer-Regular"
+                           FontSize="25"  Height="50" Margin="33,0,10,0" />
+
+            </Grid>
+            <!--// main menu //-->
+
+            <Menu Height="343"
+                  Background="Transparent"
+                  Margin="0,40,0,0">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+
+                <MenuItem Header="Konta"
+                          Template="{StaticResource Menu_Template}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/icons8-online-money-transfer-48.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Transakcje"
+                          Template="{StaticResource Menu_SubMenu_Template}">
+
+                    <MenuItem.Icon>
+                        <Image Source="Assets/icons8-tips-48.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                    
+                    <MenuItem Header="Wplywy"
+                              Template="{StaticResource Item_Template}">
+                        <MenuItem.Icon>
+                            <Image Source="Assets/icons8-deposit-48.png"
+                                   Stretch="Uniform"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Header="Wydatki"
+                          Template="{StaticResource Item_Template}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/icons8-withdrawal-48.png"
+                               Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+
+                <MenuItem Header="Raporty"
+                          Template="{StaticResource Menu_SubMenu_Template}">
+                    <MenuItem.Icon>
+                        <Image Source="Assets/icons8-report-file-48.png"
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+
+                    <MenuItem Header="Raport tygodniowy"
+                              Template="{StaticResource Item_Template}">
+
+                    </MenuItem>
+                    <MenuItem Header="Raport miesięczny"
+                              Template="{StaticResource Item_Template}">
+                    </MenuItem>
+
+                    <MenuItem Header="Raport roczny"
+                              Template="{StaticResource Item_Template}">
+                    </MenuItem>
+                    
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <DataGrid x:Name="dgUzytkownicy" AutoGenerateColumns="True" Margin="230,36,410,352" />
+        <DataGrid x:Name="dgKonta" AutoGenerateColumns="True" Margin="395,36,160,352" />
+        <TextBlock Text="Suma pieniędzy:" Height="30" Margin="230,87,450,317" />
+        <TextBox x:Name="txtSumaPieniedzy" IsEnabled="False"  Height="30" Width="280" Margin="360,87,160,317" />
 
 
     </Grid>

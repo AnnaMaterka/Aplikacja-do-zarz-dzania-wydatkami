@@ -16,7 +16,6 @@
 
             <Label Content="Stan Konta" />
             <TextBox Text="{Binding StanKonta}" />
-
             <Button Content="Utwórz Konto" Command="{Binding UtworzKontoCommand}" />
         </StackPanel>
     </Grid>

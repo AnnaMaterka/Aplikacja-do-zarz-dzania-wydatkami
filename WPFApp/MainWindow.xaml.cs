@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data.Entity;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -128,7 +129,7 @@ namespace WPFApp
             string imie = Interaction.InputBox("Podaj nowe imię użytkownika:", "Rejestracja");
             ZarejestrujUzytkownika(imie);
         }
-        private void UtworzKonto_Click(object sender, RoutedEventArgs e)
+        private void DodajKonto_Click(object sender, RoutedEventArgs e)
         {
             UtworzKonto okno = new UtworzKonto();
             bool? result = okno.ShowDialog();
