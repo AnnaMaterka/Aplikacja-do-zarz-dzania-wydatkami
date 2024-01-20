@@ -13,7 +13,7 @@ namespace ProjektSQL
     {
         public Migracje()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
     }
 }

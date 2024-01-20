@@ -31,8 +31,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdWydatkuStalego { get; set; }
-        public int IdKonta { get; set; }
-        public virtual Konto Konto { get; set; }
+        //public int IdKonta { get; set; }
+        //public virtual Konto Konto { get; set; }
 
         private Cykl cyklWydatku;
         private bool oplaconyWBiezacymCyklu;

@@ -56,7 +56,7 @@ namespace WPFApp
             if (aktualnaSesja != null && aktualnaSesja.Zalogowany)
             {
                 var zalogowanyUzytkownik = dc.Uzytkownicy.Find(aktualnaSesja.IdUzytkownika);
-                var kontaUzytkownika = dc.Konta.Where(k => k.IdUzytkownika == zalogowanyUzytkownik.IdUzytkownika).ToList();
+                var kontaUzytkownika = dc.Konta.Where(k => k.Uzytkownik.IdUzytkownika == zalogowanyUzytkownik.IdUzytkownika).ToList();
 
                 dgKonta.ItemsSource = kontaUzytkownika;
                 txtSumaPieniedzy.Text = kontaUzytkownika.Sum(k => k.StanKonta).ToString("C");

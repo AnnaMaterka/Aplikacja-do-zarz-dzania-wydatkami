@@ -20,12 +20,12 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
         public string NazwaKategorii { get => nazwaKategorii; set => nazwaKategorii = value; }
 
-        public int IdWplywu1 { get; set; }
-        public virtual Wplyw Wplyw { get; set; }
-        public int IdWydatek {  get; set; }
-        public virtual WydatekRaz WydatekRaz { get; set; }
-        public int IdWydatkuStalego { get; set; }
-        public virtual WydatekStaly WydatekStaly { get; set; }
+        //public int IdWplywu1 { get; set; }
+        //public virtual Wplyw Wplyw { get; set; }
+        //public int IdWydatek {  get; set; }
+        //public virtual WydatekRaz WydatekRaz { get; set; }
+        //public int IdWydatkuStalego { get; set; }
+        //public virtual WydatekStaly WydatekStaly { get; set; }
 
         public Kategoria SzukanieKategorii(string nazwaKategorii)
         {

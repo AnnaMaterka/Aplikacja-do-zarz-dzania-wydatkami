@@ -87,7 +87,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             db.SaveChanges();
             Console.WriteLine("Zapisano!");
         }
-
+        
         public decimal SumaNaKontach()
         {
             decimal suma = 0;

@@ -22,12 +22,14 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //private List<WplywStaly> listaWplywowSt;
         //private List<Oszczednosc> listaOszczednosci;
 
+        public virtual Uzytkownik Uzytkownik { get; set; }
         [Key]
         public int IdKonta { get; set; }
-        [ForeignKey("Uzytkownik")]
-        public int IdUzytkownika { get; set; }
 
-        public virtual Uzytkownik Uzytkownik { get; set; }
+        //[ForeignKey("Uzytkownik")]
+        //public int IdUzytkownika { get; set; }
+
+        
         public virtual List<WydatekRaz> Wydatki { get; set; }
         public virtual List<WydatekStaly> WydatekStale { get; set; }
         public virtual List<WplywRaz> Wplywy { get; set; }
@@ -46,13 +48,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         {
             NazwaBanku = nazwaBanku;
             StanKonta = stanKonta;
-            Uzytkownik1 = uzytkownik;
+            Uzytkownik = uzytkownik;
         }
         public Konto(string nazwaBanku, decimal stanKonta, Uzytkownik uzytkownik, string nazwa) : this()
         {
             NazwaBanku = nazwaBanku;
             StanKonta = stanKonta;
-            Uzytkownik1 = uzytkownik;
+            Uzytkownik = uzytkownik;
             Nazwa = nazwa;
         }
 
@@ -69,7 +71,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 }
             }
         }
-        public Uzytkownik Uzytkownik1 { get => uzytkownik; set => uzytkownik = value; }
+        //public Uzytkownik Uzytkownik1 { get => uzytkownik; set => uzytkownik = value; }
         //public List<WydatekRaz> ListaWydatkowRaz { get => listaWydatkowRaz; set => listaWydatkowRaz = value; }
         //public List<WydatekStaly> ListaWydatkowSt { get => listaWydatkowSt; set => listaWydatkowSt = value; }
         //internal List<WplywRaz> ListaWplywowRaz { get => listaWplywowRaz; set => listaWplywowRaz = value; }
