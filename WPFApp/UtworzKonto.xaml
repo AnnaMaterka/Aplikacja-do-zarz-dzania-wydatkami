@@ -9,14 +9,14 @@
     <Grid>
         <StackPanel Margin="10">
             <Label Content="Nazwa Konta" />
-            <TextBox Text="{Binding Nazwa}" />
+            <TextBox x:Name="NazwaKontaTextBox" Text="{Binding Nazwa}" />
 
             <Label Content="Nazwa Banku" />
-            <TextBox Text="{Binding NazwaBanku}" />
+            <TextBox x:Name="NazwaBankuTextBox" Text="{Binding NazwaBanku}" />
 
             <Label Content="Stan Konta" />
-            <TextBox Text="{Binding StanKonta}" />
-            <Button Content="Utwórz Konto" Command="{Binding UtworzKontoCommand}" />
+            <TextBox x:Name="StanKontaTextBox" Text="{Binding StanKonta}" />
+            <Button Content="Utwórz Konto" Click="DodajKonto_Click" />
         </StackPanel>
     </Grid>
 </Window>

@@ -31,9 +31,29 @@ namespace WPFApp
             // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
             viewModel.Uzytkownik = ZalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
         }
-
         // Przykładowy zalogowany użytkownik (do dostosowania)
         private Uzytkownik ZalogowanyUzytkownik => new Uzytkownik { IdUzytkownika = 0000, Imie = "ZalogowanyUzytkownik" };
+
+        private void DodajKonto_Click(object sender, RoutedEventArgs e)
+        {
+            // Pobierz informacje o nowym koncie z pól wejściowych w oknie
+            string nazwaKonta = NazwaKontaTextBox.Text;
+            string nazwaBanku = NazwaBankuTextBox.Text;
+            decimal saldoPoczatkowe = Convert.ToDecimal(StanKontaTextBox.Text);
+
+            // Utwórz nowe konto
+            Konto noweKonto = new Konto(nazwaBanku, saldoPoczatkowe, ZalogowanyUzytkownik, nazwaKonta);
+
+            // Dodaj konto do listy kont użytkownika
+            ZalogowanyUzytkownik.DodajKonto(noweKonto);
+
+            // Zapisz zmiany w bazie danych
+            ZalogowanyUzytkownik.ZapiszDoBazy();
+
+            // Zamknij okno
+            this.Close();
+        }
+
     }
     public class UtworzKontoViewModel
     {
