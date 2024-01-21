@@ -23,9 +23,9 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
 
 
-        protected Wydatek(decimal kwota, DateTime data, Kategoria kategoria) :this(kwota, data) 
+        protected Wydatek(decimal kwota, DateTime data, string kategoria) :this(kwota, data) 
         {
-            Kategoria = kategoria;
+            Kategoria = Kategoria.SzukanieKategorii(kategoria);
         }
 
         public decimal Kwota { get => kwota; set => kwota = value; }
