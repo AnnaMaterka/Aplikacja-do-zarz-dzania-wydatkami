@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Aplikacja_do_zarzadzania_wydatkami;
 using Microsoft.VisualBasic;
 using ProjektSQL;
+using static WPFApp.DodajWplyw;
 using static WPFApp.UtworzKonto;
 
 namespace WPFApp
@@ -100,6 +101,8 @@ namespace WPFApp
                 dc.SaveChanges();
                 aktualnaSesja = null;
                 WczytajDane();
+                InitialView.Visibility = Visibility.Visible;
+                LoggedInView.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -147,6 +150,12 @@ namespace WPFApp
             //{
             //    //dodajemy konto
             //}
+        }
+        private void DodajWplyw_Click(object sender, RoutedEventArgs e)
+        {
+            DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik);
+            bool? result = okno.ShowDialog();
+            okno.DataContext = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {

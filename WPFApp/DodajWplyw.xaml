@@ -16,6 +16,10 @@
 
             <Label Content="Kategoria" />
             <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380"/>
+
+            <Label Content="Wybierz konto" />
+            <ListBox x:Name="listBoxKonta" DisplayMemberPath="Nazwa" SelectionMode="Single" Height="30" Width="380"/>
+
             <Button Content="Dodaj Wplyw" Click="DodajWplyw_Click" Height="30" Width="380" />
         </StackPanel>
     </Grid>

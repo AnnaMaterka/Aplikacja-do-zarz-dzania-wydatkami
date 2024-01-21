@@ -28,6 +28,12 @@ namespace WPFApp
             // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
             ViewModel = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
             DataContext = ViewModel;
+
+            // Pobierz listę kont użytkownika
+            var listaKont = zalogowanyUzytkownik.ListaKont;
+
+            // Przypisz listę kont do ListBox
+            listBoxKonta.ItemsSource = listaKont;
         }
         private void DodajWplyw_Click(object sender, RoutedEventArgs e)
         {
@@ -38,9 +44,10 @@ namespace WPFApp
                 string kategoria = ViewModel.Kategoria;
                 DateTime dataWplywu = ViewModel.Data;
                 decimal kwota = ViewModel.Kwota;
+                Konto konto = (Konto)listBoxKonta.SelectedItem;
 
                 // Utwórz nowe konto
-                WplywRaz wplyw = new WplywRaz(kwota, dataWplywu, kategoria);
+                WplywRaz wplyw = new WplywRaz(kwota, dataWplywu, kategoria, konto);
 
                 // Dodaj konto do listy kont użytkownika
                 ViewModel.Uzytkownik.DodajWplywGotowki(wplyw);
@@ -74,6 +81,7 @@ namespace WPFApp
                 return Validator.TryValidateObject(this, new ValidationContext(this, null, null), null, true);
             }
         }
+
     }
 }
 

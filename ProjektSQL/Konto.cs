@@ -124,6 +124,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         }
 
+
         public void RaportMiesieczny(string rokmiesiac)
         {
             string nazwaPliku = $"{IdKonta}.R.mies.{rokmiesiac}.html";

@@ -12,14 +12,18 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         //[Key]
         //public int IdWplywu1 { get; set; }
-        //public int IdKonta {  get; set; }
-        //public virtual Konto Konto { get; set; }
+        //public int IdKonta { get; set; }
+        public virtual Konto Konto { get; set; }
 
         public WplywRaz(decimal kwota, DateTime data) : base(kwota, data)
         {
         }
         public WplywRaz(decimal kwota, DateTime data, string kategoria) : base(kwota, data, kategoria)
         {
+        }
+        public WplywRaz(decimal kwota, DateTime data, string kategoria, Konto konto) : base(kwota, data, kategoria)
+        {
+            Konto = konto;
         }
 
         public object Clone()

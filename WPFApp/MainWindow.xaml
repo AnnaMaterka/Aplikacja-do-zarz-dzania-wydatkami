@@ -26,7 +26,7 @@
             <ColumnDefinition Width="57*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel x:Name="LoggedInView" Visibility="Visible"  Grid.ColumnSpan="3" Margin="0,54,0,0" Grid.RowSpan="2">
+        <StackPanel x:Name="InitialView" Visibility="Visible"  Grid.ColumnSpan="3" Margin="0,54,0,0" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal" Height="382" Width="570" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Margin="230,0,0,0" Background="#FF5E7E9E" >
                 <Button Content="Zaloguj" Click="Zaloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" FontFamily="Verdana" FontSize="20" Width="150">
                     <Button.Foreground>
@@ -37,7 +37,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel x:Name="InitialView" Visibility="Collapsed" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Height="58" Width="160">
+        <StackPanel x:Name="LoggedInView" Visibility="Collapsed" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Height="58" Width="160">
             <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="30" Width="160" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
             <Button Content="Wyloguj" Click="Wyloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
         </StackPanel>
@@ -102,8 +102,8 @@
                         <TabItem Header="Wpływy">
                             <Grid>
                                 <!-- Dodaj ListBoxWplywy tutaj -->
-                                <ListBox x:Name="listBoxWplywy" DisplayMemberPath="NazwaPola" Margin="10"/>
-
+                                <ListBox x:Name="listBoxWplywy" DisplayMemberPath="Nazwa" Margin="10"/>
+                                <Button Content="Dodaj Wpływ" Click="DodajWplyw_Click" Margin="10"/>
                                 <!-- Inne elementy interfejsu użytkownika dla zakładki "Wpływy" -->
                                 <!-- Tutaj możesz dodać inne elementy interfejsu użytkownika dla zakładki "Wpływy" -->
                             </Grid>
