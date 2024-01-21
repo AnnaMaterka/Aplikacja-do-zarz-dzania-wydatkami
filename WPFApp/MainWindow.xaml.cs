@@ -80,6 +80,9 @@ namespace WPFApp
                 aktualnaSesja = new Sesja { IdUzytkownika = zalogowanyUzytkownik.IdUzytkownika, Zalogowany = true };
                 dc.Sesje.Add(aktualnaSesja);
                 dc.SaveChanges();
+                //Przełączam na widok zalogowanego użytkownika
+                InitialView.Visibility = Visibility.Collapsed;
+                LoggedInView.Visibility = Visibility.Visible;
                 WczytajDane();
             }
             else
@@ -145,5 +148,9 @@ namespace WPFApp
             //}
         }
 
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

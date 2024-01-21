@@ -13,8 +13,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="CadetBlue"
-                BorderBrush="CadetBlue"
+                Background="SlateGray"
+                BorderBrush="SlateGray"
                 BorderThickness="0"
                 Height="50"
                 Width="230">
@@ -75,8 +75,8 @@
                        VerticalOffset="0">
 
                     <Border x:Name="SubMenuBorder"
-                            Background="LightCyan"
-                            BorderBrush="LightCyan">
+                            Background="SlateGray"
+                            BorderBrush="SlateGray">
 
                         <ScrollViewer x:Name="SubMenuScrollViewer"
                                       Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
@@ -141,8 +141,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="CadetBlue"
-                BorderBrush="CadetBlue"
+                Background="SlateGray"
+                BorderBrush="SlateGray"
                 BorderThickness="0"
                 Height="50"
                 Width="230"
@@ -222,8 +222,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="Teal"
-                BorderBrush="Teal"
+                Background="SlateGray"
+                BorderBrush="SlateGray"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Height="50"
                 Width="230"

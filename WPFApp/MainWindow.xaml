@@ -13,19 +13,39 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Background="CornflowerBlue">
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="230,0,0,0">
-            <Button Content="Zaloguj" Click="Zaloguj_Click" Height="30" Width="80"/>
-            <Button Content="Wyloguj" Click="Wyloguj_Click" Height="30" Width="80"/>
-            <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Height="30" Width="160"/>
-            <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="30" Width="160"/>
 
+
+    <Grid Background="#FF5E7E9E">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="190*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="57*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="LoggedInView" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Row="3">
+            <StackPanel Orientation="Horizontal" Height="382" Width="570" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Margin="230,0,0,0" Background="#FF5E7E9E" >
+                <Button Content="Zaloguj" Click="Zaloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" FontFamily="Verdana" FontSize="20" Width="150">
+                    <Button.Foreground>
+                        <SolidColorBrush Color="White" Opacity="1"/>
+                    </Button.Foreground>
+                </Button>
+                <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" Width="300" FontFamily="Verdana" FontSize="20" FontWeight="Normal"/>
+            </StackPanel>
         </StackPanel>
+
+        <StackPanel x:Name="InitialView" Visibility="Visible" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="400,54,0,0" Grid.RowSpan="2">
+            <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="30" Width="160" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
+            <Button Content="Wyloguj" Click="Wyloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
+        </StackPanel>
+
         <!--// menu panel //-->
-        <StackPanel Background="DarkCyan"
+        <StackPanel Background="#FF1A2A41"
                     Width="230"
                     Orientation="Vertical"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Center" Grid.RowSpan="2">
 
             <!--// channel1 name //-->
             <!--// main menu //-->
@@ -36,9 +56,9 @@
 
                 <Border Background="LightBlue" />
                 <TextBlock Text=" Menu "
-                           Foreground="DarkCyan"
-                           FontFamily="Fonts/#Switzer-Regular"
-                           FontSize="25"  Height="50" Margin="33,0,10,0" />
+                           Foreground="White"
+                           FontFamily="Verdana"
+                           FontSize="25"  Height="50" Margin="0,0,-563,0" Background="#FF1A2A41" FontWeight="SemiBold" />
 
             </Grid>
             <!--// main menu //-->
@@ -53,7 +73,7 @@
                 </Menu.ItemsPanel>
 
                 <MenuItem Header="Konta"
-                          Template="{StaticResource Menu_Template}">
+                          Template="{StaticResource Menu_Template}" Click="MenuItem_Click">
                     <MenuItem.Icon>
                         <Image Source="Assets/icons8-online-money-transfer-48.png"
                                Stretch="Uniform" />
@@ -67,7 +87,7 @@
                         <Image Source="Assets/icons8-tips-48.png"
                                Stretch="Uniform" />
                     </MenuItem.Icon>
-                    
+
                     <MenuItem Header="Wplywy"
                               Template="{StaticResource Item_Template}">
                         <MenuItem.Icon>
@@ -78,10 +98,10 @@
 
                     <MenuItem Header="Wydatki"
                           Template="{StaticResource Item_Template}">
-                    <MenuItem.Icon>
-                        <Image Source="Assets/icons8-withdrawal-48.png"
+                        <MenuItem.Icon>
+                            <Image Source="Assets/icons8-withdrawal-48.png"
                                Stretch="Uniform"/>
-                    </MenuItem.Icon>
+                        </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
 
@@ -103,15 +123,16 @@
                     <MenuItem Header="Raport roczny"
                               Template="{StaticResource Item_Template}">
                     </MenuItem>
-                    
+
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid x:Name="dgUzytkownicy" AutoGenerateColumns="True" Margin="230,36,410,352" />
-        <DataGrid x:Name="dgKonta" AutoGenerateColumns="True" Margin="395,36,160,352" />
-        <TextBlock Text="Suma pieniędzy:" Height="30" Margin="230,87,450,317" />
-        <TextBox x:Name="txtSumaPieniedzy" IsEnabled="False"  Height="30" Width="280" Margin="360,87,160,317" />
-
+        <DataGrid x:Name="dgUzytkownicy" Visibility="Visible" AutoGenerateColumns="True" Margin="68,116,68,218" />
+        <DataGrid x:Name="dgKonta" Visibility="Visible" AutoGenerateColumns="True" Margin="25,95,34,25" Grid.Column="1" Grid.Row="1" />
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Width="405">
+            <TextBlock Text="Suma na kontach:" Visibility="Visible" FontFamily="Verdana" FontSize="20" TextWrapping="WrapWithOverflow" Foreground="White" Height="51" Width="131" />
+            <TextBox x:Name="txtSumaPieniedzy" Visibility="Visible" IsEnabled="False" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="20" Height="50" Width="273" />
+        </StackPanel>
 
     </Grid>
 </Window>
