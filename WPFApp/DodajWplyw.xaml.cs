@@ -41,7 +41,7 @@ namespace WPFApp
             if (ViewModel.IsValid())
             {
                 // Pobierz informacje o nowym koncie z pól wejściowych w oknie
-                string kategoria = ViewModel.Kategoria;
+                Kategoria kategoria = ViewModel.Kategoria;
                 DateTime dataWplywu = ViewModel.Data;
                 decimal kwota = ViewModel.Kwota;
                 Konto konto = (Konto)listBoxKonta.SelectedItem;

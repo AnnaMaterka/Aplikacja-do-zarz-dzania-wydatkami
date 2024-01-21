@@ -150,7 +150,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             StanGotowki -= kwota;
         }
 
-        public void WplywGotowki(decimal kwota, DateTime data, string kategoria)
+        public void WplywGotowki(decimal kwota, DateTime data, Kategoria kategoria)
         {
             StanGotowki += kwota;
             WplywRaz wplyw = new(kwota, data, kategoria);
@@ -163,7 +163,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             OnPropertyChanged(nameof(StanGotowki));
         }
         // dotyczy zakupów gotówką
-        public void NowyWydatekGotowka(decimal kwota, DateTime data, string kategoria)
+        public void NowyWydatekGotowka(decimal kwota, DateTime data, Kategoria kategoria)
         {
             this.StanGotowki -= kwota;
             WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
