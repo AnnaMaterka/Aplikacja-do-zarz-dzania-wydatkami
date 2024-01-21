@@ -14,7 +14,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //public int IdWplywu1 { get; set; }
         //public int IdKonta { get; set; }
         public virtual Konto Konto { get; set; }
-
+        public WplywRaz() { }
         public WplywRaz(decimal kwota, DateTime data) : base(kwota, data)
         {
         }
@@ -45,7 +45,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public bool Equals(WplywRaz? other)
         {
-            if (this.Kategoria.Equals(other!.Kategoria) && this.Kwota.Equals(other.Kwota)) { return true; }
+            if (PobierzKategorie().Equals(other!.PobierzKategorie()) && base.Kwota.Equals(other.Kwota)) { return true; }
             return false;
         }
     }
