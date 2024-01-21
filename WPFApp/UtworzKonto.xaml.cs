@@ -34,8 +34,8 @@ namespace WPFApp
             ViewModel = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
             DataContext = ViewModel;
 
-            // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
-            //ViewModel.Uzytkownik = zalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
+            // do usunięcia ?? Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
+            // do usunięcia ?? ViewModel.Uzytkownik = zalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
         }
 
         private void DodajKonto_Click(object sender, RoutedEventArgs e)

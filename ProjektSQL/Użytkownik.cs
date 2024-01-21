@@ -157,6 +157,11 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             this.WplywyGotowka.Add(wplyw);
             OnPropertyChanged(nameof(StanGotowki));
         }
+        public void DodajWplywGotowki(WplywRaz wplyw)
+        {
+            this.WplywyGotowka.Add(wplyw);
+            OnPropertyChanged(nameof(StanGotowki));
+        }
         // dotyczy zakupów gotówką
         public void NowyWydatekGotowka(decimal kwota, DateTime data, string kategoria)
         {

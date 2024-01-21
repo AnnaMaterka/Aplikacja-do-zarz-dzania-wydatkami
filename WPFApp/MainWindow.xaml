@@ -21,11 +21,12 @@
             <RowDefinition Height="190*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="57*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel x:Name="LoggedInView" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Row="3">
+        <StackPanel x:Name="LoggedInView" Visibility="Visible"  Grid.ColumnSpan="3" Margin="0,54,0,0" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal" Height="382" Width="570" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Margin="230,0,0,0" Background="#FF5E7E9E" >
                 <Button Content="Zaloguj" Click="Zaloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" FontFamily="Verdana" FontSize="20" Width="150">
                     <Button.Foreground>
@@ -36,7 +37,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel x:Name="InitialView" Visibility="Visible" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="400,54,0,0" Grid.RowSpan="2">
+        <StackPanel x:Name="InitialView" Visibility="Collapsed" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Height="58" Width="160">
             <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="30" Width="160" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
             <Button Content="Wyloguj" Click="Wyloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
         </StackPanel>
@@ -45,7 +46,7 @@
         <StackPanel Background="#FF1A2A41"
                     Width="230"
                     Orientation="Vertical"
-                    HorizontalAlignment="Center" Grid.RowSpan="2">
+                    HorizontalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
             <!--// channel1 name //-->
             <!--// main menu //-->
@@ -89,12 +90,30 @@
                     </MenuItem.Icon>
 
                     <MenuItem Header="Wplywy"
-                              Template="{StaticResource Item_Template}">
+                   Template="{StaticResource Item_Template}" Click="Wplywy_Click">
                         <MenuItem.Icon>
                             <Image Source="Assets/icons8-deposit-48.png"
-                                   Stretch="Uniform"/>
+                       Stretch="Uniform"/>
                         </MenuItem.Icon>
                     </MenuItem>
+
+                    <!-- Zakładki dla menu -->
+                    <TabControl Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Collapsed" x:Name="tabControlWplywy" SelectionChanged="TabControlWplywy_SelectionChanged">
+                        <TabItem Header="Wpływy">
+                            <Grid>
+                                <!-- Dodaj ListBoxWplywy tutaj -->
+                                <ListBox x:Name="listBoxWplywy" DisplayMemberPath="NazwaPola" Margin="10"/>
+
+                                <!-- Inne elementy interfejsu użytkownika dla zakładki "Wpływy" -->
+                                <!-- Tutaj możesz dodać inne elementy interfejsu użytkownika dla zakładki "Wpływy" -->
+                            </Grid>
+                        </TabItem>
+
+                        <!-- Inne zakładki dla menu -->
+                        <TabItem Header="Inna Zakładka">
+                            <!-- Treść dla innej zakładki -->
+                        </TabItem>
+                    </TabControl>
 
                     <MenuItem Header="Wydatki"
                           Template="{StaticResource Item_Template}">
@@ -127,9 +146,9 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid x:Name="dgUzytkownicy" Visibility="Visible" AutoGenerateColumns="True" Margin="68,116,68,218" />
-        <DataGrid x:Name="dgKonta" Visibility="Visible" AutoGenerateColumns="True" Margin="25,95,34,25" Grid.Column="1" Grid.Row="1" />
-        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Width="405">
+        <DataGrid x:Name="dgUzytkownicy" Visibility="Collapsed" AutoGenerateColumns="True" Margin="68,62,9,318" Grid.Row="1" />
+        <DataGrid x:Name="dgKonta" Visibility="Collapsed" AutoGenerateColumns="True" Margin="25,95,34,25" Grid.Column="2" Grid.Row="1" />
+        <StackPanel Grid.Column="2" Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Width="405" Height="51">
             <TextBlock Text="Suma na kontach:" Visibility="Visible" FontFamily="Verdana" FontSize="20" TextWrapping="WrapWithOverflow" Foreground="White" Height="51" Width="131" />
             <TextBox x:Name="txtSumaPieniedzy" Visibility="Visible" IsEnabled="False" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="20" Height="50" Width="273" />
         </StackPanel>

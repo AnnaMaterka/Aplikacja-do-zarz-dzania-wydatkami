@@ -84,6 +84,7 @@ namespace WPFApp
                 InitialView.Visibility = Visibility.Collapsed;
                 LoggedInView.Visibility = Visibility.Visible;
                 WczytajDane();
+                MessageBox.Show("Pomyślnie zalogowano.");
             }
             else
             {
@@ -147,10 +148,35 @@ namespace WPFApp
             //    //dodajemy konto
             //}
         }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
         }
+       
+        private void Wplywy_Click(object sender, RoutedEventArgs e)
+        {
+            WyswietlWplywy();
+        }
+
+        private void WyswietlWplywy()
+        {
+            if (zalogowanyUzytkownik != null)
+            {
+                // Pobierz wszystkie wpływy z kont użytkownika
+                var wplywyUzytkownika = zalogowanyUzytkownik.ListaKont
+                    .SelectMany(konto => konto.Wplywy)
+                    .ToList();
+
+                listBoxWplywy.ItemsSource = wplywyUzytkownika;
+            }
+        }
+        private void TabControlWplywy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (tabControlWplywy.SelectedItem != null && tabControlWplywy.SelectedItem is TabItem selectedTab && selectedTab.Header.ToString() == "Wpływy")
+            {
+                WyswietlWplywy();
+            }
+        }
+
     }
 }
