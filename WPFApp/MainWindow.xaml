@@ -89,7 +89,7 @@
                           Template="{StaticResource Menu_SubMenu_Template}">
                     <MenuItem.Icon>
                         <Image Source="Assets/icons8-report-file-48.png"
-                               Stretch="Uniform" />
+                               Stretch="None" />
                     </MenuItem.Icon>
 
                     <MenuItem Header="Raport tygodniowy"

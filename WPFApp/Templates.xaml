@@ -13,8 +13,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="CadetBlue"
+                BorderBrush="CadetBlue"
                 BorderThickness="0"
                 Height="50"
                 Width="230">
@@ -55,9 +55,11 @@
 
                 <!--// Right Arrow Icon //-->
 
-                <Image Source="Assets/img_arrow.png"
-                       Stretch="None"
+                <Image Source="Assets/icons8-arrow-50.png"
+                       Stretch="Uniform"
                        Grid.Column="4"
+                       Height="30"
+                       Width="30"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center" />
 
@@ -73,8 +75,8 @@
                        VerticalOffset="0">
 
                     <Border x:Name="SubMenuBorder"
-                            Background="#2E333A"
-                            BorderBrush="#2E333A">
+                            Background="LightCyan"
+                            BorderBrush="LightCyan">
 
                         <ScrollViewer x:Name="SubMenuScrollViewer"
                                       Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
@@ -139,8 +141,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="CadetBlue"
+                BorderBrush="CadetBlue"
                 BorderThickness="0"
                 Height="50"
                 Width="230"
@@ -220,8 +222,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="Teal"
+                BorderBrush="Teal"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Height="50"
                 Width="230"
