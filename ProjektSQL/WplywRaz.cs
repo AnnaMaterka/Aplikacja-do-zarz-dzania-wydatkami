@@ -18,7 +18,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public WplywRaz(decimal kwota, DateTime data) : base(kwota, data)
         {
         }
-        public WplywRaz(decimal kwota, DateTime data, string kategoria) : base(kwota, data, kategoria)
+        public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria) : base(kwota, data, kategoria)
         {
         }
         public WplywRaz(decimal kwota, DateTime data, string kategoria, Konto konto) : base(kwota, data, kategoria)
