@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data.Entity;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -70,9 +71,9 @@ namespace WPFApp
 
         private Sesja aktualnaSesja;
 
-        private void Zaloguj(string imie)
+        private void Zaloguj(long login)
         {
-            zalogowanyUzytkownik = dc.Uzytkownicy.FirstOrDefault(u => u.Imie == imie);
+            zalogowanyUzytkownik = dc.Uzytkownicy.ToList().FirstOrDefault(u => u.Login == login);
 
             if (zalogowanyUzytkownik != null)
             {
@@ -83,7 +84,7 @@ namespace WPFApp
             }
             else
             {
-                MessageBox.Show("Użytkownik o podanym imieniu nie istnieje.");
+                MessageBox.Show("Użytkownik o podanym loginie nie istnieje.");
             }
         }
 
@@ -100,25 +101,26 @@ namespace WPFApp
 
         private void ZarejestrujUzytkownika(string imie)
         {
-            var istniejacyUzytkownik = dc.Uzytkownicy.Any(u => u.Imie == imie);
+            //var istniejacyUzytkownik = dc.Uzytkownicy.Any(u => u.Imie == imie);
 
-            if (!istniejacyUzytkownik)
+            if (!string.IsNullOrEmpty(imie))
             {
                 var nowyUzytkownik = new Uzytkownik { Imie = imie };
                 dc.Uzytkownicy.Add(nowyUzytkownik);
                 dc.SaveChanges();
-                MessageBox.Show($"Użytkownik {imie} został pomyślnie zarejestrowany.");
+                MessageBox.Show($"Użytkownik {imie} został pomyślnie zarejestrowany.\nLogin użytkownika do logowania: {nowyUzytkownik.Login}");
             }
             else
             {
-                MessageBox.Show("Użytkownik o podanym imieniu już istnieje.");
+                MessageBox.Show("Nie podano imienia!");
             }
         }
 
         private void Zaloguj_Click(object sender, RoutedEventArgs e)
         {
-            string imie = Interaction.InputBox("Podaj swoje imię:", "Logowanie");
-            Zaloguj(imie);
+            string login_s = Interaction.InputBox("Podaj swój login:", "Logowanie");
+            long.TryParse(login_s, out long login);
+            Zaloguj(login);
         }
 
         private void Wyloguj_Click(object sender, RoutedEventArgs e)

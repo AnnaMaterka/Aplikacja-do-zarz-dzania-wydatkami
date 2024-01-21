@@ -15,6 +15,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 {
     public class Uzytkownik :Aktualizacja
     {
+        private static long login = 111122220000;
         private string imie;
         private decimal stanGotowki;
         private ObservableCollection<Konto> listaKont;
@@ -49,6 +50,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         {
             //ListaKont = new List<Konto>();
             StanGotowki = 0;
+            Login = login;
+            login++;
             //ListaWydatkowRaz = new List<WydatekRaz>();
             //ListaWydatkowSt = new List<WydatekStaly>();
             //ListaWplywowRaz = new List<WplywRaz>();
@@ -72,6 +75,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
         public string Imie { get => imie; set => imie = value; }
         public decimal StanGotowki { get => stanGotowki; set => stanGotowki = value; }
+        public long Login { get; }
         //public List<Konto> ListaKont { get => listaKont; set => listaKont = value; }
         //public List<WydatekRaz> ListaWydatkowRaz { get => listaWydatkowRaz; set => listaWydatkowRaz = value; }
         //public List<WydatekStaly> ListaWydatkowSt { get => listaWydatkowSt; set => listaWydatkowSt = value; }
@@ -83,11 +87,23 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         {
             using var db = new UzytkownikDbContext();
             Console.WriteLine("Zapis do pliku");
-            db.Uzytkownicy.Add(this);
+
+            var existingEntity = db.Uzytkownicy.Find(this.IdUzytkownika);
+
+            if (existingEntity != null)
+            {
+                db.Entry(existingEntity).CurrentValues.SetValues(this);
+            }
+            else
+            {
+                db.Uzytkownicy.Add(this);
+            }
+
             db.SaveChanges();
             Console.WriteLine("Zapisano!");
         }
-        
+
+
         public decimal SumaNaKontach()
         {
             decimal suma = 0;
