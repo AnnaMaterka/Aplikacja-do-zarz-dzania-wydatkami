@@ -27,6 +27,7 @@ namespace WPFApp
     {
         private UzytkownikDbContext dc;
         public Uzytkownik zalogowanyUzytkownik;
+        private Sesja aktualnaSesja;
         public MainWindow()
         {
             dc = new UzytkownikDbContext();
@@ -70,7 +71,6 @@ namespace WPFApp
             }
         }
 
-        private Sesja aktualnaSesja;
 
         private void Zaloguj(long login)
         {
@@ -151,41 +151,50 @@ namespace WPFApp
             //    //dodajemy konto
             //}
         }
-        private void DodajWplyw_Click(object sender, RoutedEventArgs e)
-        {
-            DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik);
-            bool? result = okno.ShowDialog();
-            okno.DataContext = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
-        }
+        //private void DodajWplyw_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik);
+        //    bool? result = okno.ShowDialog();
+        //    okno.DataContext = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
+        //}
+
+
+        //Do obsługi menu - zakładka konta
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
         }
-       
         private void Wplywy_Click(object sender, RoutedEventArgs e)
         {
-            WyswietlWplywy();
+            // Tutaj otwierasz nowe okno Wplyw i przekazujesz zalogowanego użytkownika
+            Wplywy wplywyWindow = new Wplywy(zalogowanyUzytkownik);
+            wplywyWindow.Show();
         }
 
-        private void WyswietlWplywy()
-        {
-            if (zalogowanyUzytkownik != null)
-            {
-                // Pobierz wszystkie wpływy z kont użytkownika
-                var wplywyUzytkownika = zalogowanyUzytkownik.ListaKont
-                    .SelectMany(konto => konto.Wplywy)
-                    .ToList();
 
-                listBoxWplywy.ItemsSource = wplywyUzytkownika;
-            }
-        }
-        private void TabControlWplywy_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (tabControlWplywy.SelectedItem != null && tabControlWplywy.SelectedItem is TabItem selectedTab && selectedTab.Header.ToString() == "Wpływy")
-            {
-                WyswietlWplywy();
-            }
-        }
+        //private void Wplywy_Click(object sender, RoutedEventArgs e)
+        //{
+        //    WyswietlWplywy();
+        //}
 
+        //private void WyswietlWplywy()
+        //{
+        //    if (zalogowanyUzytkownik != null)
+        //    {
+        //        // Pobierz wszystkie wpływy z kont użytkownika
+        //        var wplywyUzytkownika = zalogowanyUzytkownik.ListaKont
+        //            .SelectMany(konto => konto.Wplywy)
+        //            .ToList();
+
+        //        listBoxWplywy.ItemsSource = wplywyUzytkownika;
+        //    }
+        //}
+        //private void TabControlWplywy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (tabControlWplywy.SelectedItem != null && tabControlWplywy.SelectedItem is TabItem selectedTab && selectedTab.Header.ToString() == "Wpływy")
+        //    {
+        //        WyswietlWplywy();
+        //    }
+        //}
     }
 }

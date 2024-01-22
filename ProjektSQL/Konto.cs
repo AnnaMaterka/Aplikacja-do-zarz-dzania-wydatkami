@@ -33,6 +33,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public virtual List<WydatekRaz> Wydatki { get; set; }
         public virtual List<WydatekStaly> WydatekStale { get; set; }
         public virtual List<WplywRaz> Wplywy { get; set; }
+        public virtual List<WplywStaly> WplywyStale { get; set; }
         public virtual List<Oszczednosc> Oszczednosci { get; set; }
 
         public Konto()
@@ -92,7 +93,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
 
         //dotyczy zakupów kartą
-        public void NowyWydatekKonto(decimal kwota, DateTime data, string kategoria)
+        public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria)
         {
             StanKonta -= kwota;
             WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
@@ -100,8 +101,16 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             this.Wydatki.Add(wydatek);
             OnPropertyChanged(nameof(StanKonta));
         }
+        public void NowyWplywKonto(decimal kwota, DateTime data, Kategoria kategoria)
+        {
+            StanKonta += kwota;
+            WplywRaz wplyw = new WplywRaz(kwota, data, kategoria);
+            //this.ListaWydatkowRaz.Add(wydatek);
+            this.Wplywy.Add(wplyw);
+            OnPropertyChanged(nameof(StanKonta));
+        }
 
-        public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, string kategoria)
+        public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
         {
             WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
             //this.ListaWydatkowSt.Add(wydatek);
@@ -116,7 +125,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{StanKonta}");
             }
             StanKonta -= wydatek.Kwota;
-            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria.NazwaKategorii);
+            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria);
             //this.ListaWydatkowRaz.Add(nowy);
             this.Wydatki.Add(nowy);
             OnPropertyChanged(nameof(StanKonta));

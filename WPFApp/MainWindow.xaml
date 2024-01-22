@@ -97,24 +97,6 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <!-- Zakładki dla menu -->
-                    <TabControl Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Collapsed" x:Name="tabControlWplywy" SelectionChanged="TabControlWplywy_SelectionChanged">
-                        <TabItem Header="Wpływy">
-                            <Grid>
-                                <!-- Dodaj ListBoxWplywy tutaj -->
-                                <ListBox x:Name="listBoxWplywy" DisplayMemberPath="Nazwa" Margin="10"/>
-                                <Button Content="Dodaj Wpływ" Click="DodajWplyw_Click" Margin="10"/>
-                                <!-- Inne elementy interfejsu użytkownika dla zakładki "Wpływy" -->
-                                <!-- Tutaj możesz dodać inne elementy interfejsu użytkownika dla zakładki "Wpływy" -->
-                            </Grid>
-                        </TabItem>
-
-                        <!-- Inne zakładki dla menu -->
-                        <TabItem Header="Inna Zakładka">
-                            <!-- Treść dla innej zakładki -->
-                        </TabItem>
-                    </TabControl>
-
                     <MenuItem Header="Wydatki"
                           Template="{StaticResource Item_Template}">
                         <MenuItem.Icon>

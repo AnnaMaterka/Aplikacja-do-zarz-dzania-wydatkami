@@ -14,8 +14,10 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     {
         public DbSet<Uzytkownik> Uzytkownicy { get; set; }
         public DbSet<Konto> Konta { get; set; }
-        public DbSet<Wplyw> Wplywy { get; set; }
+        public DbSet<WplywRaz> Wplywy { get; set; }
         public DbSet<WydatekRaz> Wydatki { get; set; }
+        public DbSet<WplywStaly> WplywyStale { get; set; }
+        public DbSet<WydatekStaly> WydatkiStale { get; set; }
         public DbSet<Sesja> Sesje { get; set; }
         public DbSet<Kategoria> Kategorie { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

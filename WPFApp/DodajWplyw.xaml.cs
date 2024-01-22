@@ -41,17 +41,13 @@ namespace WPFApp
             if (ViewModel.IsValid())
             {
                 // Pobierz informacje o nowym koncie z pól wejściowych w oknie
-                string kategoria = ViewModel.Kategoria;
+                Kategoria kategoria = ViewModel.Kategoria;
                 DateTime dataWplywu = ViewModel.Data;
                 decimal kwota = ViewModel.Kwota;
                 Konto konto = (Konto)listBoxKonta.SelectedItem;
 
-                // Utwórz nowe konto
-                WplywRaz wplyw = new WplywRaz(kwota, dataWplywu, kategoria, konto);
-
-                // Dodaj konto do listy kont użytkownika
-                ViewModel.Uzytkownik.DodajWplywGotowki(wplyw);
-
+                konto.NowyWplywKonto(kwota, dataWplywu, kategoria);
+                
                 // Zamknij okno
                 this.Close();
             }
@@ -71,7 +67,7 @@ namespace WPFApp
             public DateTime Data { get; set; }
 
             [Required(ErrorMessage = "Pole 'Kategoria' jest wymagane.")]
-            public string Kategoria { get; set; }
+            public Kategoria Kategoria { get; set; }
 
             public Uzytkownik Uzytkownik { get; set; }
 

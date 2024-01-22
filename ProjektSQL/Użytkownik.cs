@@ -41,10 +41,10 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdUzytkownika { get; set; }
-        public virtual List<Sesja> Sesje { get; set; }
-        public virtual List<WydatekRaz> WydatkiGotowka { get; set; }
-        public virtual List<WplywRaz> WplywyGotowka { get; set; }
-        public virtual List<Oszczednosc> OszczednosciWGotowce { get; set; }
+        //public virtual List<Sesja> Sesje { get; set; }
+        //public virtual List<WydatekRaz> WydatkiGotowka { get; set; }
+        //public virtual List<WplywRaz> WplywyGotowka { get; set; }
+        //public virtual List<Oszczednosc> OszczednosciWGotowce { get; set; }
 
         public Uzytkownik()
         {
@@ -150,27 +150,27 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             StanGotowki -= kwota;
         }
 
-        public void WplywGotowki(decimal kwota, DateTime data, string kategoria)
-        {
-            StanGotowki += kwota;
-            WplywRaz wplyw = new(kwota, data, kategoria);
-            this.WplywyGotowka.Add(wplyw);
-            OnPropertyChanged(nameof(StanGotowki));
-        }
-        public void DodajWplywGotowki(WplywRaz wplyw)
-        {
-            this.WplywyGotowka.Add(wplyw);
-            OnPropertyChanged(nameof(StanGotowki));
-        }
+        //public void WplywGotowki(decimal kwota, DateTime data, string kategoria)
+        //{
+        //    StanGotowki += kwota;
+        //    WplywRaz wplyw = new(kwota, data, kategoria);
+        //    this.WplywyGotowka.Add(wplyw);
+        //    OnPropertyChanged(nameof(StanGotowki));
+        //}
+        //public void DodajWplywGotowki(WplywRaz wplyw)
+        //{
+        //    this.WplywyGotowka.Add(wplyw);
+        //    OnPropertyChanged(nameof(StanGotowki));
+        //}
         // dotyczy zakupów gotówką
-        public void NowyWydatekGotowka(decimal kwota, DateTime data, string kategoria)
-        {
-            this.StanGotowki -= kwota;
-            WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
-            //this.ListaWydatkowRaz.Add(wydatek);
-            this.WydatkiGotowka.Add(wydatek);
-            OnPropertyChanged(nameof(StanGotowki));
-        }
+        //public void NowyWydatekGotowka(decimal kwota, DateTime data, string kategoria)
+        //{
+        //    this.StanGotowki -= kwota;
+        //    WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
+        //    //this.ListaWydatkowRaz.Add(wydatek);
+        //    this.WydatkiGotowka.Add(wydatek);
+        //    OnPropertyChanged(nameof(StanGotowki));
+        //}
         //dotyczy zakupów kartą
         //public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria, Konto konto)
         //{
@@ -198,14 +198,14 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //    wydatek.OplaconyWBiezacymCyklu = true;
 
         //}
-        public void OdlozGotowke(int kwota, string cel)
-        {
-            this.StanGotowki -= kwota;
-            DateTime data = DateTime.Today;
-            Oszczednosc odlozona = new(kwota, data, cel);
-            this.OszczednosciWGotowce.Add(odlozona);
-            OnPropertyChanged(nameof(StanGotowki));
-        }
+        //public void OdlozGotowke(int kwota, string cel)
+        //{
+        //    this.StanGotowki -= kwota;
+        //    DateTime data = DateTime.Today;
+        //    Oszczednosc odlozona = new(kwota, data, cel);
+        //    this.OszczednosciWGotowce.Add(odlozona);
+        //    OnPropertyChanged(nameof(StanGotowki));
+        //}
         public bool ZapisXML(string nazwa)
         {
             try
@@ -227,47 +227,47 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             else { throw new Exception(); }
         }
 
-        public void RaportMiesieczny(string rokmiesiac)
-        {
-            string nazwaPliku = $"{IdUzytkownika}.R.mies.{rokmiesiac}.html";
-            string htmlContent = "<html><head><title>Raport miesięczny</title></head><body>";
-            DateTime data = DateTime.ParseExact(rokmiesiac, "yyyyMM", CultureInfo.InvariantCulture);
-            string miesiac = data.ToString("MMMM", new CultureInfo("pl-PL"));
-            string rok = data.Year.ToString();
-            htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla miesiąca {miesiac} roku {rok}</h1>";
-            decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowMies(rokmiesiac));
-            sumaWplywow += WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WplywRaz => WplywRaz.Kwota);
-            htmlContent += $"<h2>Suma wpływów: <b>{sumaWplywow}</b></h2>";
-            decimal sumaWydatkow = ListaKont.Sum(Konto => Konto.SumaWydatkowMies(rokmiesiac));
-            sumaWydatkow += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WydatekRaz => WydatekRaz.Kwota);
-            htmlContent += $"<h2>Suma wydatków: <b>{sumaWydatkow}</b></h2>";
-            decimal sumaOszczednosci = ListaKont.Sum(Konto => Konto.SumaOszczednosciMies(rokmiesiac));
-            sumaOszczednosci += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyyMM") == rokmiesiac).Sum(Oszczednosc => Oszczednosc.Kwota);
-            htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{sumaOszczednosci}</b></h2>";
-            htmlContent += "</body></html>";
+        //public void RaportMiesieczny(string rokmiesiac)
+        //{
+        //    string nazwaPliku = $"{IdUzytkownika}.R.mies.{rokmiesiac}.html";
+        //    string htmlContent = "<html><head><title>Raport miesięczny</title></head><body>";
+        //    DateTime data = DateTime.ParseExact(rokmiesiac, "yyyyMM", CultureInfo.InvariantCulture);
+        //    string miesiac = data.ToString("MMMM", new CultureInfo("pl-PL"));
+        //    string rok = data.Year.ToString();
+        //    htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla miesiąca {miesiac} roku {rok}</h1>";
+        //    decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowMies(rokmiesiac));
+        //    sumaWplywow += WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WplywRaz => WplywRaz.Kwota);
+        //    htmlContent += $"<h2>Suma wpływów: <b>{sumaWplywow}</b></h2>";
+        //    decimal sumaWydatkow = ListaKont.Sum(Konto => Konto.SumaWydatkowMies(rokmiesiac));
+        //    sumaWydatkow += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyyMM") == rokmiesiac).Sum(WydatekRaz => WydatekRaz.Kwota);
+        //    htmlContent += $"<h2>Suma wydatków: <b>{sumaWydatkow}</b></h2>";
+        //    decimal sumaOszczednosci = ListaKont.Sum(Konto => Konto.SumaOszczednosciMies(rokmiesiac));
+        //    sumaOszczednosci += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyyMM") == rokmiesiac).Sum(Oszczednosc => Oszczednosc.Kwota);
+        //    htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{sumaOszczednosci}</b></h2>";
+        //    htmlContent += "</body></html>";
 
-            File.WriteAllText(nazwaPliku, htmlContent);
-        }
+        //    File.WriteAllText(nazwaPliku, htmlContent);
+        //}
 
-        public void RaportRoczny(string rok)
-        {
-            string nazwaPliku = $"{IdUzytkownika}.R.rocz.{rok}.html";
-            string htmlContent = "<html><head><title>Raport roczny</title></head><body>";
-            DateTime data = DateTime.ParseExact(rok, "yyyyMM", CultureInfo.InvariantCulture);
-            htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla roku {rok}</h1>";
-            decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowRok(rok));
-            sumaWplywow += WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyy") == rok).Sum(WplywRaz => WplywRaz.Kwota);
-            htmlContent += $"<h2>Suma wpływów: <b>{sumaWplywow}</b></h2>";
-            decimal sumaWydatkow = ListaKont.Sum(Konto => Konto.SumaWydatkowRok(rok));
-            sumaWydatkow += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyy") == rok).Sum(WydatekRaz => WydatekRaz.Kwota);
-            htmlContent += $"<h2>Suma wydatków: <b>{sumaWydatkow}</b></h2>";
-            decimal sumaOszczednosci = ListaKont.Sum(Konto => Konto.SumaOszczednosciRok(rok));
-            sumaOszczednosci += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyy") == rok).Sum(Oszczednosc => Oszczednosc.Kwota);
-            htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{sumaOszczednosci}</b></h2>";
-            htmlContent += "</body></html>";
+        //public void RaportRoczny(string rok)
+        //{
+        //    string nazwaPliku = $"{IdUzytkownika}.R.rocz.{rok}.html";
+        //    string htmlContent = "<html><head><title>Raport roczny</title></head><body>";
+        //    DateTime data = DateTime.ParseExact(rok, "yyyyMM", CultureInfo.InvariantCulture);
+        //    htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla roku {rok}</h1>";
+        //    decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowRok(rok));
+        //    sumaWplywow += WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyy") == rok).Sum(WplywRaz => WplywRaz.Kwota);
+        //    htmlContent += $"<h2>Suma wpływów: <b>{sumaWplywow}</b></h2>";
+        //    decimal sumaWydatkow = ListaKont.Sum(Konto => Konto.SumaWydatkowRok(rok));
+        //    sumaWydatkow += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyy") == rok).Sum(WydatekRaz => WydatekRaz.Kwota);
+        //    htmlContent += $"<h2>Suma wydatków: <b>{sumaWydatkow}</b></h2>";
+        //    decimal sumaOszczednosci = ListaKont.Sum(Konto => Konto.SumaOszczednosciRok(rok));
+        //    sumaOszczednosci += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyy") == rok).Sum(Oszczednosc => Oszczednosc.Kwota);
+        //    htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{sumaOszczednosci}</b></h2>";
+        //    htmlContent += "</body></html>";
 
-            File.WriteAllText(nazwaPliku, htmlContent);
-        }
+        //    File.WriteAllText(nazwaPliku, htmlContent);
+        //}
 
     }
 }

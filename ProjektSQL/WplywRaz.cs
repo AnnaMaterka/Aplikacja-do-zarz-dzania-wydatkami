@@ -10,18 +10,22 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     public class WplywRaz :Wplyw, ICloneable, IComparable<WplywRaz>, IEquatable<WplywRaz>
     {
 
-        //[Key]
-        //public int IdWplywu1 { get; set; }
-        //public int IdKonta { get; set; }
+        [Key]
+        public int IdWplywu { get; set; }
+
+        public int IdKonta { get; set; }
+        public int IdKategorii { get; set; }
         public virtual Konto Konto { get; set; }
+        public virtual Kategoria Kategoria { get; set; }
+
         public WplywRaz() { }
         public WplywRaz(decimal kwota, DateTime data) : base(kwota, data)
         {
         }
-        public WplywRaz(decimal kwota, DateTime data, string kategoria) : base(kwota, data, kategoria)
+        public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria) : base(kwota, data, kategoria)
         {
         }
-        public WplywRaz(decimal kwota, DateTime data, string kategoria, Konto konto) : base(kwota, data, kategoria)
+        public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria, Konto konto) : base(kwota, data, kategoria)
         {
             Konto = konto;
         }
@@ -45,7 +49,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public bool Equals(WplywRaz? other)
         {
-            if (PobierzKategorie().Equals(other!.PobierzKategorie()) && base.Kwota.Equals(other.Kwota)) { return true; }
+            if (Kategoria.Equals(other!.Kategoria) && base.Kwota.Equals(other.Kwota)) { return true; }
             return false;
         }
     }

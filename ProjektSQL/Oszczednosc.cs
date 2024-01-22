@@ -14,7 +14,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdOszczednosci { get; set; }
-        [ForeignKey("Konto")]
+        //[ForeignKey("Konto")]
         public int IdKonta { get; set; }
         public virtual Konto Konto { get; set; }
         public Oszczednosc(decimal kwota, DateTime data, string cel):base(kwota, data)

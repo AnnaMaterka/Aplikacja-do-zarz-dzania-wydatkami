@@ -13,7 +13,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         [Key]
         public int IdKategorii { get; set; }
 
-        public string NazwaKategorii { get; set; }
+        private string nazwaKategorii;
+        public string NazwaKategorii { get => nazwaKategorii; set => nazwaKategorii = value; }
+
+        public virtual List<WydatekRaz> Wydatki { get; set; }
+        public virtual List<WydatekStaly> WydatekStale { get; set; }
+        public virtual List<WplywRaz> Wplywy { get; set; }
+        public virtual List<WplywStaly> WplywyStale { get; set; }
 
         public Kategoria(string nazwaKategorii)
         {

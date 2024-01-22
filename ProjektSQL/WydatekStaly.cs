@@ -31,8 +31,11 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdWydatkuStalego { get; set; }
-        //public int IdKonta { get; set; }
-        //public virtual Konto Konto { get; set; }
+
+        public int IdKonta { get; set; }
+        public int IdKategorii { get; set; }
+        public virtual Konto Konto { get; set; }
+        public virtual Kategoria Kategoria { get; set; }
 
         private Cykl cyklWydatku;
         private bool oplaconyWBiezacymCyklu;
@@ -41,7 +44,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private DateTime data;
         private Kategoria kategoria;
 
-        public WydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime data, string kategoria) :base(kwota, data, kategoria)
+        public WydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime data, Kategoria kategoria) :base(kwota, data, kategoria)
         {
             this.cyklWydatku = cyklWydatku;
             this.oplaconyWBiezacymCyklu = oplaconyWBiezacymCyklu;
@@ -60,7 +63,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             }
         }
         public DateTime Data { get => data; set => data = value; }
-        public Kategoria Kategoria { get => kategoria; set => kategoria = value; }
+        //public Kategoria Kategoria { get => kategoria; set => kategoria = value; }
 
         public void Ponow()
         {

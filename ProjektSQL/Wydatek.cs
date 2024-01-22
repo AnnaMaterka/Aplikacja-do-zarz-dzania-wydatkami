@@ -13,9 +13,9 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private DateTime data;
         private Kategoria kategoria;
 
-        [ForeignKey("Kategoria")]
-        public int IdKategorii { get; set; }
-        public virtual Kategoria Kategorie { get; set; }
+        //[ForeignKey("Kategoria")]
+        //public int IdKategorii { get; set; }
+        //public virtual Kategoria Kategorie { get; set; }
         public Wydatek(decimal kwota, DateTime data)
         {
             Kwota = kwota;
@@ -23,9 +23,9 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
 
 
-        protected Wydatek(decimal kwota, DateTime data, string kategoria) :this(kwota, data) 
+        protected Wydatek(decimal kwota, DateTime data, Kategoria kategoria) :this(kwota, data) 
         {
-            Kategoria = Kategoria.SzukanieKategorii(kategoria);
+            Kategoria = kategoria;
         }
 
         public decimal Kwota { get => kwota; set => kwota = value; }

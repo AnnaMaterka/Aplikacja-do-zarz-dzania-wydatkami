@@ -41,12 +41,12 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private DateTime data;
         private Kategoria kategoria;
 
-        [Key]
-        public int IdWplywu { get; set; }
+        //[Key]
+        //public int IdWplywu { get; set; }
 
-        [ForeignKey("Kategorie")]
-        public int IdKategorii { get; set; }
-        public virtual Kategoria Kategorie { get; set; }
+        //[ForeignKey("Kategorie")]
+        //public int IdKategorii { get; set; }
+        //public virtual Kategoria Kategorie { get; set; }
         public Wplyw() { }
         protected Wplyw(decimal kwota, DateTime data)
         {
@@ -54,9 +54,9 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             Data = data;
         }
 
-        protected Wplyw(decimal kwota, DateTime data, string kategoria) : this(kwota, data)
+        protected Wplyw(decimal kwota, DateTime data, Kategoria kategoria) : this(kwota, data)
         {
-            Kategorie = Kategoria.SzukanieKategorii(kategoria);
+            Kategoria = kategoria;
         }
 
         public decimal Kwota { get => kwota; set => kwota = value; }
@@ -66,7 +66,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private Kategoria Kategoria { get => kategoria; set => kategoria = value; }
 
         // Metoda dostępu do kategorii, jeśli to konieczne
-        public Kategoria PobierzKategorie() => Kategoria.SzukanieKategorii(Kategoria.NazwaKategorii);
+        //public Kategoria PobierzKategorie() => Kategoria.SzukanieKategorii(Kategoria.NazwaKategorii);
     }
 
 }
