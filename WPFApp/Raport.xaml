@@ -15,8 +15,8 @@
         <TextBox x:Name="txtSumaWplywow" HorizontalAlignment="Left" Height="26" Margin="132,109,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77"/>
         <TextBox x:Name="txtSumaWydatkow" HorizontalAlignment="Left" Height="26" Margin="132,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77"/>
         <TextBox x:Name="txtSumaOszczednosci" HorizontalAlignment="Left" Height="26" Margin="293,177,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77"/>
-        <Button x:Name="btnHTML" Content="Generuj raport HTML" HorizontalAlignment="Left" Height="37" Margin="412,166,0,0" VerticalAlignment="Top" Width="127"/>
-        <Button x:Name="btnZamknij" Content="Zamknij" HorizontalAlignment="Left" Height="37" Margin="412,212,0,0" VerticalAlignment="Top" Width="127"/>
+        <Button x:Name="btnHTML" Content="Generuj raport HTML" HorizontalAlignment="Left" Height="37" Margin="412,166,0,0" VerticalAlignment="Top" Width="127" Click="btnHTML_Click"/>
+        <Button x:Name="btnZamknij" Content="Zamknij" HorizontalAlignment="Left" Height="37" Margin="412,212,0,0" VerticalAlignment="Top" Width="127" Click="btnZamknij_Click"/>
 
     </Grid>
 </Window>

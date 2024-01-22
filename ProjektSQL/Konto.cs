@@ -154,5 +154,38 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         {
             return Oszczednosci.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyy") == rok).Sum(Oszczednosc => Oszczednosc.Kwota);
         }
+
+        public decimal SumaWplywowTyg(bool biezacy)
+        {
+            DateTime poniedzialekbiez = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+            DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
+            if (biezacy)
+            {
+                return Wplywy.Where(WplywRaz => WplywRaz.Data >= poniedzialekbiez).Sum(WplywRaz => WplywRaz.Kwota);
+            }
+            return Wplywy.Where(WplywRaz => (WplywRaz.Data >= poniedzialekbyly)&(WplywRaz.Data < poniedzialekbiez)).Sum(WplywRaz => WplywRaz.Kwota);
+        }
+
+        public decimal SumaWydatkowTyg(bool biezacy)
+        {
+            DateTime poniedzialekbiez = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+            DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
+            if (biezacy)
+            {
+                return Wydatki.Where(WydatekRaz => WydatekRaz.Data >= poniedzialekbiez).Sum(WydatekRaz => WydatekRaz.Kwota);
+            }
+            return Wplywy.Where(WydatekRaz => (WydatekRaz.Data >= poniedzialekbyly) & (WydatekRaz.Data < poniedzialekbiez)).Sum(WydatekRaz => WydatekRaz.Kwota);
+        }
+
+        public decimal SumaOszczednosciTyg(bool biezacy)
+        {
+            DateTime poniedzialekbiez = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+            DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
+            if (biezacy)
+            {
+                return Oszczednosci.Where(Oszczednosc => Oszczednosc.Data >= poniedzialekbiez).Sum(Oszczednosc => Oszczednosc.Kwota);
+            }
+            return Oszczednosci.Where(Oszczednosc => (Oszczednosc.Data >= poniedzialekbyly) & (Oszczednosc.Data < poniedzialekbiez)).Sum(Oszczednosc => Oszczednosc.Kwota);
+        }
     }
 }

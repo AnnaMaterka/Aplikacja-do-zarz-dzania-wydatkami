@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Design;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
@@ -191,7 +192,19 @@ namespace WPFApp
         {
             string roks = Interaction.InputBox("Wybierz rok", "Wybór roku");
             int.TryParse(roks, out int rok);
+            if(rok < 1 | rok > DateTime.Today.Year) { MessageBox.Show("Nieprawidłowy rok!"); return; }
+            Raport raport = new Raport(zalogowanyUzytkownik, "R", roks);
+            bool? result = raport.ShowDialog();
         }
 
+        private void  RaportMiesieczny_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RaportTygodniowy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

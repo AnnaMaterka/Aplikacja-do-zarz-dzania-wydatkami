@@ -132,14 +132,13 @@
                     </MenuItem.Icon>
 
                     <MenuItem Header="Raport tygodniowy"
-                              Template="{StaticResource Item_Template}">
+                              Template="{StaticResource Item_Template}" Click =" RaportTygodniowy_Click">
 
                     </MenuItem>
                     <MenuItem Header="Raport miesięczny"
-                              Template="{StaticResource Item_Template}">
-                    </MenuItem>
+                              Template="{StaticResource Item_Template}" Click="RaportMiesieczny_Click">
 
-                    <MenuItem Header="Raport roczny"
+                        <MenuItem Header="Raport roczny"
                               Template="{StaticResource Item_Template}" Click="RaportRoczny_Click">
                     </MenuItem>
 

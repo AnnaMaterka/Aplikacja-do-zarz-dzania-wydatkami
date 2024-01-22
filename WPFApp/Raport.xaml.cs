@@ -21,9 +21,15 @@ namespace WPFApp
     /// </summary>
     public partial class Raport : Window
     {
+        Uzytkownik zalogowanyUzytkownik;
+        string typ;
+        string okres;
         public Raport(Uzytkownik zalogowanyUzytkownik, string typ, string okres)
         {
             InitializeComponent();
+            this.zalogowanyUzytkownik = zalogowanyUzytkownik;
+            this.typ = typ;
+            this.okres = okres;
             switch (typ)
             {
                 case "R": 
@@ -46,10 +52,41 @@ namespace WPFApp
                 case "TB":
                     lblTytul.Content = "Raport tygodniowy";
                     lblDotyczy.Content = "Dotyczy bieżącego tygodnia";
+                    txtSumaWplywow.Text = zalogowanyUzytkownik.SumaWplywowTyg(true).ToString();
+                    txtSumaWydatkow.Text = zalogowanyUzytkownik.SumaWydatkowTyg(true).ToString();
+                    txtSumaOszczednosci.Text = zalogowanyUzytkownik.SumaOszczednosciTyg(true).ToString();
                     break;
                 case "TP":
                     lblTytul.Content = "Raport tygodniowy";
                     lblDotyczy.Content = "Dotyczy poprzedniego tygodnia";
+                    txtSumaWplywow.Text = zalogowanyUzytkownik.SumaWplywowTyg(false).ToString();
+                    txtSumaWydatkow.Text = zalogowanyUzytkownik.SumaWydatkowTyg(false).ToString();
+                    txtSumaOszczednosci.Text = zalogowanyUzytkownik.SumaOszczednosciTyg(false).ToString();
+                    break;
+
+            }
+        }
+
+        private void btnZamknij_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnHTML_Click(object sender, RoutedEventArgs e)
+        {
+            switch (typ)
+            {
+                case "R":
+                    zalogowanyUzytkownik.RaportRoczny(okres);
+                    MessageBox.Show("Pomyślnie wygenerowano raport.");
+                    break;
+                case "M":
+                    zalogowanyUzytkownik.RaportMiesieczny(okres);
+                    MessageBox.Show("Pomyślanie wygenerowano raport");
+                    break;
+                case "TB":
+                    break;
+                case "TP":
                     break;
 
             }
