@@ -140,7 +140,7 @@
                     </MenuItem>
 
                     <MenuItem Header="Raport roczny"
-                              Template="{StaticResource Item_Template}">
+                              Template="{StaticResource Item_Template}" Click="RaportRoczny_Click">
                     </MenuItem>
 
                 </MenuItem>

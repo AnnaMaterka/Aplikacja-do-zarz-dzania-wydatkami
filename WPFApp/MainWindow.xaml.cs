@@ -187,5 +187,11 @@ namespace WPFApp
             }
         }
 
+        private void RaportRoczny_Click(object sender, RoutedEventArgs e)
+        {
+            string roks = Interaction.InputBox("Wybierz rok", "Wybór roku");
+            int.TryParse(roks, out int rok);
+        }
+
     }
 }
