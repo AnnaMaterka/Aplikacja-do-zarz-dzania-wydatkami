@@ -173,10 +173,36 @@ namespace WPFApp
         }
 
 
-        //private void Wplywy_Click(object sender, RoutedEventArgs e)
-        //{
-        //    WyswietlWplywy();
-        //}
+                listBoxWplywy.ItemsSource = wplywyUzytkownika;
+            }
+        }
+        private void TabControlWplywy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (tabControlWplywy.SelectedItem != null && tabControlWplywy.SelectedItem is TabItem selectedTab && selectedTab.Header.ToString() == "Wpływy")
+            {
+                WyswietlWplywy();
+            }
+        }
+
+        private void RaportRoczny_Click(object sender, RoutedEventArgs e)
+        {
+            string roks = Interaction.InputBox("Wybierz rok", "Wybór roku");
+            int.TryParse(roks, out int rok);
+            if(rok < 1 | rok > DateTime.Today.Year) { MessageBox.Show("Nieprawidłowy rok!"); return; }
+            Raport raport = new Raport(zalogowanyUzytkownik, "R", roks);
+            bool? result = raport.ShowDialog();
+        }
+
+        private void  RaportMiesieczny_Click(object sender, RoutedEventArgs e)
+        {
+            WyborMiesiacaiRoku w = new WyborMiesiacaiRoku();
+            bool? result = w.ShowDialog();
+            if(result == true)
+            {
+                Raport raport = new Raport(zalogowanyUzytkownik, "M", w.rokmies);
+                bool? result1 = raport.ShowDialog();
+            }
+        }
 
         //private void WyswietlWplywy()
         //{
