@@ -199,14 +199,13 @@ namespace WPFApp
 
         private void  RaportMiesieczny_Click(object sender, RoutedEventArgs e)
         {
-            //for (int i = 1; i <= 12; i++)
-            //{
-            //    cbMonth.Items.Add(i);
-            //}
-            ///for (int i = 2020; i <= 2030; i++)
-            //{
-             //   cbYear.Items.Add(i);
-            //}
+            WyborMiesiacaiRoku w = new WyborMiesiacaiRoku();
+            bool? result = w.ShowDialog();
+            if(result == true)
+            {
+                Raport raport = new Raport(zalogowanyUzytkownik, "M", w.rokmies);
+                bool? result1 = raport.ShowDialog();
+            }
         }
 
         private void RaportTygodniowy_Click(object sender, RoutedEventArgs e)
