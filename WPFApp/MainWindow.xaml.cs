@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Design;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
@@ -186,15 +187,5 @@ namespace WPFApp
         //            .SelectMany(konto => konto.Wplywy)
         //            .ToList();
 
-        //        listBoxWplywy.ItemsSource = wplywyUzytkownika;
-        //    }
-        //}
-        //private void TabControlWplywy_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    if (tabControlWplywy.SelectedItem != null && tabControlWplywy.SelectedItem is TabItem selectedTab && selectedTab.Header.ToString() == "Wpływy")
-        //    {
-        //        WyswietlWplywy();
-        //    }
-        //}
     }
 }

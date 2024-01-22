@@ -1,0 +1,22 @@
+﻿<Window x:Class="WPFApp.Raport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        Title="Raport" Height="279" Width="559">
+    <Grid Margin="0,0,0,4">
+        <Label x:Name ="lblTytul" Content="Label" HorizontalAlignment="Left" Height="38" Margin="21,18,0,0" VerticalAlignment="Top" Width="253" FontSize="24"/>
+        <Label x:Name="lblDotyczy" Content="Label" HorizontalAlignment="Left" Height="34" Margin="21,56,0,0" VerticalAlignment="Top" Width="160"/>
+        <Label x:Name="lblDotyczy_Kopiuj" Content="Suma wpływów:" HorizontalAlignment="Left" Height="34" Margin="21,105,0,0" VerticalAlignment="Top" Width="106"/>
+        <Label x:Name="lblDotyczy_Kopiuj1" Content="Suma wydatków:" HorizontalAlignment="Left" Height="34" Margin="21,139,0,0" VerticalAlignment="Top" Width="106"/>
+        <Label x:Name="lblDotyczy_Kopiuj2" Content="Suma środków przeznaczonych na szczędności:" HorizontalAlignment="Left" Height="34" Margin="21,173,0,0" VerticalAlignment="Top" Width="267"/>
+        <TextBox x:Name="txtSumaWplywow" HorizontalAlignment="Left" Height="26" Margin="132,109,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtSumaWydatkow" HorizontalAlignment="Left" Height="26" Margin="132,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtSumaOszczednosci" HorizontalAlignment="Left" Height="26" Margin="293,177,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77"/>
+        <Button x:Name="btnHTML" Content="Generuj raport HTML" HorizontalAlignment="Left" Height="37" Margin="412,166,0,0" VerticalAlignment="Top" Width="127" Click="btnHTML_Click"/>
+        <Button x:Name="btnZamknij" Content="Zamknij" HorizontalAlignment="Left" Height="37" Margin="412,212,0,0" VerticalAlignment="Top" Width="127" Click="btnZamknij_Click"/>
+
+    </Grid>
+</Window>

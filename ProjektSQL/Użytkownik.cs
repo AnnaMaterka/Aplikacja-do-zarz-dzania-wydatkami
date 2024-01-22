@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.ComponentModel.DataAnnotations;
 using ProjektSQL;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
@@ -269,5 +270,85 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //    File.WriteAllText(nazwaPliku, htmlContent);
         //}
 
+        public decimal SumaWplywowMies(string rokmies)
+        {
+            decimal suma = WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyyMM") == rokmies).Sum(WplywRaz => WplywRaz.Kwota);
+            suma += ListaKont.Sum(Konto => Konto.SumaWplywowMies(rokmies));
+            return suma;
+        }
+
+        public decimal SumaWydatkowMies(string rokmies)
+        {
+            decimal suma = WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyyMM") == rokmies).Sum(WydatekRaz => WydatekRaz.Kwota);
+            suma += ListaKont.Sum(Konto => Konto.SumaWydatkowMies(rokmies));
+            return suma;
+        }
+
+        public decimal SumaOszczednosciMies(string rokmies)
+        {
+            decimal suma = ListaKont.Sum(Konto => Konto.SumaOszczednosciMies(rokmies));
+            suma += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyyMM") == rokmies).Sum(Oszczednosc => Oszczednosc.Kwota);
+            return suma;
+        }
+
+        public decimal SumaWplywowRok(string rok)
+        {
+            decimal suma = ListaKont.Sum(Konto => Konto.SumaWplywowRok(rok));
+            suma += WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyy") == rok).Sum(WplywRaz => WplywRaz.Kwota);
+            return suma;
+        }
+
+        public decimal SumaWydatkowRok(string rok)
+        {
+            decimal suma = ListaKont.Sum(Konto => Konto.SumaWydatkowRok(rok));
+            suma += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data.ToString("yyyy") == rok).Sum(WydatekRaz => WydatekRaz.Kwota);
+            return suma;
+        }
+
+        public decimal SumaOszczednosciRok(string rok)
+        {
+            decimal suma = ListaKont.Sum(Konto => Konto.SumaOszczednosciRok(rok));
+            suma += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data.ToString("yyyy") == rok).Sum(Oszczednosc => Oszczednosc.Kwota);
+            return suma;
+        }
+
+        public decimal SumaWplywowTyg(bool biezacy)
+        {
+            decimal suma = ListaKont.Sum(Konto => Konto.SumaWplywowTyg(biezacy));
+            DateTime poniedzialekbiez = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+            DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
+            if (biezacy)
+            {
+                suma += WplywyGotowka.Where(WplywRaz => WplywRaz.Data >= poniedzialekbiez).Sum(WplywRaz => WplywRaz.Kwota);
+            }
+            else { suma += WplywyGotowka.Where(WplywRaz => (WplywRaz.Data >= poniedzialekbyly) & (WplywRaz.Data < poniedzialekbiez)).Sum(WplywRaz => WplywRaz.Kwota); }
+            return suma;
+        }
+
+        public decimal SumaWydatkowTyg(bool biezacy)
+        {
+            decimal suma = ListaKont.Sum(Konto => Konto.SumaWydatkowTyg(biezacy));
+            DateTime poniedzialekbiez = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+            DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
+            if (biezacy)
+            {
+                suma += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data >= poniedzialekbiez).Sum(WydatekRaz => WydatekRaz.Kwota);
+            }
+            else { suma += WplywyGotowka.Where(WydatekRaz => (WydatekRaz.Data >= poniedzialekbyly) & (WydatekRaz.Data < poniedzialekbiez)).Sum(WydatekRaz => WydatekRaz.Kwota); }
+            return suma;    
+        }
+
+        public decimal SumaOszczednosciTyg(bool biezacy)
+        {
+            decimal suma = ListaKont.Sum(Konto => Konto.SumaWydatkowTyg(biezacy));
+            DateTime poniedzialekbiez = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+            DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
+            if (biezacy)
+            {
+                suma += OszczednosciWGotowce.Where(Oszczednosc => Oszczednosc.Data >= poniedzialekbiez).Sum(Oszczednosc => Oszczednosc.Kwota);
+            }
+            else { suma += OszczednosciWGotowce.Where(Oszczednosc => (Oszczednosc.Data >= poniedzialekbyly) & (Oszczednosc.Data < poniedzialekbiez)).Sum(Oszczednosc => Oszczednosc.Kwota); }
+            return suma;
+        }
     }
 }
