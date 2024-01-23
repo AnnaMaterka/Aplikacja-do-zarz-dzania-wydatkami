@@ -183,13 +183,13 @@ namespace WPFApp
 
         private void RaportMiesieczny_Click(object sender, RoutedEventArgs e)
         {
-            //WyborMiesiacaiRoku w = new WyborMiesiacaiRoku();
-            //bool? result = w.ShowDialog();
-            //if (result == true)
-            //{
-            //    Raport raport = new Raport(zalogowanyUzytkownik, "M", w.rokmies);
-            //    bool? result1 = raport.ShowDialog();
-            //}
+            WyborMiesiacaiRoku w = new WyborMiesiacaiRoku();
+            bool? result = w.ShowDialog();
+            if (result == true)
+            {
+                Raport raport = new Raport(zalogowanyUzytkownik, "M", w.rokmies);
+                bool? result1 = raport.ShowDialog();
+            }
         }
 
         private void RaportTygodniowy_Click(object sender, RoutedEventArgs e)
