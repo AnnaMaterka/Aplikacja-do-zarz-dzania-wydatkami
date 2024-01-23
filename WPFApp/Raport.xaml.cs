@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -72,21 +73,30 @@ namespace WPFApp
             this.Close();
         }
 
+        public delegate void RaportOkresowy(string okres);
+
         private void btnHTML_Click(object sender, RoutedEventArgs e)
         {
+            RaportOkresowy raport;
             switch (typ)
             {
                 case "R":
-                    zalogowanyUzytkownik.RaportRoczny(okres);
+                    raport = zalogowanyUzytkownik.RaportRoczny;
+                    raport(okres);
                     MessageBox.Show("Pomyślnie wygenerowano raport.");
                     break;
                 case "M":
-                    zalogowanyUzytkownik.RaportMiesieczny(okres);
+                    raport = zalogowanyUzytkownik.RaportMiesieczny;
+                    raport(okres);
                     MessageBox.Show("Pomyślanie wygenerowano raport");
                     break;
                 case "TB":
+                    raport = zalogowanyUzytkownik.RaportTyg;
+                    raport("TB");
                     break;
                 case "TP":
+                    raport = zalogowanyUzytkownik.RaportTyg;
+                    raport("TP");
                     break;
 
             }

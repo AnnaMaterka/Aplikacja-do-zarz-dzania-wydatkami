@@ -270,6 +270,29 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             File.WriteAllText(nazwaPliku, htmlContent);
         }
 
+        public void RaportTyg(string typ)
+        {
+            string nazwaPliku = $"{IdUzytkownika}.R.rocz.{typ}.html";
+            string htmlContent = "<html><head><title>Raport tygodniowy</title></head><body>";
+            if(typ == "TB")
+            {
+                htmlContent += "<h1>Raport obrotów na koncie w bieżącym tygodniu </h1>";
+                htmlContent += $"<h2>Suma wpływów: <b>{SumaWplywowTyg(true)}</b></h2>";
+                htmlContent += $"<h2>Suma wydatków: <b>{SumaWydatkowTyg(true)}</b></h2>";
+                htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{SumaOszczednosciTyg(true)}</b></h2>";
+            }
+            else
+            {
+                htmlContent += "<h1>Raport obrotów na koncie w poprzednim tygodniu </h1>";
+                htmlContent += $"<h2>Suma wpływów: <b>{SumaWplywowTyg(false)}</b></h2>";
+                htmlContent += $"<h2>Suma wydatków: <b>{SumaWydatkowTyg(false)}</b></h2>";
+                htmlContent += $"<h2>Suma środków przeznaczonych na oszczędności: <b>{SumaOszczednosciTyg(false)}</b></h2>";
+            }
+            htmlContent += "</body></html>";
+
+            File.WriteAllText(nazwaPliku, htmlContent);
+        }
+
         public decimal SumaWplywowMies(string rokmies)
         {
             decimal suma = WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyyMM") == rokmies).Sum(WplywRaz => WplywRaz.Kwota);
