@@ -197,7 +197,7 @@ namespace WPFApp
 
         }
 
-            private void WyswietlWplywy()
+        private void WyswietlWplywy()
         {
             if (zalogowanyUzytkownik != null)
             {
