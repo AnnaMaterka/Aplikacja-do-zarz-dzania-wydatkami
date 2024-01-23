@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,12 @@ namespace WPFApp
     /// </summary>
     public partial class DodajWplyw : Window
     {
+        private UzytkownikDbContext db;
         public DodajWplywViewModel ViewModel { get; set; }
         public DodajWplyw(Uzytkownik zalogowanyUzytkownik)
         {
             InitializeComponent();
+            db = new UzytkownikDbContext();
             // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
             ViewModel = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
             DataContext = ViewModel;
@@ -33,7 +36,8 @@ namespace WPFApp
             var listaKont = zalogowanyUzytkownik.ListaKont;
 
             // Przypisz listę kont do ListBox
-            listBoxKonta.ItemsSource = listaKont;
+            cbKonta.ItemsSource = listaKont;
+            cbKategorie.ItemsSource = db.Kategorie.ToList();
         }
         private void DodajWplyw_Click(object sender, RoutedEventArgs e)
         {
@@ -41,10 +45,10 @@ namespace WPFApp
             if (ViewModel.IsValid())
             {
                 // Pobierz informacje o nowym koncie z pól wejściowych w oknie
-                Kategoria kategoria = ViewModel.Kategoria;
+                Kategoria kategoria = (Kategoria)cbKategorie.SelectedItem;
                 DateTime dataWplywu = ViewModel.Data;
                 decimal kwota = ViewModel.Kwota;
-                Konto konto = (Konto)listBoxKonta.SelectedItem;
+                Konto konto = (Konto)cbKonta.SelectedItem;
 
                 konto.NowyWplywKonto(kwota, dataWplywu, kategoria);
                 
@@ -77,7 +81,16 @@ namespace WPFApp
                 return Validator.TryValidateObject(this, new ValidationContext(this, null, null), null, true);
             }
         }
+        public List<string> PobierzNazwyKategorii()
+        {
+            // Pobierz wszystkie kategorie z bazy danych
+            List<Kategoria> wszystkieKategorie = db.Kategorie.ToList();
 
+            // Utwórz listę nazw kategorii
+            List<string> nazwyKategorii = wszystkieKategorie.Select(k => k.NazwaKategorii).ToList();
+
+            return nazwyKategorii;
+        }
     }
 }
 

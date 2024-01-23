@@ -50,8 +50,13 @@ namespace WPFApp
                     .SelectMany(konto => konto.Wplywy)
                     .ToList();
 
-                listBoxWplywy.ItemsSource = wplywyUzytkownika;
+                //listBoxWplywy.ItemsSource = wplywyUzytkownika;
             }
+        }
+        private void DodajKategorie_Click(object sender, RoutedEventArgs e)
+        {
+            DodajKategorie okno = new DodajKategorie();
+            bool? result = okno.ShowDialog();
         }
     }
 }

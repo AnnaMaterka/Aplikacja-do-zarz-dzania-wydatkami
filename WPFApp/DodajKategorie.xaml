@@ -1,0 +1,15 @@
+﻿<Window x:Class="WPFApp.DodajKategorie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        Title="DodajKategorie" Height="200" Width="400">
+    <Grid Background="#FF0F4A76">
+        <Label Content="Nazwa Kategorii:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0" Height="35" Width="183" FontFamily="Verdana" FontSize="20" Foreground="White"/>
+        <TextBox x:Name="txtNazwaKategorii" HorizontalAlignment="Left" VerticalAlignment="Center" Width="270" Margin="23,0,0,0" Height="35" InputScope="Xml"/>
+        <Button x:Name="btnDodajKategorie" Content="Dodaj Kategorię" HorizontalAlignment="Left" VerticalAlignment="Top" Width="186" Margin="194,127,0,0" Click="DodajKategorie_Button" Height="32" Foreground="Black" Background="#FFA2DEFF"/>
+
+    </Grid>
+</Window>

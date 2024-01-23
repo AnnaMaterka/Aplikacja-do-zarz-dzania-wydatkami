@@ -32,7 +32,7 @@ namespace WPFApp
             this.okres = okres;
             switch (typ)
             {
-                case "R": 
+                case "R":
                     lblTytul.Content = "Raport roczny";
                     lblDotyczy.Content = $"Dotyczy roku {okres}";
                     txtSumaWplywow.Text = zalogowanyUzytkownik.SumaWplywowRok(okres).ToString();

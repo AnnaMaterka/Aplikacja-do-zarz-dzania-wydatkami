@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-            Title="DodajWplyw" Height="300" Width="400">
+            Title="DodajWplyw" Height="600" Width="400">
     <Grid>
         <StackPanel Margin="10">
             <Label Content="Kwota" />
@@ -14,11 +14,11 @@
             <Label Content="Data" />
             <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="30" Width="380"/>
 
-            <Label Content="Kategoria" />
-            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380"/>
+            <Label Content="Wybierz kategorię" />
+            <ComboBox x:Name="cbKategorie" Height="33" Width="380" DisplayMemberPath="NazwaKategorii"/>
 
             <Label Content="Wybierz konto" />
-            <ListBox x:Name="listBoxKonta" DisplayMemberPath="Nazwa" SelectionMode="Single" Height="30" Width="380"/>
+            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380"/>
 
             <Button Content="Dodaj Wplyw" Click="DodajWplyw_Click" Height="30" Width="380" />
         </StackPanel>

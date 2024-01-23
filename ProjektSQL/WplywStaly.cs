@@ -25,6 +25,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public Cykl CyklWplywu { get => cyklWplywu; set => cyklWplywu = value; }
 
+        public WplywStaly() { }
         public WplywStaly(decimal kwota, DateTime data, Cykl cyklWplywu) : base(kwota, data)
         {
             this.CyklWplywu = cyklWplywu;

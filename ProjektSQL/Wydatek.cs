@@ -16,6 +16,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //[ForeignKey("Kategoria")]
         //public int IdKategorii { get; set; }
         //public virtual Kategoria Kategorie { get; set; }
+
+        public Wydatek() { }
         public Wydatek(decimal kwota, DateTime data)
         {
             Kwota = kwota;

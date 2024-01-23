@@ -16,6 +16,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public int IdKategorii {  get; set; }
         public virtual Konto Konto { get; set; }
         public virtual Kategoria Kategoria { get; set; }
+
+        public WydatekRaz() { }
         public WydatekRaz(decimal kwota, DateTime data, Kategoria kategoria) : base(kwota, data, kategoria)
         {
         }
