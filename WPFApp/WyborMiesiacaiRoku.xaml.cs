@@ -33,6 +33,7 @@ namespace WPFApp
 
         private void Zatwierdz_Click(object sender, RoutedEventArgs e)
         {
+            if(cbMiesiac.SelectedIndex < 0) { MessageBox.Show("Wybierz miesiąc!"); return; }
             int mies = (int)cbMiesiac.SelectedItem;
             int.TryParse(txtRok.Text, out int rok);
             if (rok < 1 | rok > DateTime.Now.Year) { MessageBox.Show("Nieprawidłowy rok!"); return; }

@@ -194,6 +194,21 @@ namespace WPFApp
 
         private void RaportTygodniowy_Click(object sender, RoutedEventArgs e)
         { 
+            WyborTygodnia w = new WyborTygodnia();
+            bool? result = w.ShowDialog();
+            if(result == true)
+            {
+                if (w.biezacy)
+                {
+                    Raport raport = new Raport(zalogowanyUzytkownik, "TB", null);
+                    raport.ShowDialog();
+                }
+                else
+                {
+                    Raport raport = new Raport(zalogowanyUzytkownik, "TP", null);
+                    raport.ShowDialog();
+                }
+            }
 
         }
 
