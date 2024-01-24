@@ -61,6 +61,7 @@ namespace WPFApp
             {
                 MessageBox.Show("Formularz zawiera błędy. Sprawdź poprawność wprowadzonych danych.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
 
         private bool IsValid()
@@ -68,9 +69,6 @@ namespace WPFApp
             // Walidacja danych
             if (Kwota < 0)
                 return false;
-
-            //if (Data == null)
-            //    return false;
 
             if (txtKategoria is null)
                 return false;

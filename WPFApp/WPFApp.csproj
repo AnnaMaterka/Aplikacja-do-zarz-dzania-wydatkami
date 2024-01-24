@@ -9,6 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\icons8-arrow-50.png" />
+    <None Remove="Assets\icons8-deposit-48.png" />
+    <None Remove="Assets\icons8-online-money-transfer-48.png" />
+    <None Remove="Assets\icons8-report-file-48.png" />
+    <None Remove="Assets\icons8-tips-48.png" />
+    <None Remove="Assets\icons8-withdrawal-48.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\icons8-arrow-50.png" />
+    <Content Include="Assets\icons8-deposit-48.png" />
+    <Content Include="Assets\icons8-online-money-transfer-48.png" />
+    <Content Include="Assets\icons8-report-file-48.png" />
+    <Content Include="Assets\icons8-tips-48.png" />
+    <Content Include="Assets\icons8-withdrawal-48.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProjektSQL\ProjektSQL.csproj" />
   </ItemGroup>
 

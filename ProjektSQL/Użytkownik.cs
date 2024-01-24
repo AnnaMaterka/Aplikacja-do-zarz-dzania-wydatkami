@@ -155,13 +155,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             OnPropertyChanged(nameof(StanGotowki));
         }
         // dotyczy zakupów gotówką
-        public void NowyWydatekGotowka(decimal kwota, DateTime data, string kategoria)
+        public void NowyWydatekGotowka(WydatekRaz wydatek)
         {
-            this.StanGotowki -= kwota;
-            WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
+            //this.StanGotowki -= kwota;
+            //WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
             //this.ListaWydatkowRaz.Add(wydatek);
             this.WydatkiGotowka.Add(wydatek);
-            OnPropertyChanged(nameof(StanGotowki));
+            //OnPropertyChanged(nameof(StanGotowki));
         }
         //dotyczy zakupów kartą
         //public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria, Konto konto)

@@ -13,6 +13,19 @@
                 <GradientStop Color="Gray" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <DataGrid x:Name="WydatkiDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wydatki}" Margin="212,46,70,55">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data" Binding="{Binding Data}" Width="*" />
+                <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}" Width="*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Kwota}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
         <Button Content="Dodaj wydatek" Click="DodajWydatek_Click" Margin="10,10,623,376" Background="#FF6E8ABE"/>
         <Button Content="Dodaj wydatek stały" Click="DodajWydatekStaly_Click" Margin="10,63,623,323" Background="#FF6E8ABE"/>
     </Grid>

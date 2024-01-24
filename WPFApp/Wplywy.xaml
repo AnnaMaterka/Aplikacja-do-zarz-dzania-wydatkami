@@ -13,8 +13,20 @@
                 <GradientStop Color="Black" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <!--<ListBox x:Name="listBoxWplywy" DisplayMemberPath="Nazwa" Margin="237,10,84,10" Background="#FF091D48"/>-->
-        <Button Content="Dodaj wpływ" Click="DodajWplyw_Click" Margin="10,10,623,376" Background="#FF6E8ABE"/>
-        <Button Content="Dodaj Wplyw Stały" Click="DodajWplywStaly_Click" Height="30" Width="380" />        <Button Content="Zapisz" Click="Zapisz_Click" Margin="10,116,623,270" Background="#FF6E8ABE"/>
+        <DataGrid x:Name="WplywyDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wplywy}" Margin="212,46,70,55">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data" Binding="{Binding Data}" Width="*" />
+                <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}" Width="*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Kwota}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+        <Button Content="Dodaj wpływ" Click="DodajWplyw_Click" Margin="39,164,621,222" Background="#FF6E8ABE"/>
+        <Button Content="Dodaj Wplyw Stały" Click="DodajWplywStaly_Click" Margin="39,217,621,169" Background="#FF6E8ABE"/>
     </Grid>
 </Window>

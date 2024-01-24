@@ -2,6 +2,7 @@
 using ProjektSQL;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,7 @@ namespace WPFApp
             InitializeComponent();
             this.zalogowanyUzytkownik = zalogowanyUzytkownik; // Przekazanie zalogowanego użytkownika
             this.dc = dc;
+            WyswietlWydatki();
         }
         private void DodajWydatek_Click(object sender, RoutedEventArgs e)
         {
@@ -51,6 +53,30 @@ namespace WPFApp
         private void Zapisz_Click(object sender, RoutedEventArgs e)
         {
             Zapisz();
+        }
+        private void WyswietlWydatki()
+        {
+            if (zalogowanyUzytkownik != null)
+            {
+                var kontaUzytkownika = dc.Konta.Where(k => k.Uzytkownik.IdUzytkownika == zalogowanyUzytkownik.IdUzytkownika).ToList();
+                ObservableCollection<Wydatek> wszystkieWydatki = new ObservableCollection<Wydatek>();
+                foreach (var konto in kontaUzytkownika)
+                {
+                    var wydatki = dc.Wydatki.Where(w => w.IdKonta == konto.IdKonta).ToList();
+                    foreach (var wydatek in wydatki)
+                    {
+                        wszystkieWydatki.Add(wydatek);
+                    }
+                    var wydatkiStale = dc.WydatkiStale.Where(w => w.IdKonta == konto.IdKonta).ToList();
+                    foreach (var wydatek in wydatkiStale)
+                    {
+                        wszystkieWydatki.Add(wydatek);
+                    }
+                }
+                wszystkieWydatki = new ObservableCollection<Wydatek>(wszystkieWydatki.OrderBy(w => w.Data));
+
+                WydatkiDataGrid.ItemsSource = wszystkieWydatki;
+            }
         }
     }
 }
