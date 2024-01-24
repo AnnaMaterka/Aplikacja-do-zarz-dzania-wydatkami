@@ -1,14 +1,24 @@
 ﻿using Aplikacja_do_zarzadzania_wydatkami;
 using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace WPFApp
 {
     /// <summary>
-    /// Logika interakcji dla klasy DodajWplyw.xaml
+    /// Logika interakcji dla klasy DodajWydatek.xaml
     /// </summary>
-    public partial class DodajWplyw : Window
+    public partial class DodajWydatek : Window
     {
         private UzytkownikDbContext db;
         public Uzytkownik ZalogowanyUzytkownik { get; set; }
@@ -18,17 +28,17 @@ namespace WPFApp
         public string WpisanaKategoria { get; set; }
         public Konto WybraneKonto { get; set; }
 
-        public DodajWplyw(Uzytkownik zalogowanyUzytkownik)
+        public DodajWydatek(Uzytkownik zalogowanyUzytkownik)
         {
             InitializeComponent();
+
             db = new UzytkownikDbContext();
             this.ZalogowanyUzytkownik = zalogowanyUzytkownik;
 
             var listaKont = ZalogowanyUzytkownik.ListaKont;
             cbKonta.ItemsSource = listaKont;
         }
-
-        private void DodajWplyw_Click(object sender, RoutedEventArgs e)
+        private void DodajWydatek_Click(object sender, RoutedEventArgs e)
         {
             // Dodaj logikę sprawdzającą poprawność danych
             if (IsValid())
@@ -37,19 +47,18 @@ namespace WPFApp
                 decimal.TryParse(txtKwota.Text, out kwota);
                 Kwota = kwota;
                 Konto selectedKonto = (Konto)cbKonta.SelectedItem;
-                selectedKonto.StanKonta += Kwota;
+                selectedKonto.StanKonta -= Kwota;
 
                 WpisanaKategoria = txtKategoria.Text;
                 WybraneKonto = selectedKonto;
                 Data = (DateTime)datePickerData.SelectedDate;
-                WplywRaz wplyw = new WplywRaz(Kwota, Data, WpisanaKategoria, ZalogowanyUzytkownik, WybraneKonto);
-                WybraneKonto.NowyWplywKonto(wplyw);
+                WydatekRaz wydatek = new WydatekRaz(Kwota, Data, WpisanaKategoria, ZalogowanyUzytkownik, WybraneKonto);
+                WybraneKonto.NowyWydatekKonto(wydatek);
                 WybraneKonto.ZapiszDoBazy();
                 this.Close();
             }
             else
             {
-                // Wyświetl komunikat o błędzie walidacji
                 MessageBox.Show("Formularz zawiera błędy. Sprawdź poprawność wprowadzonych danych.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

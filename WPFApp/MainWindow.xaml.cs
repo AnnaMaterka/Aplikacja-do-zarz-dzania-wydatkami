@@ -164,15 +164,6 @@ namespace WPFApp
             okno.DataContext = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
         }
 
-        //private void DodajWplyw_Click(object sender, RoutedEventArgs e)
-        //{
-        //    DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik, dc);
-        //    bool? result = okno.ShowDialog();
-        //    okno.DataContext = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
-        //}
-
-
-        //Do obsługi menu - zakładka konta
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
@@ -183,7 +174,13 @@ namespace WPFApp
             Wplywy wplywyWindow = new Wplywy(zalogowanyUzytkownik, dc);
             wplywyWindow.Show();
         }
-
+        
+        private void Wydatki_Click(object sender, RoutedEventArgs e)
+        {
+            // Tutaj otwierasz nowe okno Wplyw i przekazujesz zalogowanego użytkownika
+            Wydatki wydatkiWindow = new Wydatki(zalogowanyUzytkownik, dc);
+            wydatkiWindow.Show();
+        }
         private void RaportRoczny_Click(object sender, RoutedEventArgs e)
         {
             string roks = Interaction.InputBox("Wybierz rok", "Wybór roku");

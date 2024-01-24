@@ -13,7 +13,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public int IdWydatek {  get; set; }
 
         public int IdKonta { get; set;  }
-        public int IdKategorii {  get; set; }
         public virtual Konto Konto { get; set; }
         public virtual string Kategoria { get; set; }
 
@@ -21,7 +20,11 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public WydatekRaz(decimal kwota, DateTime data, string kategoria) : base(kwota, data, kategoria)
         {
         }
-        
+        public WydatekRaz(decimal kwota, DateTime data, string kategoria, Uzytkownik uzytkownik, Konto konto) : base(kwota, data, kategoria, uzytkownik, konto)
+        {
+            IdKonta = konto.IdKonta;
+        }
+
         public object Clone()
         {
             return this.MemberwiseClone();

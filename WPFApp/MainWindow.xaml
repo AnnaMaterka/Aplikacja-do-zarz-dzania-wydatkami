@@ -42,16 +42,10 @@
             <Button Content="Wyloguj" Click="Wyloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
         </StackPanel>
 
-        <!--// menu panel //-->
         <StackPanel Background="#FF1A2A41"
                     Width="230"
                     Orientation="Vertical"
                     HorizontalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="2">
-
-            <!--// channel1 name //-->
-            <!--// main menu //-->
-
-            <!--// channel1 name //-->
 
             <Grid Height="50">
 
@@ -62,7 +56,6 @@
                            FontSize="25"  Height="50" Margin="0,0,-563,0" Background="#FF1A2A41" FontWeight="SemiBold" />
 
             </Grid>
-            <!--// main menu //-->
 
             <Menu Height="343"
                   Background="Transparent"
@@ -90,15 +83,15 @@
                     </MenuItem.Icon>
 
                     <MenuItem Header="Wplywy"
-                   Template="{StaticResource Item_Template}" Click="Wplywy_Click">
+                            Template="{StaticResource Item_Template}" Click="Wplywy_Click">
                         <MenuItem.Icon>
                             <Image Source="Assets/icons8-deposit-48.png"
-                       Stretch="Uniform"/>
+                                Stretch="Uniform"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
                     <MenuItem Header="Wydatki"
-                          Template="{StaticResource Item_Template}">
+                          Template="{StaticResource Item_Template}" Click="Wydatki_Click">
                         <MenuItem.Icon>
                             <Image Source="Assets/icons8-withdrawal-48.png"
                                Stretch="Uniform"/>
@@ -130,7 +123,7 @@
         </StackPanel>
         <DataGrid x:Name="dgUzytkownicy" Visibility="Collapsed" AutoGenerateColumns="True" Margin="68,62,9,318" Grid.Row="1" />
         <DataGrid x:Name="dgKonta" Visibility="Collapsed" AutoGenerateColumns="True" Margin="25,95,34,25" Grid.Column="2" Grid.Row="1" />
-        <StackPanel Grid.Column="2" Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Width="405" Height="51">
+        <StackPanel Grid.Column="3" Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Width="405" Height="51">
             <TextBlock Text="Suma na kontach:" Visibility="Visible" FontFamily="Verdana" FontSize="20" TextWrapping="WrapWithOverflow" Foreground="White" Height="51" Width="131" />
             <TextBox x:Name="txtSumaPieniedzy" Visibility="Visible" IsEnabled="False" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="20" Height="50" Width="273" />
         </StackPanel>

@@ -12,7 +12,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     {
         private decimal kwota;
         private DateTime data;
-        //private Kategoria kategoria;
         private Uzytkownik uzytkownik;
         private Konto konto;
         private string kategoria;
@@ -22,16 +21,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             Kwota = kwota;
             Data = data;
         }
-
-        //protected Wplyw(decimal kwota, DateTime data, Kategoria kategoria) : this(kwota, data)
-        //{
-        //    Kategoria = kategoria;
-        //}
-        //protected Wplyw(decimal kwota, DateTime data, Kategoria kategoria, Uzytkownik uzytkownik, Konto konto) : this(kwota, data, kategoria)
-        //{
-        //    Uzytkownik = uzytkownik;
-        //    Konto = konto;
-        //}
 
         protected Wplyw(decimal kwota, DateTime data, string kategoria) : this(kwota, data)
         {
@@ -49,12 +38,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public Konto Konto { get => konto; set => konto = value; }
         public string Kategoria { get => kategoria; set => kategoria = value; }
 
-        // Prywatna właściwość kategorii
-        //private Kategoria Kategoria { get => kategoria; set => kategoria = value; }
-
-
-        // Metoda dostępu do kategorii, jeśli to konieczne
-        //public Kategoria PobierzKategorie() => Kategoria.SzukanieKategorii(Kategoria.NazwaKategorii);
     }
 
 }

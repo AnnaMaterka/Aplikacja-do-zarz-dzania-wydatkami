@@ -33,7 +33,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public int IdWydatkuStalego { get; set; }
 
         public int IdKonta { get; set; }
-        public int IdKategorii { get; set; }
         public virtual Konto Konto { get; set; }
         public virtual string Kategoria { get; set; }
 
@@ -64,7 +63,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             }
         }
         public DateTime Data { get => data; set => data = value; }
-        //public Kategoria Kategoria { get => kategoria; set => kategoria = value; }
 
         public void Ponow()
         {

@@ -14,9 +14,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public int IdWplywu { get; set; }
 
         public int IdKonta { get; set; }
-        //public int IdKategorii { get; set; }
         public virtual Konto Konto { get; set; }
-        //public virtual Kategoria Kategoria { get; set; }
 
         public WplywRaz() { }
         public WplywRaz(decimal kwota, DateTime data, string kategoria, Uzytkownik uzytkownik, Konto konto) : base(kwota, data, kategoria, uzytkownik, konto)

@@ -93,14 +93,10 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
 
         //dotyczy zakupów kartą
-        //public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria)
-        //{
-        //    StanKonta -= kwota;
-        //    WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
-        //    //this.ListaWydatkowRaz.Add(wydatek);
-        //    this.Wydatki.Add(wydatek);
-        //    OnPropertyChanged(nameof(StanKonta));
-        //}
+        public void NowyWydatekKonto(Wydatek wydatek)
+        {
+            this.Wydatki.Add(wydatek);
+        }
         public void NowyWplywKonto(WplywRaz wplyw)
         {
             //StanKonta += wplyw.Kwota;

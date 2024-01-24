@@ -1,11 +1,11 @@
-﻿<Window x:Class="WPFApp.DodajWplyw"
+﻿<Window x:Class="WPFApp.DodajWydatek"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-            Title="DodajWplyw" Height="400" Width="400">
+        Title="DodajWydatek" Height="400" Width="400">
     <Grid>
         <StackPanel Margin="10">
             <Label Content="Kwota" />
@@ -20,7 +20,7 @@
             <Label Content="Wybierz konto" />
             <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" />
 
-            <Button Content="Dodaj Wplyw" Click="DodajWplyw_Click" Height="30" Width="380" />
+            <Button Content="Dodaj Wplyw" Click="DodajWydatek_Click" Height="30" Width="380" />
         </StackPanel>
     </Grid>
 </Window>
