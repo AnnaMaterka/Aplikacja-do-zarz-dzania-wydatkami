@@ -15,10 +15,12 @@
             <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="30" Width="380"/>
 
             <Label Content="Wybierz kategorię" />
-            <ComboBox x:Name="cbKategorie" Height="33" Width="380" DisplayMemberPath="NazwaKategorii"/>
+            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380"/>
+
+            <!--<ComboBox x:Name="cbKategorie" Height="33" Width="380" DisplayMemberPath="NazwaKategorii" SelectedItem="{Binding WybranaKategoria}" />-->
 
             <Label Content="Wybierz konto" />
-            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380"/>
+            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" />
 
             <Button Content="Dodaj Wplyw" Click="DodajWplyw_Click" Height="30" Width="380" />
         </StackPanel>

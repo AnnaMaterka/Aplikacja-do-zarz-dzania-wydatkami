@@ -16,17 +16,20 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public int IdKonta { get; set; }
         public int IdKategorii { get; set; }
         public virtual Konto Konto { get; set; }
-        public virtual Kategoria Kategoria { get; set; }
+        //public virtual Kategoria Kategoria { get; set; }
+        public string Kategoria { get;set; }
 
         public WplywRaz() { }
-        public WplywRaz(decimal kwota, DateTime data) : base(kwota, data)
+        //public WplywRaz(decimal kwota, DateTime data) : base(kwota, data)
+        //{
+        //}
+        //public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria) : base(kwota, data, kategoria)
+        //{
+        //    IdKategorii = kategoria.IdKategorii;
+        //}
+        public WplywRaz(decimal kwota, DateTime data, string kategoria, Uzytkownik uzytkownik, Konto konto) : base(kwota, data, kategoria, uzytkownik, konto)
         {
-        }
-        public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria) : base(kwota, data, kategoria)
-        {
-        }
-        public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria, Uzytkownik uzytkownik, Konto konto) : base(kwota, data, kategoria, uzytkownik, konto)
-        {
+            IdKonta = konto.IdKonta;
         }
        
         public object Clone()

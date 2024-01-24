@@ -30,21 +30,14 @@ namespace WPFApp
         private UzytkownikDbContext dc;
 
 
-        public Wplywy(Uzytkownik zalogowanyUzytkownik)
+        public Wplywy(Uzytkownik zalogowanyUzytkownik, UzytkownikDbContext dc)
         {
             InitializeComponent();
             this.zalogowanyUzytkownik = zalogowanyUzytkownik; // Przekazanie zalogowanego użytkownika
-            dc = new UzytkownikDbContext();
+            this.dc = dc;
             
             //WyswietlWplywy();
         }
-        //public Wplywy(Konto aktualneKonto)
-        //{
-        //    this.aktualneKonto = aktualneKonto; // Przekazanie zalogowanego użytkownika
-        //    dc = new UzytkownikDbContext();
-        //    InitializeComponent();
-        //    //WyswietlWplywy();
-        //}
 
         private void DodajWplyw_Click(object sender, RoutedEventArgs e)
         {

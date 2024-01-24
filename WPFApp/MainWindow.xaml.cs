@@ -147,12 +147,12 @@ namespace WPFApp
             okno.DataContext = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
         }
 
-        private void DodajWplyw_Click(object sender, RoutedEventArgs e)
-        {
-            DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik);
-            bool? result = okno.ShowDialog();
-            okno.DataContext = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
-        }
+        //private void DodajWplyw_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik, dc);
+        //    bool? result = okno.ShowDialog();
+        //    okno.DataContext = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
+        //}
 
 
         //Do obsługi menu - zakładka konta
@@ -163,7 +163,7 @@ namespace WPFApp
         private void Wplywy_Click(object sender, RoutedEventArgs e)
         {
             // Tutaj otwierasz nowe okno Wplyw i przekazujesz zalogowanego użytkownika
-            Wplywy wplywyWindow = new Wplywy(zalogowanyUzytkownik);
+            Wplywy wplywyWindow = new Wplywy(zalogowanyUzytkownik, dc);
             wplywyWindow.Show();
         }
 

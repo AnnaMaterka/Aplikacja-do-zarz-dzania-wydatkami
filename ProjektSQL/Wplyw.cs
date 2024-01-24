@@ -12,10 +12,10 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     {
         private decimal kwota;
         private DateTime data;
-        private Kategoria kategoria;
+        //private Kategoria kategoria;
         private Uzytkownik uzytkownik;
         private Konto konto;
-
+        private string kategoria;
         public Wplyw() { }
         protected Wplyw(decimal kwota, DateTime data)
         {
@@ -23,11 +23,21 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             Data = data;
         }
 
-        protected Wplyw(decimal kwota, DateTime data, Kategoria kategoria) : this(kwota, data)
+        //protected Wplyw(decimal kwota, DateTime data, Kategoria kategoria) : this(kwota, data)
+        //{
+        //    Kategoria = kategoria;
+        //}
+        //protected Wplyw(decimal kwota, DateTime data, Kategoria kategoria, Uzytkownik uzytkownik, Konto konto) : this(kwota, data, kategoria)
+        //{
+        //    Uzytkownik = uzytkownik;
+        //    Konto = konto;
+        //}
+
+        protected Wplyw(decimal kwota, DateTime data, string kategoria) : this(kwota, data)
         {
             Kategoria = kategoria;
         }
-        protected Wplyw(decimal kwota, DateTime data, Kategoria kategoria, Uzytkownik uzytkownik, Konto konto) : this(kwota, data, kategoria)
+        protected Wplyw(decimal kwota, DateTime data, string kategoria, Uzytkownik uzytkownik, Konto konto) : this(kwota, data, kategoria)
         {
             Uzytkownik = uzytkownik;
             Konto = konto;
@@ -37,9 +47,10 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public DateTime Data { get => data; set => data = value; }
         public Uzytkownik Uzytkownik { get => uzytkownik; set => uzytkownik = value; }
         public Konto Konto { get => konto; set => konto = value; }
+        public string Kategoria { get => kategoria; set => kategoria = value; }
 
         // Prywatna właściwość kategorii
-        private Kategoria Kategoria { get => kategoria; set => kategoria = value; }
+        //private Kategoria Kategoria { get => kategoria; set => kategoria = value; }
 
 
         // Metoda dostępu do kategorii, jeśli to konieczne

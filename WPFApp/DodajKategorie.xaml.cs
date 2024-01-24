@@ -45,7 +45,7 @@ namespace WPFApp
         }
         private void DodajKategorieDoBazyDanych(Kategoria kategoria)
         {
-            using (var context = new UzytkownikDbContext()) // TwojaDbContext to klasa dziedzicząca po DbContext z Entity Framework
+            using (var context = new UzytkownikDbContext())
             {
                 // Sprawdź, czy kategoria o tej nazwie już istnieje
                 var istniejacaKategoria = context.Kategorie.FirstOrDefault(k => k.NazwaKategorii == kategoria.NazwaKategorii);

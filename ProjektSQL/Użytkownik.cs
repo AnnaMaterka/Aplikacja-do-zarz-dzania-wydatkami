@@ -145,13 +145,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             StanGotowki -= kwota;
         }
         
-        public void WplywGotowki(decimal kwota, DateTime data, Kategoria kategoria)
-        {
-            StanGotowki += kwota;
-            WplywRaz wplyw = new(kwota, data, kategoria);
-            this.WplywyGotowka.Add(wplyw);
-            OnPropertyChanged(nameof(StanGotowki));
-        }
+        //public void WplywGotowki(decimal kwota, DateTime data, Kategoria kategoria)
+        //{
+        //    StanGotowki += kwota;
+        //    WplywRaz wplyw = new(kwota, data, kategoria);
+        //    this.WplywyGotowka.Add(wplyw);
+        //    OnPropertyChanged(nameof(StanGotowki));
+        //}
         public void DodajWplywGotowki(WplywRaz wplyw)
         {
             this.WplywyGotowka.Add(wplyw);
