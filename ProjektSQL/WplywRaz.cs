@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
-    public class WplywRaz :Wplyw, ICloneable, IComparable<WplywRaz>, IEquatable<WplywRaz>
+    public class WplywRaz :Wplyw, ICloneable, IComparable<WplywRaz>
     {
 
         [Key]
@@ -25,11 +25,10 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria) : base(kwota, data, kategoria)
         {
         }
-        public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria, Konto konto) : base(kwota, data, kategoria)
+        public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria, Uzytkownik uzytkownik, Konto konto) : base(kwota, data, kategoria, uzytkownik, konto)
         {
-            Konto = konto;
         }
-
+       
         public object Clone()
         {
             return this.MemberwiseClone();
@@ -47,10 +46,35 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //    return this.Kategoria.CompareTo(other.Kategoria);
         //}
 
-        public bool Equals(WplywRaz? other)
+        //public bool Equals(WplywRaz? other)
+        //{
+        //    if (Kategoria.Equals(other!.Kategoria) && base.Kwota.Equals(other.Kwota)) { return true; }
+        //    return false;
+        //}
+        public void ZapiszDoBazy()
         {
-            if (Kategoria.Equals(other!.Kategoria) && base.Kwota.Equals(other.Kwota)) { return true; }
-            return false;
+            using (var db = new UzytkownikDbContext())
+            {
+                Console.WriteLine("Zapis wpływu do bazy");
+
+                // Spróbuj odnaleźć wpływ w bazie danych na podstawie IdWplywu
+                var existingEntity = db.Wplywy.Find(this.IdWplywu);
+
+                if (existingEntity != null)
+                {
+                    // Jeśli wpływ już istnieje, zaktualizuj jego wartości
+                    db.Entry(existingEntity).CurrentValues.SetValues(this);
+                }
+                else
+                {
+                    // Jeśli wpływ nie istnieje, dodaj nowy wpływ do bazy danych
+                    db.Wplywy.Add(this);
+                }
+
+                // Zapisz zmiany w bazie danych
+                db.SaveChanges();
+                Console.WriteLine("Zapisano wpływ!");
+            }
         }
     }
 }

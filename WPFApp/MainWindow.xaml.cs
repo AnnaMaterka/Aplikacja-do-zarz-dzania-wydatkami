@@ -109,7 +109,6 @@ namespace WPFApp
 
         private void ZarejestrujUzytkownika(string imie)
         {
-            //var istniejacyUzytkownik = dc.Uzytkownicy.Any(u => u.Imie == imie);
 
             if (!string.IsNullOrEmpty(imie))
             {
@@ -146,18 +145,14 @@ namespace WPFApp
             UtworzKonto okno = new UtworzKonto(zalogowanyUzytkownik);
             bool? result = okno.ShowDialog();
             okno.DataContext = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
-
-            //if (result == true)
-            //{
-            //    //dodajemy konto
-            //}
         }
-        //private void DodajWplyw_Click(object sender, RoutedEventArgs e)
-        //{
-        //    DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik);
-        //    bool? result = okno.ShowDialog();
-        //    okno.DataContext = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
-        //}
+
+        private void DodajWplyw_Click(object sender, RoutedEventArgs e)
+        {
+            DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik);
+            bool? result = okno.ShowDialog();
+            okno.DataContext = new DodajWplywViewModel { Uzytkownik = zalogowanyUzytkownik };
+        }
 
 
         //Do obsługi menu - zakładka konta

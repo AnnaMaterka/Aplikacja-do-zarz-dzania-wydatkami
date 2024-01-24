@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
@@ -16,33 +17,34 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private string nazwaBanku;
         private decimal stanKonta;
         private Uzytkownik uzytkownik;
-        //private List<WydatekRaz> listaWydatkowRaz;
-        //private List<WydatekStaly> listaWydatkowSt;
-        //private List<WplywRaz> listaWplywowRaz;
-        //private List<WplywStaly> listaWplywowSt;
-        //private List<Oszczednosc> listaOszczednosci;
 
         public virtual Uzytkownik Uzytkownik { get; set; }
         [Key]
         public int IdKonta { get; set; }
-
-        //[ForeignKey("Uzytkownik")]
-        //public int IdUzytkownika { get; set; }
-
         
         public virtual List<WydatekRaz> Wydatki { get; set; }
         public virtual List<WydatekStaly> WydatekStale { get; set; }
-        public virtual List<WplywRaz> Wplywy { get; set; }
+        //public virtual List<WplywRaz> Wplywy { get; set; }
+        private ObservableCollection<WplywRaz> wplywy;
         public virtual List<WplywStaly> WplywyStale { get; set; }
         public virtual List<Oszczednosc> Oszczednosci { get; set; }
 
+        public ObservableCollection<WplywRaz> Wplywy
+        {
+            get => wplywy;
+            set
+            {
+                if (wplywy != value)
+                {
+                    wplywy = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public Konto()
         {
-            //listaWydatkowRaz = new List<WydatekRaz>();
-            //listaWydatkowSt = new List<WydatekStaly>();
-            //listaWplywowRaz = new List<WplywRaz>();
-            //listaWplywowSt = new List<WplywStaly>();
-            //listaOszczednosci = new List<Oszczednosc>();
+            Wplywy = new ObservableCollection<WplywRaz>();
             Nazwa = "Nazwa konta";
         }
         public Konto(string nazwaBanku, decimal stanKonta, Uzytkownik uzytkownik) : this()
@@ -72,12 +74,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 }
             }
         }
-        //public Uzytkownik Uzytkownik1 { get => uzytkownik; set => uzytkownik = value; }
-        //public List<WydatekRaz> ListaWydatkowRaz { get => listaWydatkowRaz; set => listaWydatkowRaz = value; }
-        //public List<WydatekStaly> ListaWydatkowSt { get => listaWydatkowSt; set => listaWydatkowSt = value; }
-        //internal List<WplywRaz> ListaWplywowRaz { get => listaWplywowRaz; set => listaWplywowRaz = value; }
-        //internal List<WplywStaly> ListaWplywowSt { get => listaWplywowSt; set => listaWplywowSt = value; }
-        //internal List<Oszczednosc> ListaOszczednosci { get => listaOszczednosci; set => listaOszczednosci = value; }
         public string Nazwa { get => nazwa; set => nazwa = value; }
 
         public int PobierzIdKategorii(string nazwaKategorii)
@@ -101,15 +97,32 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             this.Wydatki.Add(wydatek);
             OnPropertyChanged(nameof(StanKonta));
         }
-        public void NowyWplywKonto(decimal kwota, DateTime data, Kategoria kategoria)
+        public void NowyWplywKonto(WplywRaz wplyw)
         {
-            StanKonta += kwota;
-            WplywRaz wplyw = new WplywRaz(kwota, data, kategoria);
-            //this.ListaWydatkowRaz.Add(wydatek);
-            this.Wplywy.Add(wplyw);
-            OnPropertyChanged(nameof(StanKonta));
+            //StanKonta += wplyw.Kwota;
+            //wplyw.Konto = this;
+            Wplywy.Add(wplyw);
+            //OnPropertyChanged(nameof(StanKonta));
         }
+        public void ZapiszDoBazy()
+        {
+            using var db = new UzytkownikDbContext();
+            Console.WriteLine("Zapis do pliku");
 
+            var existingEntity = db.Konta.Find(this.IdKonta);
+
+            if (existingEntity != null)
+            {
+                db.Entry(existingEntity).CurrentValues.SetValues(this);
+            }
+            else
+            {
+                db.Konta.Add(this);
+            }
+
+            db.SaveChanges();
+            Console.WriteLine("Zapisano!");
+        }
         public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
         {
             WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);

@@ -28,12 +28,12 @@
 
         <StackPanel x:Name="InitialView" Visibility="Visible"  Grid.ColumnSpan="3" Margin="0,54,0,0" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal" Height="382" Width="570" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Margin="230,0,0,0" Background="#FF5E7E9E" >
-                <Button Content="Zaloguj" Click="Zaloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" FontFamily="Verdana" FontSize="20" Width="150">
+                <Button Content="Zaloguj" Click="Zaloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" FontFamily="Verdana" FontSize="20" Width="107" Height="151">
                     <Button.Foreground>
                         <SolidColorBrush Color="White" Opacity="1"/>
                     </Button.Foreground>
                 </Button>
-                <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" Width="300" FontFamily="Verdana" FontSize="20" FontWeight="Normal"/>
+                <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" Width="247" FontFamily="Verdana" FontSize="20" FontWeight="Normal" Height="171"/>
             </StackPanel>
         </StackPanel>
 

@@ -34,12 +34,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             }
         }
 
-        //private List<WydatekRaz> listaWydatkowRaz;
-        //private List<WydatekStaly> listaWydatkowSt;
-        //private List<WplywRaz> listaWplywowRaz;
-        //private List<WplywStaly> listaWplywowSt;
-        //private List<Oszczednosc> listaOszczednosci;
-
         [Key]
         public int IdUzytkownika { get; set; }
         public virtual List<Sesja> Sesje { get; set; }
@@ -145,12 +139,12 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         // WplacnaKonto służy do wpłacania, np w bankomacie
         // gotówkę zamieniamy na środki na koncie
-        public void WplacnaKonto(Konto konto, decimal kwota, DateTime data, string kategoria)
+        public void WplacnaKonto(Konto konto, decimal kwota, DateTime data, Kategoria kategoria)
         {
             konto.StanKonta += kwota;
             StanGotowki -= kwota;
         }
-
+        
         public void WplywGotowki(decimal kwota, DateTime data, Kategoria kategoria)
         {
             StanGotowki += kwota;

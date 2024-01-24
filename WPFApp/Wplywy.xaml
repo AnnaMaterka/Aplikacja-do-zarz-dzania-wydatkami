@@ -16,5 +16,6 @@
         <!--<ListBox x:Name="listBoxWplywy" DisplayMemberPath="Nazwa" Margin="237,10,84,10" Background="#FF091D48"/>-->
         <Button Content="Dodaj wpływ" Click="DodajWplyw_Click" Margin="10,10,623,376" Background="#FF6E8ABE"/>
         <Button Content="Dodaj kategorię" Click="DodajKategorie_Click" Margin="10,63,623,323" Background="#FF6E8ABE"/>
+        <Button Content="Zapisz" Click="Zapisz_Click" Margin="10,116,623,270" Background="#FF6E8ABE"/>
     </Grid>
 </Window>
