@@ -21,9 +21,9 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public virtual Uzytkownik Uzytkownik { get; set; }
         [Key]
         public int IdKonta { get; set; }
-        
-        public virtual List<WydatekRaz> Wydatki { get; set; }
-        public virtual List<WydatekStaly> WydatekStale { get; set; }
+
+        private ObservableCollection<WydatekRaz> wydatki;
+        private ObservableCollection<WydatekStaly> wydatkiStale;
 
         private ObservableCollection<WplywRaz> wplywy; 
         private ObservableCollection<WplywStaly> wplywyStale;
@@ -53,12 +53,37 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 }
             }
         }
+        public ObservableCollection<WydatekRaz> Wydatki
+        {
+            get => wydatki;
+            set
+            {
+                if (wydatki != value)
+                {
+                    wydatki = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public ObservableCollection<WydatekStaly> WydatkiStale
+        {
+            get => wydatkiStale;
+            set
+            {
+                if (wydatkiStale != value)
+                {
+                    wydatkiStale = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public Konto()
         {
             Wplywy = new ObservableCollection<WplywRaz>();
             WplywyStale = new ObservableCollection<WplywStaly>();
-            Wydatki = new List<WydatekRaz>();
+            Wydatki = new ObservableCollection<WydatekRaz>();
+            WydatkiStale = new ObservableCollection<WydatekStaly>();
             Oszczednosci = new List<Oszczednosc>();
             Nazwa = "Nazwa konta";
         }
@@ -93,7 +118,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
 
         //dotyczy zakupów kartą
-        public void NowyWydatekKonto(Wydatek wydatek)
+        public void NowyWydatekKonto(WydatekRaz wydatek)
         {
             this.Wydatki.Add(wydatek);
         }
@@ -132,7 +157,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         {
             WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
             //this.ListaWydatkowSt.Add(wydatek);
-            this.WydatekStale.Add(wydatek);
+            this.WydatkiStale.Add(wydatek);
             OnPropertyChanged(nameof(StanKonta));
         }
 
