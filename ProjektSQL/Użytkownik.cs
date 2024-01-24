@@ -245,7 +245,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         {
             string nazwaPliku = $"{IdUzytkownika}.R.rocz.{rok}.html";
             string htmlContent = "<html><head><title>Raport roczny</title></head><body>";
-            DateTime data = DateTime.ParseExact(rok, "yyyyMM", CultureInfo.InvariantCulture);
+            DateTime data = DateTime.ParseExact(rok, "yyyy", CultureInfo.InvariantCulture);
             htmlContent += $"<h1>Raport miesięczny obrotów na koncie dla roku {rok}</h1>";
             decimal sumaWplywow = ListaKont.Sum(Konto => Konto.SumaWplywowRok(rok));
             sumaWplywow += WplywyGotowka.Where(WplywRaz => WplywRaz.Data.ToString("yyyy") == rok).Sum(WplywRaz => WplywRaz.Kwota);
