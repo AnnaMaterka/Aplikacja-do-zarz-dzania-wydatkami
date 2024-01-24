@@ -45,6 +45,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public Konto()
         {
             Wplywy = new ObservableCollection<WplywRaz>();
+            Wydatki = new List<WydatekRaz>();
+            Oszczednosci = new List<Oszczednosc>();
             Nazwa = "Nazwa konta";
         }
         public Konto(string nazwaBanku, decimal stanKonta, Uzytkownik uzytkownik) : this()
@@ -106,7 +108,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             }
             else
             {
-                db.Konta.Add(this);
+                //db.Konta.Add(this);
             }
 
             db.SaveChanges();
@@ -185,7 +187,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             {
                 return Wydatki.Where(WydatekRaz => WydatekRaz.Data >= poniedzialekbiez).Sum(WydatekRaz => WydatekRaz.Kwota);
             }
-            return Wplywy.Where(WydatekRaz => (WydatekRaz.Data >= poniedzialekbyly) & (WydatekRaz.Data < poniedzialekbiez)).Sum(WydatekRaz => WydatekRaz.Kwota);
+            return Wydatki.Where(WydatekRaz => (WydatekRaz.Data >= poniedzialekbyly) & (WydatekRaz.Data < poniedzialekbiez)).Sum(WydatekRaz => WydatekRaz.Kwota);
         }
 
         public decimal SumaOszczednosciTyg(bool biezacy)

@@ -48,6 +48,9 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             login++;
             Imie = "Podane imie";
             ListaKont = new ObservableCollection<Konto>();  // Inicjalizacja listy kont
+            WplywyGotowka = new List<WplywRaz>();
+            WydatkiGotowka = new List<WydatekRaz>();
+            OszczednosciWGotowce = new List<Oszczednosc>();
         }
         public Uzytkownik(decimal stanGotowki) : this()
         {
@@ -326,13 +329,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public decimal SumaWplywowTyg(bool biezacy)
         {
             decimal suma = ListaKont.Sum(Konto => Konto.SumaWplywowTyg(biezacy));
-            DateTime poniedzialekbiez = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
-            DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
-            if (biezacy)
-            {
-                suma += WplywyGotowka.Where(WplywRaz => WplywRaz.Data >= poniedzialekbiez).Sum(WplywRaz => WplywRaz.Kwota);
-            }
-            else { suma += WplywyGotowka.Where(WplywRaz => (WplywRaz.Data >= poniedzialekbyly) & (WplywRaz.Data < poniedzialekbiez)).Sum(WplywRaz => WplywRaz.Kwota); }
+            //DateTime poniedzialekbiez = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
+            //DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
+            //if (biezacy)
+            //{
+              //  suma += WplywyGotowka.Where(WplywRaz => WplywRaz.Data >= poniedzialekbiez).Sum(WplywRaz => WplywRaz.Kwota);
+            //}
+            //else { suma += WplywyGotowka.Where(WplywRaz => (WplywRaz.Data >= poniedzialekbyly) & (WplywRaz.Data < poniedzialekbiez)).Sum(WplywRaz => WplywRaz.Kwota); }
             return suma;
         }
 
@@ -343,7 +346,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             DateTime poniedzialekbyly = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek - 6);
             if (biezacy)
             {
-                suma += WydatkiGotowka.Where(WydatekRaz => WydatekRaz.Data >= poniedzialekbiez).Sum(WydatekRaz => WydatekRaz.Kwota);
+                foreach(WydatekRaz w in WydatkiGotowka)
+                {
+                    if(w.Data >= poniedzialekbiez)
+                    {
+                        suma += w.Kwota;
+                    }
+                }
             }
             else { suma += WplywyGotowka.Where(WydatekRaz => (WydatekRaz.Data >= poniedzialekbyly) & (WydatekRaz.Data < poniedzialekbiez)).Sum(WydatekRaz => WydatekRaz.Kwota); }
             return suma;
