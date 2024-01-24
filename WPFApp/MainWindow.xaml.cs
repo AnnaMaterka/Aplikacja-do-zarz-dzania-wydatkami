@@ -35,25 +35,6 @@ namespace WPFApp
             InitializeComponent();
             WczytajDane();
         }
-        //private void WczytajDane()
-        //{
-        //    dgUzytkownicy.ItemsSource = dc.Uzytkownicy.ToList();
-        //    dgKonta.ItemsSource = dc.Konta.ToList();
-        //}
-        //private void DodajUzytkownika_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var nowyUzytkownik = new Uzytkownik { Imie = "Nowy Użytkownik" };
-        //    dc.Uzytkownicy.Add(nowyUzytkownik);
-        //    dc.SaveChanges();
-        //    WczytajDane();
-        //}
-        //private void DodajKonto_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var noweKonto = new Konto { Nazwa = "Nowe Konto", StanKonta = 0 };
-        //    dc.Konta.Add(noweKonto);
-        //    dc.SaveChanges();
-        //    WczytajDane();
-        //}
 
         private void WczytajDane()
         {
