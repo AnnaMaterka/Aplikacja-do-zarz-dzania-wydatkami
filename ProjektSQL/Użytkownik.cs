@@ -43,15 +43,9 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public Uzytkownik()
         {
-            //ListaKont = new List<Konto>();
             StanGotowki = 0;
             Login = login;
             login++;
-            //ListaWydatkowRaz = new List<WydatekRaz>();
-            //ListaWydatkowSt = new List<WydatekStaly>();
-            //ListaWplywowRaz = new List<WplywRaz>();
-            //ListaWplywowSt = new List<WplywStaly>();
-            //ListaOszczednosci = new List<Oszczednosc>();
             Imie = "Podane imie";
             ListaKont = new ObservableCollection<Konto>();  // Inicjalizacja listy kont
         }

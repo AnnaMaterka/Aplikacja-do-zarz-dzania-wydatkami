@@ -93,30 +93,17 @@ namespace WPFApp
                 MessageBox.Show("Użytkownik o podanym loginie nie istnieje.");
             }
         }
-        private void Wyloguj()
-        {
-            if (aktualnaSesja != null)
-            {
-                using (var context = new UzytkownikDbContext())
-                {
-                    aktualnaSesja = context.Sesje.Find(aktualnaSesja.Id);
-                    aktualnaSesja.Zalogowany = false;
-                    context.SaveChanges();
-                }
-
-                aktualnaSesja = null;
-                WczytajDane();
-                InitialView.Visibility = Visibility.Visible;
-                LoggedInView.Visibility = Visibility.Collapsed;
-            }
-        }
-
         //private void Wyloguj()
         //{
         //    if (aktualnaSesja != null)
         //    {
-        //        aktualnaSesja.Zalogowany = false;
-        //        dc.SaveChanges();
+        //        using (var context = new UzytkownikDbContext())
+        //        {
+        //            aktualnaSesja = context.Sesje.Find(aktualnaSesja.Id);
+        //            aktualnaSesja.Zalogowany = false;
+        //            context.SaveChanges();
+        //        }
+
         //        aktualnaSesja = null;
         //        WczytajDane();
         //        InitialView.Visibility = Visibility.Visible;
@@ -124,15 +111,28 @@ namespace WPFApp
         //    }
         //}
 
+        private void Wyloguj()
+        {
+            if (aktualnaSesja != null)
+            {
+                aktualnaSesja.Zalogowany = false;
+                dc.SaveChanges();
+                aktualnaSesja = null;
+                WczytajDane();
+                InitialView.Visibility = Visibility.Visible;
+                LoggedInView.Visibility = Visibility.Collapsed;
+            }
+        }
+
         private void ZarejestrujUzytkownika(string imie)
         {
-
             if (!string.IsNullOrEmpty(imie))
             {
                 var nowyUzytkownik = new Uzytkownik { Imie = imie };
                 dc.Uzytkownicy.Add(nowyUzytkownik);
                 dc.SaveChanges();
                 MessageBox.Show($"Użytkownik {imie} został pomyślnie zarejestrowany.\nLogin użytkownika do logowania: {nowyUzytkownik.Login}");
+
             }
             else
             {
