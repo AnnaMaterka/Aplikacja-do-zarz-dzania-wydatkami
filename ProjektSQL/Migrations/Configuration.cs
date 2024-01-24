@@ -10,6 +10,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            ContextKey = "Aplikacja_do_zarzadzania_wydatkami.UzytkownikDbContext";
         }
 
         protected override void Seed(Aplikacja_do_zarzadzania_wydatkami.UzytkownikDbContext context)

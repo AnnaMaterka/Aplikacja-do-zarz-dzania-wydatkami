@@ -124,15 +124,15 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
         public void NowyWplywKonto(WplywRaz wplyw)
         {
-            //StanKonta += wplyw.Kwota;
-            //wplyw.Konto = this;
             Wplywy.Add(wplyw);
-            //OnPropertyChanged(nameof(StanKonta));
         }
-
         public void NowyWplywStaly(WplywStaly staly)
         {
             WplywyStale.Add(staly);
+        }
+        public void NowyWydatekStaly(WydatekStaly wydatekStaly)
+        {
+            WydatkiStale.Add(wydatekStaly);
         }
         public void ZapiszDoBazy()
         {

@@ -14,7 +14,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public int IdKonta { get; set;  }
         public virtual Konto Konto { get; set; }
-        public virtual string Kategoria { get; set; }
 
         public WydatekRaz() { }
         public WydatekRaz(decimal kwota, DateTime data, string kategoria) : base(kwota, data, kategoria)
@@ -48,8 +47,19 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public bool Equals(WydatekRaz? other)
         {
-            if(this.Kategoria.Equals(other!.Kategoria) && this.Kwota.Equals(other.Kwota)){ return true; }
+            if (other == null)
+                return false;
+
+            // Sprawdź czy Kategoria nie jest null przed dostępem do niej
+            if (this.Kategoria != null && other.Kategoria != null)
+            {
+                return this.Kategoria.Equals(other.Kategoria) && this.Kwota.Equals(other.Kwota);
+            }
+
+            // Jeśli jedna z Kategorii jest null, obiekty nie są równe
             return false;
         }
+
+
     }
 }

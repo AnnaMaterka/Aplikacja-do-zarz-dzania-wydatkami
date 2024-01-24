@@ -34,7 +34,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         public int IdKonta { get; set; }
         public virtual Konto Konto { get; set; }
-        public virtual string Kategoria { get; set; }
 
         private Cykl cyklWydatku;
         private bool oplaconyWBiezacymCyklu;
@@ -51,7 +50,15 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             this.stalaKwota = stalaKwota;
             this.kwota = stalaKwota?kwota:0;
         }
-
+        public WydatekStaly(decimal kwota, DateTime data, string kategoria, Uzytkownik uzytkownik, Konto konto, Cykl cyklWydatku) : base(kwota, data, kategoria, uzytkownik, konto)
+        {
+            IdKonta = konto.IdKonta;
+            CyklWydatku = cyklWydatku;
+            OplaconyWBiezacymCyklu = false;
+            StalaKwota = true;
+            this.stalaKwota = stalaKwota;
+            this.kwota = stalaKwota ? kwota : 0;
+        }
         public Cykl CyklWydatku { get => cyklWydatku; set => cyklWydatku = value; }
         public bool OplaconyWBiezacymCyklu { get => oplaconyWBiezacymCyklu; set => oplaconyWBiezacymCyklu = value; }
         public bool StalaKwota { get => stalaKwota; set => stalaKwota = value; }
@@ -62,7 +69,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 if (StalaKwota) { kwota = value; }
             }
         }
-        public DateTime Data { get => data; set => data = value; }
 
         public void Ponow()
         {
