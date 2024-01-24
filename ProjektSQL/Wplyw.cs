@@ -8,33 +8,6 @@ using System.Threading.Tasks;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
-    //public abstract class Wplyw
-    //{
-    //    private decimal kwota;
-    //    private DateTime data;
-    //    private Kategoria kategoria;
-
-    //    [Key]
-    //    public int IdWplywu { get; set; }
-
-    //    [ForeignKey("Kategoria")]
-    //    public int IdKategorii { get; set; }
-    //    public virtual Kategoria Kategorie { get; set; }
-    //    protected Wplyw(decimal kwota, DateTime data)
-    //    {
-    //        Kwota = kwota;
-    //        Data = data;
-    //    }
-    //    protected Wplyw(decimal kwota, DateTime data, string kategoria) : this(kwota, data)
-    //    {
-    //        Kategoria = Kategoria.SzukanieKategorii(kategoria);
-    //    }
-
-    //    public decimal Kwota { get => kwota; set => kwota = value; }
-    //    public DateTime Data { get => data; set => data = value; }
-    //    public Kategoria Kategoria { get => kategoria; set => kategoria = value; }
-
-    //}
     public abstract class Wplyw
     {
         private decimal kwota;
@@ -43,12 +16,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private Uzytkownik uzytkownik;
         private Konto konto;
 
-        //[Key]
-        //public int IdWplywu { get; set; }
-
-        //[ForeignKey("Kategorie")]
-        //public int IdKategorii { get; set; }
-        //public virtual Kategoria Kategorie { get; set; }
         public Wplyw() { }
         protected Wplyw(decimal kwota, DateTime data)
         {

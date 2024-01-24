@@ -29,11 +29,10 @@ namespace WPFApp
         {
             InitializeComponent();
             db = new UzytkownikDbContext();
-            // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
             ViewModel = new DodajWplywViewModel
             {
                 Uzytkownik = zalogowanyUzytkownik,
-                Konto = zalogowanyUzytkownik.ListaKont.FirstOrDefault(), // Tu możesz wybrać odpowiednie konto
+                Konto = zalogowanyUzytkownik.ListaKont.FirstOrDefault(),
                 Kategoria = db.Kategorie.FirstOrDefault()
             };
             DataContext = ViewModel;
