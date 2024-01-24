@@ -93,19 +93,36 @@ namespace WPFApp
                 MessageBox.Show("Użytkownik o podanym loginie nie istnieje.");
             }
         }
-
         private void Wyloguj()
         {
             if (aktualnaSesja != null)
             {
-                aktualnaSesja.Zalogowany = false;
-                dc.SaveChanges();
+                using (var context = new UzytkownikDbContext())
+                {
+                    aktualnaSesja = context.Sesje.Find(aktualnaSesja.Id);
+                    aktualnaSesja.Zalogowany = false;
+                    context.SaveChanges();
+                }
+
                 aktualnaSesja = null;
                 WczytajDane();
                 InitialView.Visibility = Visibility.Visible;
                 LoggedInView.Visibility = Visibility.Collapsed;
             }
         }
+
+        //private void Wyloguj()
+        //{
+        //    if (aktualnaSesja != null)
+        //    {
+        //        aktualnaSesja.Zalogowany = false;
+        //        dc.SaveChanges();
+        //        aktualnaSesja = null;
+        //        WczytajDane();
+        //        InitialView.Visibility = Visibility.Visible;
+        //        LoggedInView.Visibility = Visibility.Collapsed;
+        //    }
+        //}
 
         private void ZarejestrujUzytkownika(string imie)
         {

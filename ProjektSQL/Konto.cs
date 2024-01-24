@@ -76,27 +76,16 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
         public string Nazwa { get => nazwa; set => nazwa = value; }
 
-        public int PobierzIdKategorii(string nazwaKategorii)
-        {
-            using (var dbContext = new UzytkownikDbContext())
-            {
-                // Sprawdź, czy istnieje kategoria o podanej nazwie
-                var kategoria = dbContext.Kategorie.FirstOrDefault(k => k.NazwaKategorii == nazwaKategorii);
-
-                // Jeśli kategoria istnieje, zwróć jej IdKategorii, w przeciwnym razie -1
-                return kategoria?.IdKategorii ?? -1;
-            }
-        }
 
         //dotyczy zakupów kartą
-        public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria)
-        {
-            StanKonta -= kwota;
-            WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
-            //this.ListaWydatkowRaz.Add(wydatek);
-            this.Wydatki.Add(wydatek);
-            OnPropertyChanged(nameof(StanKonta));
-        }
+        //public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria)
+        //{
+        //    StanKonta -= kwota;
+        //    WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
+        //    //this.ListaWydatkowRaz.Add(wydatek);
+        //    this.Wydatki.Add(wydatek);
+        //    OnPropertyChanged(nameof(StanKonta));
+        //}
         public void NowyWplywKonto(WplywRaz wplyw)
         {
             //StanKonta += wplyw.Kwota;
@@ -123,7 +112,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             db.SaveChanges();
             Console.WriteLine("Zapisano!");
         }
-        public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
+        public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, string kategoria)
         {
             WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
             //this.ListaWydatkowSt.Add(wydatek);

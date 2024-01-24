@@ -44,7 +44,12 @@ namespace WPFApp
             DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik);
             bool? result = okno.ShowDialog();
         }
-        private void Zapisz()
+        private void DodajWplywStaly_Click(object sender, RoutedEventArgs e)
+        {
+            DodajWplywStaly okno = new DodajWplywStaly(zalogowanyUzytkownik);
+            bool? result = okno.ShowDialog();
+        }
+            private void Zapisz()
         {
             if (aktualnaSesja != null)
             {

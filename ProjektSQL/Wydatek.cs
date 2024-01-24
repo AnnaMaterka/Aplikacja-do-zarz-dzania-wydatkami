@@ -11,7 +11,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     {
         private decimal kwota;
         private DateTime data;
-        private Kategoria kategoria;
+        private string kategoria;
 
         //[ForeignKey("Kategoria")]
         //public int IdKategorii { get; set; }
@@ -25,13 +25,13 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         }
 
 
-        protected Wydatek(decimal kwota, DateTime data, Kategoria kategoria) :this(kwota, data) 
+        protected Wydatek(decimal kwota, DateTime data, string kategoria) :this(kwota, data) 
         {
             Kategoria = kategoria;
         }
 
         public decimal Kwota { get => kwota; set => kwota = value; }
         public DateTime Data { get => data; set => data = value; }
-        public Kategoria Kategoria { get => kategoria; set => kategoria = value; }
+        public string Kategoria { get => kategoria; set => kategoria = value; }
     }
 }

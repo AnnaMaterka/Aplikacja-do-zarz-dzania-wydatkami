@@ -16,7 +16,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 {
     public class Uzytkownik : Aktualizacja
     {
-        private static long login = 111122220000;
+        private static long login = 1;
         private string imie;
         private decimal stanGotowki;
         private ObservableCollection<Konto> listaKont;
@@ -139,7 +139,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         // WplacnaKonto służy do wpłacania, np w bankomacie
         // gotówkę zamieniamy na środki na koncie
-        public void WplacnaKonto(Konto konto, decimal kwota, DateTime data, Kategoria kategoria)
+        public void WplacnaKonto(Konto konto, decimal kwota, DateTime data, string kategoria)
         {
             konto.StanKonta += kwota;
             StanGotowki -= kwota;
@@ -158,7 +158,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             OnPropertyChanged(nameof(StanGotowki));
         }
         // dotyczy zakupów gotówką
-        public void NowyWydatekGotowka(decimal kwota, DateTime data, Kategoria kategoria)
+        public void NowyWydatekGotowka(decimal kwota, DateTime data, string kategoria)
         {
             this.StanGotowki -= kwota;
             WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);

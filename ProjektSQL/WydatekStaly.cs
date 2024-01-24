@@ -35,17 +35,17 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public int IdKonta { get; set; }
         public int IdKategorii { get; set; }
         public virtual Konto Konto { get; set; }
-        public virtual Kategoria Kategoria { get; set; }
+        public virtual string Kategoria { get; set; }
 
         private Cykl cyklWydatku;
         private bool oplaconyWBiezacymCyklu;
         private bool stalaKwota;
         private decimal kwota;
         private DateTime data;
-        private Kategoria kategoria;
+        private string kategoria;
 
         public WydatekStaly() { }
-        public WydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime data, Kategoria kategoria) :base(kwota, data, kategoria)
+        public WydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime data, string kategoria) :base(kwota, data, kategoria)
         {
             this.cyklWydatku = cyklWydatku;
             this.oplaconyWBiezacymCyklu = oplaconyWBiezacymCyklu;
