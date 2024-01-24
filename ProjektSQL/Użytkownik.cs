@@ -16,7 +16,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 {
     public class Uzytkownik : Aktualizacja
     {
-        private static long login = 1;
+        private static long login = 10000;
         private string imie;
         private decimal stanGotowki;
         private ObservableCollection<Konto> listaKont;
