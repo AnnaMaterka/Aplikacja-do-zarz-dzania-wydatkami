@@ -39,9 +39,8 @@ namespace WPFApp
             InitializeComponent();
             db = new UzytkownikDbContext();
             var listaKont = zalogowanyUzytkownik.ListaKont;
-
-            // Przypisz listę kont do ListBox
             cbKonta.ItemsSource = listaKont;
+            cbCykl.ItemsSource = Enum.GetValues(typeof(Cykl));
         }
 
         private void DodajWplywStaly_Click(object sender, RoutedEventArgs e)
@@ -49,15 +48,13 @@ namespace WPFApp
             decimal kwota = 0;
             decimal.TryParse(txtKwota.Text, out kwota);
             Kwota = kwota;
-            Konto selectedKonto = (Konto)cbKonta.SelectedItem;
-            selectedKonto.StanKonta += Kwota;
-
-            //Kategoria selectedKategoria = (Kategoria)cbKategorie.SelectedItem;
+            WybraneKonto = (Konto)cbKonta.SelectedItem;
+            WybraneKonto.StanKonta += Kwota;
+            WybranyCykl = (Cykl)cbCykl.SelectedItem;
             WpisanaKategoria = txtKategoria.Text;
-            WybraneKonto = selectedKonto;
             Data = (DateTime)datePickerData.SelectedDate;
             WplywStaly wplyw = new WplywStaly(Kwota, Data, WpisanaKategoria, ZalogowanyUzytkownik, WybraneKonto, WybranyCykl);
-            //WybraneKonto.NowyWplywKonto(wplyw);
+            WybraneKonto.NowyWplywStaly(wplyw);
             WybraneKonto.ZapiszDoBazy();
             this.Close();
         }

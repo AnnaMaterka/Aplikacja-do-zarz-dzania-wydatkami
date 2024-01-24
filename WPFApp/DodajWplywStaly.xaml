@@ -8,26 +8,24 @@
         mc:Ignorable="d"
         Title="DodajWplywStaly" Height="450" Width="800">
     <Grid>
-        <Grid>
-            <StackPanel Margin="10">
-                <Label Content="Kwota" />
-                <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="30" Width="380"/>
+        <StackPanel Margin="10">
+            <Label Content="Kwota" />
+            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="30" Width="380"/>
 
-                <Label Content="Data początkowa" />
-                <DatePicker x:Name="datePickerData" SelectedDate="{Binding DataPoczatkowa}" Height="30" Width="380"/>
+            <Label Content="Data początkowa" />
+            <DatePicker x:Name="datePickerData" SelectedDate="{Binding DataPoczatkowa}" Height="30" Width="380"/>
 
-                <Label Content="Kategoria" />
-                <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380"/>
+            <Label Content="Kategoria" />
+            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380"/>
 
-                <Label Content="Wybierz konto" />
-                <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" />
+            <Label Content="Wybierz konto" />
+            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" />
 
-                <Label Content="Wybierz cykl" />
-                <ComboBox x:Name="cbCykl" ItemsSource="{Binding Source={x:Static enums:Cykl.Miesięczny}}" SelectedItem="{Binding WybranyCykl}" Height="30" Width="380"/>
+            <Label Content="Wybierz cykl" />
+            <ComboBox x:Name="cbCykl" ItemsSource="{Binding Source={x:Static enums:Cykl.Miesięczny}}" SelectedItem="{Binding WybranyCykl}" Height="30" Width="380"/>
 
-                <Button Content="Dodaj Wplyw Staly" Click="DodajWplywStaly_Click" Height="30" Width="380" />
-                
-            </StackPanel>
-        </Grid>
+            <Button Content="Dodaj Wplyw Staly" Click="DodajWplywStaly_Click" Height="30" Width="380" />
+
+        </StackPanel>
     </Grid>
 </Window>

@@ -95,6 +95,11 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             Wplywy.Add(wplyw);
             //OnPropertyChanged(nameof(StanKonta));
         }
+
+        public void NowyWplywStaly(WplywStaly staly)
+        {
+            WplywyStale.Add(staly);
+        }
         public void ZapiszDoBazy()
         {
             using var db = new UzytkownikDbContext();
