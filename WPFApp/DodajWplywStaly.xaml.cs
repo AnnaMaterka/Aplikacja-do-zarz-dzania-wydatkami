@@ -38,7 +38,8 @@ namespace WPFApp
         {
             InitializeComponent();
             db = new UzytkownikDbContext();
-            var listaKont = zalogowanyUzytkownik.ListaKont;
+            this.ZalogowanyUzytkownik = zalogowanyUzytkownik;
+            var listaKont = ZalogowanyUzytkownik.ListaKont;
             cbKonta.ItemsSource = listaKont;
             cbCykl.ItemsSource = Enum.GetValues(typeof(Cykl));
         }
