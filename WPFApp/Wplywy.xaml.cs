@@ -72,11 +72,11 @@ namespace WPFApp
                     ObservableCollection<Wplyw> wszystkieWplywy = new ObservableCollection<Wplyw>();
                     foreach (var konto in kontaUzytkownika)
                     {
-                        var wplywyDlaKonta = dc.Wplywy.Where(w => w.IdKonta == konto.IdKonta).ToList();
-                        foreach (var wplyw in wplywyDlaKonta)
-                        {
-                            wszystkieWplywy.Add(wplyw);
-                        }
+                        //var wplywyDlaKonta = dc.Wplywy.Where(w => w.IdKonta == konto.IdKonta).ToList();
+                        //foreach (var wplyw in wplywyDlaKonta)
+                        //{
+                         //   wszystkieWplywy.Add(wplyw);
+                        //}
                     }
 
                     // Teraz możesz przypisać wszystkie wpływy do kontrolki w Twoim interfejsie

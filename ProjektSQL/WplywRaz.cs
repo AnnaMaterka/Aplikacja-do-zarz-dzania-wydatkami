@@ -60,6 +60,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 Console.WriteLine("Zapis wpływu do bazy");
 
                 // Spróbuj odnaleźć wpływ w bazie danych na podstawie IdWplywu
+                /*
                 var existingEntity = db.Wplywy.Find(this.IdWplywu);
 
                 if (existingEntity != null)
@@ -71,7 +72,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 {
                     // Jeśli wpływ nie istnieje, dodaj nowy wpływ do bazy danych
                     db.Wplywy.Add(this);
-                }
+                }*/
 
                 // Zapisz zmiany w bazie danych
                 db.SaveChanges();
