@@ -16,9 +16,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public int IdWydatekStaly { get; set; }
 
         public int IdKonta { get; set; }
-        //public int IdKategorii { get; set; }
         public virtual Konto Konto { get; set; }
-        public virtual string Kategoria { get; set; }
 
         public Cykl CyklWplywu { get => cyklWplywu; set => cyklWplywu = value; }
 

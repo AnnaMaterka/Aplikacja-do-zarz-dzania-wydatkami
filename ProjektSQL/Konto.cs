@@ -24,9 +24,9 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         
         public virtual List<WydatekRaz> Wydatki { get; set; }
         public virtual List<WydatekStaly> WydatekStale { get; set; }
-        //public virtual List<WplywRaz> Wplywy { get; set; }
-        private ObservableCollection<WplywRaz> wplywy;
-        public virtual List<WplywStaly> WplywyStale { get; set; }
+
+        private ObservableCollection<WplywRaz> wplywy; 
+        private ObservableCollection<WplywStaly> wplywyStale;
         public virtual List<Oszczednosc> Oszczednosci { get; set; }
 
         public ObservableCollection<WplywRaz> Wplywy
@@ -41,10 +41,23 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 }
             }
         }
+        public ObservableCollection<WplywStaly> WplywyStale
+        {
+            get => wplywyStale;
+            set
+            {
+                if (wplywyStale != value)
+                {
+                    wplywyStale = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public Konto()
         {
             Wplywy = new ObservableCollection<WplywRaz>();
+            WplywyStale = new ObservableCollection<WplywStaly>();
             Wydatki = new List<WydatekRaz>();
             Oszczednosci = new List<Oszczednosc>();
             Nazwa = "Nazwa konta";

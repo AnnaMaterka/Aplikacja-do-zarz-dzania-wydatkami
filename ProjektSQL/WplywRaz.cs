@@ -19,13 +19,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //public virtual Kategoria Kategoria { get; set; }
 
         public WplywRaz() { }
-        //public WplywRaz(decimal kwota, DateTime data) : base(kwota, data)
-        //{
-        //}
-        //public WplywRaz(decimal kwota, DateTime data, Kategoria kategoria) : base(kwota, data, kategoria)
-        //{
-        //    IdKategorii = kategoria.IdKategorii;
-        //}
         public WplywRaz(decimal kwota, DateTime data, string kategoria, Uzytkownik uzytkownik, Konto konto) : base(kwota, data, kategoria, uzytkownik, konto)
         {
             IdKonta = konto.IdKonta;
@@ -53,31 +46,14 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         //    if (Kategoria.Equals(other!.Kategoria) && base.Kwota.Equals(other.Kwota)) { return true; }
         //    return false;
         //}
-        public void ZapiszDoBazy()
-        {
-            using (var db = new UzytkownikDbContext())
-            {
-                Console.WriteLine("Zapis wpływu do bazy");
-
-                // Spróbuj odnaleźć wpływ w bazie danych na podstawie IdWplywu
-                /*
-                var existingEntity = db.Wplywy.Find(this.IdWplywu);
-
-                if (existingEntity != null)
-                {
-                    // Jeśli wpływ już istnieje, zaktualizuj jego wartości
-                    db.Entry(existingEntity).CurrentValues.SetValues(this);
-                }
-                else
-                {
-                    // Jeśli wpływ nie istnieje, dodaj nowy wpływ do bazy danych
-                    db.Wplywy.Add(this);
-                }*/
-
-                // Zapisz zmiany w bazie danych
-                db.SaveChanges();
-                Console.WriteLine("Zapisano wpływ!");
-            }
-        }
+        //public void ZapiszDoBazy()
+        //{
+        //    using (var db = new UzytkownikDbContext())
+        //    {
+        //        Console.WriteLine("Zapis wpływu do bazy");
+        //        db.SaveChanges();
+        //        Console.WriteLine("Zapisano wpływ!");
+        //    }
+        //}
     }
 }

@@ -16,7 +16,7 @@
             <DatePicker x:Name="datePickerData" SelectedDate="{Binding DataPoczatkowa}" Height="30" Width="380"/>
 
             <Label Content="Kategoria" />
-            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380"/>
+            <TextBox x:Name="txtKategoria" Text="{Binding WpisanaKategoria}" Height="30" Width="380"/>
 
             <Label Content="Wybierz konto" />
             <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" />

@@ -15,7 +15,6 @@ namespace WPFApp
 
         public decimal Kwota { get; set; }
         public DateTime Data { get; set; }
-        //public Kategoria WybranaKategoria { get; set; }
         public string WpisanaKategoria { get; set; }
         public Konto WybraneKonto { get; set; }
 
@@ -43,7 +42,6 @@ namespace WPFApp
                 Konto selectedKonto = (Konto)cbKonta.SelectedItem;
                 selectedKonto.StanKonta += Kwota;
 
-                //Kategoria selectedKategoria = (Kategoria)cbKategorie.SelectedItem;
                 WpisanaKategoria = txtKategoria.Text;
                 WybraneKonto = selectedKonto;
                 Data = (DateTime)datePickerData.SelectedDate;
