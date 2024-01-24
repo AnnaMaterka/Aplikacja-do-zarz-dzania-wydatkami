@@ -29,7 +29,6 @@ namespace WPFApp
         private Sesja aktualnaSesja;
         private UzytkownikDbContext dc;
 
-
         public Wplywy(Uzytkownik zalogowanyUzytkownik, UzytkownikDbContext dc)
         {
             InitializeComponent();

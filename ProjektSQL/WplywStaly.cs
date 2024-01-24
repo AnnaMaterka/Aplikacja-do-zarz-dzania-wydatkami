@@ -12,14 +12,11 @@ namespace Aplikacja_do_zarzadzania_wydatkami
     public class WplywStaly : Wplyw, IPonawialny
     {
         private Cykl cyklWplywu;
-        public List<string> KategoriwWplywuStalego = new List<string>() { 
-            "Pensja", "Alimenty", "Przychody z tytułu najmu", "Kieszonkowe"
-        };
         [Key]
         public int IdWydatekStaly { get; set; }
 
         public int IdKonta { get; set; }
-        public int IdKategorii { get; set; }
+        //public int IdKategorii { get; set; }
         public virtual Konto Konto { get; set; }
         public virtual string Kategoria { get; set; }
 
@@ -30,7 +27,11 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         {
             this.CyklWplywu = cyklWplywu;
         }
-
+        public WplywStaly(decimal kwota, DateTime data, string kategoria, Uzytkownik uzytkownik, Konto konto, Cykl cyklWplywu) : base(kwota, data, kategoria, uzytkownik, konto)
+        {
+            IdKonta = konto.IdKonta;
+            CyklWplywu = cyklWplywu;
+        }
         public void Ponow()
         {
             Calendar myCal = CultureInfo.InvariantCulture.Calendar;
