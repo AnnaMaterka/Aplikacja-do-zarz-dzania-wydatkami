@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="WyborMiesiacaiRoku" Height="200" Width="250">
+        Title="WyborMiesiacaiRoku" Height="325" Width="440">
     <Grid Background="#FF1A2A41">
-        <Label Content="Wybierz rok:" HorizontalAlignment="Left" Height="31" Margin="10,21,0,0" VerticalAlignment="Top" Width="140" Foreground="White"/>
-        <Label Content="Wybierz miesiąc:" HorizontalAlignment="Left" Height="31" Margin="10,57,0,0" VerticalAlignment="Top" Width="112" Foreground="White"/>
-        <TextBox x:Name="txtRok" HorizontalAlignment="Left" Height="31" Margin="111,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1.5"/>
-        <ComboBox x:Name="cbMiesiac" HorizontalAlignment="Left" Height="31" Margin="111,57,0,0" VerticalAlignment="Top" Width="79" BorderBrush="{x:Null}" Foreground="Black"/>
-        <Button Content="Zatwierdź" HorizontalAlignment="Left" Height="31" Margin="111,103,0,0" VerticalAlignment="Top" Width="79" Click="Zatwierdz_Click" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White"/>
+        <Label Content="Wybierz rok:" HorizontalAlignment="Left" Height="53" Margin="10,60,0,0" VerticalAlignment="Top" Width="163" Foreground="White" FontSize="18"/>
+        <Label Content="Wybierz miesiąc:" HorizontalAlignment="Left" Height="50" Margin="10,134,0,0" VerticalAlignment="Top" Width="163" Foreground="White" FontSize="18"/>
+        <TextBox x:Name="txtRok" HorizontalAlignment="Left" Height="53" Margin="206,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1.5" FontSize="18"/>
+        <ComboBox x:Name="cbMiesiac" HorizontalAlignment="Left" Height="50" Margin="206,134,0,0" VerticalAlignment="Top" Width="108" BorderBrush="{x:Null}" Foreground="Black" FontSize="18"/>
+        <Button Content="Zatwierdź" HorizontalAlignment="Left" Height="52" Margin="294,232,0,0" VerticalAlignment="Top" Width="121" Click="Zatwierdz_Click" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" FontSize="18"/>
 
     </Grid>
 </Window>

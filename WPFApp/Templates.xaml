@@ -16,8 +16,8 @@
                 Background="SlateGray"
                 BorderBrush="SlateGray"
                 BorderThickness="0"
-                Height="50"
-                Width="230">
+                Height="150"
+                Width="400">
 
             <Grid>
 
@@ -47,7 +47,7 @@
                                   Grid.Column="2"
                                   TextBlock.Foreground="White"
                                   TextBlock.FontFamily="Fonts/#Roboto Light"
-                                  TextBlock.FontSize="20"
+                                  TextBlock.FontSize="40"
                                   HorizontalAlignment="Left"
                                   RecognizesAccessKey="True"
                                   Margin="3,0,0,0"
@@ -56,10 +56,10 @@
                 <!--// Right Arrow Icon //-->
 
                 <Image Source="C:\Users\dmazu\Desktop\3 semestr\Programowanie Obiektowe\ProjektSQL\WPFApp\Assets\icons8-arrow-50.png"
-                       Stretch="Uniform"
+                       Stretch="Fill"
                        Grid.Column="4"
-                       Height="30"
-                       Width="30"
+                       Height="40"
+                       Width="40"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center" />
 
@@ -144,8 +144,8 @@
                 Background="SlateGray"
                 BorderBrush="SlateGray"
                 BorderThickness="0"
-                Height="50"
-                Width="230"
+                Height="150"
+                Width="400"
                 >
 
             <Grid>
@@ -176,7 +176,7 @@
                                   Grid.Column="2"
                                   TextBlock.Foreground="#FFFFFF"
                                   TextBlock.FontFamily="Fonts/#Roboto Light"
-                                  TextBlock.FontSize="20"
+                                  TextBlock.FontSize="40"
                                   HorizontalAlignment="Left"
                                   RecognizesAccessKey="True"
                                   Margin="3,0,0,0"
@@ -225,8 +225,8 @@
                 Background="SlateGray"
                 BorderBrush="SlateGray"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                Height="50"
-                Width="230"
+                Height="150"
+                Width="400"
                >
 
             <Grid>

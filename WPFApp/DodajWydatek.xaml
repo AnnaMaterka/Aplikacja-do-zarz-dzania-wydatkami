@@ -5,22 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="DodajWydatek" Height="318" Width="400">
+        Title="DodajWydatek" Height="463" Width="610">
     <Grid Background="#FF5E7E9E">
-        <StackPanel Margin="10">
-            <Label Content="Kwota" FontStyle="Italic" />
-            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="30" Width="380" Background="{x:Null}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="197*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10,10,4,10">
+            <Label Content="Kwota" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="35" Width="380" Background="{x:Null}" FontSize="18" Foreground="White" BorderBrush="{x:Null}"/>
 
-            <Label Content="Data" FontStyle="Italic" />
-            <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="30" Width="380"/>
+            <Label Content="Data" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="35" Width="380" BorderBrush="{x:Null}" Foreground="Black" FontSize="18"/>
 
-            <Label Content=" Kategoria" FontStyle="Italic" />
-            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380" Background="{x:Null}"/>
+            <Label Content=" Kategoria" FontStyle="Italic" FontSize="18" Foreground="White" />
+            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="35" Width="380" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" FontSize="18"/>
 
-            <Label Content="Wybierz konto" FontStyle="Italic" />
-            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" />
+            <Label Content="Wybierz konto" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="35" Width="380" SelectedItem="{Binding WybraneKonto}" FontSize="18" />
 
-            <Button Content="Dodaj Wplyw" Click="DodajWydatek_Click" Height="30" Width="380" Background="#FF5E7E9E" />
+            <Button Content="Dodaj Wplyw" Click="DodajWydatek_Click" Height="105" Width="380" Background="#FF5E7E9E" FontSize="18" UseLayoutRounding="True" Foreground="White" />
         </StackPanel>
     </Grid>
 </Window>

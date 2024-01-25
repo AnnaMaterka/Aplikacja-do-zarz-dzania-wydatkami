@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1000" Width="1500">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,23 +27,23 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel x:Name="InitialView" Visibility="Visible"  Grid.ColumnSpan="3" Margin="0,54,0,0" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal" Height="382" Width="570" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Margin="230,0,0,0" Background="#FF5E7E9E" >
-                <Button Content="Zaloguj" Click="Zaloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" FontFamily="Verdana" FontSize="20" Width="240" Height="378">
+            <StackPanel Orientation="Horizontal" Height="178" Width="954" RenderTransformOrigin="0.5,0.5" Background="#FF5E7E9E" HorizontalAlignment="Right" >
+                <Button Content="Zaloguj" Click="Zaloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" FontFamily="Verdana" FontSize="40" Width="309" Height="150">
                     <Button.Foreground>
                         <SolidColorBrush Color="White" Opacity="1"/>
                     </Button.Foreground>
                 </Button>
-                <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" Width="320" FontFamily="Verdana" FontSize="20" FontWeight="Normal" Height="368"/>
+                <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" Width="606" FontFamily="Verdana" FontSize="40" FontWeight="Normal" Height="150"/>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel x:Name="LoggedInView" Visibility="Collapsed" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,0,0" Grid.RowSpan="2" Height="58" Width="160">
-            <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="30" Width="160" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
-            <Button Content="Wyloguj" Click="Wyloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="20"/>
+        <StackPanel x:Name="LoggedInView" Visibility="Collapsed"  Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,122,25,0" Grid.RowSpan="2" Height="193" Width="441">
+            <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="100" Width="400" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="40"/>
+            <Button Content="Wyloguj" Click="Wyloguj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="40" Height="84" Width="436"/>
         </StackPanel>
 
         <StackPanel Background="#FF1A2A41"
-                    Width="230"
+                    Width="412"
                     Orientation="Vertical"
                     HorizontalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
@@ -53,13 +53,11 @@
                 <TextBlock Text=" Menu "
                            Foreground="White"
                            FontFamily="Verdana"
-                           FontSize="25"  Height="50" Margin="0,0,-563,0" Background="#FF1A2A41" FontWeight="SemiBold" />
+                           FontSize="50" Margin="0,0,-1072,-43" Background="#FF1A2A41" FontWeight="SemiBold" />
 
             </Grid>
-
-            <Menu Height="343"
-                  Background="Transparent"
-                  Margin="0,40,0,0">
+            <Menu Height="536"
+                  Background="Transparent" Width="404">
                 <Menu.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel Orientation="Vertical" />
@@ -67,7 +65,7 @@
                 </Menu.ItemsPanel>
 
                 <MenuItem Header="Konta"
-                          Template="{StaticResource Menu_Template}" Click="MenuItem_Click">
+                          Template="{StaticResource Menu_Template}" Click="MenuItem_Click" Margin="1,48,4,-148" FontSize="20">
                     <MenuItem.Icon>
                         <Image Source="C:\Users\dmazu\Desktop\3 semestr\Programowanie Obiektowe\ProjektSQL\WPFApp\Assets\icons8-online-money-transfer-48.png"
                                Stretch="Uniform" />
@@ -75,7 +73,7 @@
                 </MenuItem>
 
                 <MenuItem Header="Transakcje"
-                          Template="{StaticResource Menu_SubMenu_Template}" Height="50" VerticalAlignment="Top">
+                          Template="{StaticResource Menu_SubMenu_Template}" Height="163" VerticalAlignment="Top" Margin="-1,153,1,0" FontSize="20">
 
                     <MenuItem.Icon>
                         <Image Source="C:\Users\dmazu\Desktop\3 semestr\Programowanie Obiektowe\ProjektSQL\WPFApp\Assets\icons8-tips-48.png"
@@ -100,23 +98,19 @@
                 </MenuItem>
 
                 <MenuItem Header="Raporty"
-                          Template="{StaticResource Menu_SubMenu_Template}">
+                          Template="{StaticResource Menu_SubMenu_Template}" Margin="1,-2,2,-100" FontSize="20">
                     <MenuItem.Icon>
                         <Image Source="C:\Users\dmazu\Desktop\3 semestr\Programowanie Obiektowe\ProjektSQL\WPFApp\Assets\icons8-report-file-48.png"
                                Stretch="None" />
                     </MenuItem.Icon>
 
                     <MenuItem Header="Raport tygodniowy"
-                              Template="{StaticResource Item_Template}" Click =" RaportTygodniowy_Click">
-
-                    </MenuItem>
+                              Template="{StaticResource Item_Template}" Click =" RaportTygodniowy_Click"/>
                     <MenuItem Header="Raport miesięczny"
-                              Template="{StaticResource Item_Template}" Click="RaportMiesieczny_Click">
-                    </MenuItem>
+                              Template="{StaticResource Item_Template}" Click="RaportMiesieczny_Click"/>
 
                     <MenuItem Header="Raport roczny"
-                              Template="{StaticResource Item_Template}" Click="RaportRoczny_Click">
-                    </MenuItem>
+                              Template="{StaticResource Item_Template}" Click="RaportRoczny_Click"/>
 
                 </MenuItem>
             </Menu>

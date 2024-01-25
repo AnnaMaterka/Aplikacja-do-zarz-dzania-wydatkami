@@ -6,25 +6,25 @@
         xmlns:local="clr-namespace:WPFApp"
         xmlns:enums="clr-namespace:Aplikacja_do_zarzadzania_wydatkami;assembly=ProjektSQL"
         mc:Ignorable="d"
-        Title="DodajWplywStaly" Height="379" Width="411">
-    <Grid Background="#FFA0BFD4">
+        Title="DodajWplywStaly" Height="500" Width="450" Foreground="White">
+    <Grid Background="#FF5E7E9E">
         <StackPanel Margin="10,10,10,10">
-            <Label Content="Kwota" Foreground="Black" FontStyle="Italic" />
-            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="30" Width="380" Background="{x:Null}"/>
+            <Label Content="Kwota" Foreground="White" FontStyle="Italic" FontSize="18" />
+            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="35" Width="380" Background="{x:Null}" Foreground="White" FontSize="18"/>
 
-            <Label Content="Data początkowa" FontStyle="Italic" />
-            <DatePicker x:Name="datePickerData" SelectedDate="{Binding DataPoczatkowa}" Height="30" Width="380"/>
+            <Label Content="Data początkowa" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <DatePicker x:Name="datePickerData" SelectedDate="{Binding DataPoczatkowa}" Height="35" Width="380" Foreground="Black" FontSize="18"/>
 
-            <Label Content="Kategoria" FontStyle="Italic" />
-            <TextBox x:Name="txtKategoria" Text="{Binding WpisanaKategoria}" Height="30" Width="380" Background="{x:Null}"/>
+            <Label Content="Kategoria" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <TextBox x:Name="txtKategoria" Text="{Binding WpisanaKategoria}" Height="35" Width="380" Background="{x:Null}" Foreground="White" FontSize="18"/>
 
-            <Label Content="Wybierz konto" FontStyle="Italic" />
-            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" Background="#FF9DC3A9" />
+            <Label Content="Wybierz konto" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="35" Width="380" SelectedItem="{Binding WybraneKonto}" Background="{x:Null}" Foreground="Black" BorderBrush="{x:Null}" FontSize="18" />
 
-            <Label Content="Wybierz cykl" FontStyle="Italic" />
-            <ComboBox x:Name="cbCykl" ItemsSource="{Binding Source={x:Static enums:Cykl.Miesięczny}}" SelectedItem="{Binding WybranyCykl}" Height="30" Width="380" Background="#FF9DC3A9"/>
+            <Label Content="Wybierz cykl" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <ComboBox x:Name="cbCykl" ItemsSource="{Binding Source={x:Static enums:Cykl.Miesięczny}}" SelectedItem="{Binding WybranyCykl}" Height="35" Width="380" Background="#FF9DC3A9" FontSize="18" BorderBrush="{x:Null}" Foreground="Black"/>
 
-            <Button Content="Dodaj wplyw stały" Click="DodajWplywStaly_Click" Height="30" Width="380" Background="#FFA0BFD4" FontFamily="Verdana" />
+            <Button Content="Dodaj wplyw stały" Click="DodajWplywStaly_Click" Height="91" Width="380" Background="{x:Null}" FontFamily="Verdana" Foreground="White" FontSize="18" />
 
         </StackPanel>
     </Grid>

@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-            Title="DodajWplyw" Height="400" Width="400">
+            Title="Dodaj wplyw"  Height="463" Width="610" Background="#FF5E7E9E">
     <Grid>
         <StackPanel Margin="10">
-            <Label Content="Kwota" />
-            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="30" Width="380"/>
+            <Label Content="Kwota" Foreground="White" FontSize="18" FontStyle="Italic" />
+            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="35" Width="380" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18"/>
 
-            <Label Content="Data" />
-            <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="30" Width="380"/>
+            <Label Content="Data" Foreground="White" FontSize="18" FontStyle="Italic" />
+            <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="35" Width="380" BorderBrush="{x:Null}" Foreground="Black" FontSize="18"/>
 
-            <Label Content="Wybierz kategorię" />
-            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380"/>
+            <Label Content="Wybierz kategorię" Foreground="White" FontSize="18" FontStyle="Italic" />
+            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="35" Width="380" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" FontSize="18"/>
 
-            <Label Content="Wybierz konto" />
-            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" />
+            <Label Content="Wybierz konto" Foreground="White" FontSize="18" FontStyle="Italic" />
+            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="35" Width="380" SelectedItem="{Binding WybraneKonto}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="18" />
 
-            <Button Content="Dodaj Wplyw" Click="DodajWplyw_Click" Height="30" Width="380" />
+            <Button Content="Dodaj Wplyw" Click="DodajWplyw_Click" Height="105" Width="380" Background="#FF5E7E9E" BorderBrush="{x:Null}" Foreground="White" FontSize="18" />
         </StackPanel>
     </Grid>
 </Window>
