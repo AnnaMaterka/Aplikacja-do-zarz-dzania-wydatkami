@@ -27,31 +27,27 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             return this.MemberwiseClone();
         }
 
-        // tylko żeby nie wyrzucało błędu
         public int CompareTo(WplywRaz? other)
         {
-            throw new NotImplementedException();
+            if (other == null)
+                return 1;
+            if (this.Kategoria.CompareTo(other!.Kategoria) == 0) 
+                return -this.Kwota.CompareTo(other.Kwota);
+            return this.Kategoria.CompareTo(other.Kategoria);
         }
 
-        //public int CompareTo(WplywRaz? other)
-        //{
-        //    if (this.Kategoria.CompareTo(other!.Kategoria) == 0) { return -this.Kwota.CompareTo(other.Kwota); }
-        //    return this.Kategoria.CompareTo(other.Kategoria);
-        //}
+        public bool Equals(WplywRaz? other)
+        {
+            if (other == null)
+                return false;
 
-        //public bool Equals(WplywRaz? other)
-        //{
-        //    if (Kategoria.Equals(other!.Kategoria) && base.Kwota.Equals(other.Kwota)) { return true; }
-        //    return false;
-        //}
-        //public void ZapiszDoBazy()
-        //{
-        //    using (var db = new UzytkownikDbContext())
-        //    {
-        //        Console.WriteLine("Zapis wpływu do bazy");
-        //        db.SaveChanges();
-        //        Console.WriteLine("Zapisano wpływ!");
-        //    }
-        //}
+            if (this.Kategoria != null && other.Kategoria != null)
+            {
+                return this.Kategoria.Equals(other.Kategoria) && this.Kwota.Equals(other.Kwota);
+            }
+
+            // Jeśli jedna z Kategorii jest null, obiekty nie są równe
+            return false;
+        }
     }
 }

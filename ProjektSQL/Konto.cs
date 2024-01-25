@@ -16,7 +16,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private string nazwa;
         private string nazwaBanku;
         private decimal stanKonta;
-        private Uzytkownik uzytkownik;
+        //private Uzytkownik uzytkownik;
 
         public virtual Uzytkownik Uzytkownik { get; set; }
         [Key]
@@ -117,7 +117,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public string Nazwa { get => nazwa; set => nazwa = value; }
 
 
-        //dotyczy zakupów kartą
         public void NowyWydatekKonto(WydatekRaz wydatek)
         {
             this.Wydatki.Add(wydatek);
@@ -145,36 +144,24 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             {
                 db.Entry(existingEntity).CurrentValues.SetValues(this);
             }
-            else
-            {
-                //db.Konta.Add(this);
-            }
 
             db.SaveChanges();
             Console.WriteLine("Zapisano!");
         }
-        public void NowyWydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, string kategoria)
-        {
-            WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
-            //this.ListaWydatkowSt.Add(wydatek);
-            this.WydatkiStale.Add(wydatek);
-            OnPropertyChanged(nameof(StanKonta));
-        }
 
-        public void OplacWydatekStaly(WydatekStaly wydatek)
-        {
-            if (StanKonta < wydatek.Kwota)
-            {
-                throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{StanKonta}");
-            }
-            StanKonta -= wydatek.Kwota;
-            WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria);
-            //this.ListaWydatkowRaz.Add(nowy);
-            this.Wydatki.Add(nowy);
-            OnPropertyChanged(nameof(StanKonta));
-            wydatek.OplaconyWBiezacymCyklu = true;
+        //public void OplacWydatekStaly(WydatekStaly wydatek)
+        //{
+        //    if (StanKonta < wydatek.Kwota)
+        //    {
+        //        throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{StanKonta}");
+        //    }
+        //    StanKonta -= wydatek.Kwota;
+        //    WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria);
+        //    this.Wydatki.Add(nowy);
+        //    OnPropertyChanged(nameof(StanKonta));
+        //    wydatek.OplaconyWBiezacymCyklu = true;
+        //}
 
-        }
         public delegate decimal SumaZaOkres(string okres);
 
         public decimal SumaWplywowMies(string rokmies)

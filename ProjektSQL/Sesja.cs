@@ -19,8 +19,5 @@ namespace ProjektSQL
         public int IdUzytkownika { get; set; }
         public bool Zalogowany { get; set; }
 
-        //[ForeignKey(nameof(IdUzytkownika))]
-        //public Uzytkownik Uzytkownik { get; set; }
-
     }
 }

@@ -10,22 +10,6 @@ using System.Threading.Tasks;
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
     public enum Cykl {Tygodniowy, Miesięczny, Dwumiesięczny, Kwartalny, Półroczny, Roczny}
-    public enum KategoriaWydatkuSt
-    {
-        PodatekDochodowy,
-        PodatekodNier,
-        Prąd,
-        Woda,
-        Gaz,
-        Internet,
-        Telewizja,
-        Abonament,
-        Śmieci,
-        Czynsz,
-        RataKredytu,
-        Rozrywka,
-        Inne
-    }
     public class WydatekStaly: Wydatek, IPonawialny
     {
 
@@ -39,8 +23,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private bool oplaconyWBiezacymCyklu;
         private bool stalaKwota;
         private decimal kwota;
-        private DateTime data;
-        private string kategoria;
 
         public WydatekStaly() { }
         public WydatekStaly(Cykl cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime data, string kategoria) :base(kwota, data, kategoria)
@@ -56,8 +38,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             CyklWydatku = cyklWydatku;
             OplaconyWBiezacymCyklu = false;
             StalaKwota = true;
-            this.stalaKwota = stalaKwota;
-            this.kwota = stalaKwota ? kwota : 0;
+            Kwota = kwota;
         }
         public Cykl CyklWydatku { get => cyklWydatku; set => cyklWydatku = value; }
         public bool OplaconyWBiezacymCyklu { get => oplaconyWBiezacymCyklu; set => oplaconyWBiezacymCyklu = value; }

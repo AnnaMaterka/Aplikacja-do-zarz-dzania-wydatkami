@@ -29,21 +29,14 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             return this.MemberwiseClone();
         }
 
-
-        // tylko żeby nie wyrzucało błędu
         public int CompareTo(WydatekRaz? other)
         {
-            throw new NotImplementedException();
+            if (other == null)
+                return 1;
+            if (Kategoria.CompareTo(other.Kategoria) == 0)
+                return -this.Kwota.CompareTo(other.Kwota);
+            return Kategoria.CompareTo(other.Kategoria);
         }
-
-        //public int CompareTo(WydatekRaz? other)
-        //{
-        //    if (other == null)
-        //        return 1;
-        //    if (Kategoria.CompareTo(other.Kategoria) == 0) 
-        //        return -this.Kwota.CompareTo(other.Kwota); 
-        //    return Kategoria.CompareTo(other.Kategoria);
-        //}
 
         public bool Equals(WydatekRaz? other)
         {
@@ -56,10 +49,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
                 return this.Kategoria.Equals(other.Kategoria) && this.Kwota.Equals(other.Kwota);
             }
 
-            // Jeśli jedna z Kategorii jest null, obiekty nie są równe
             return false;
         }
-
 
     }
 }

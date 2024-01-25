@@ -36,7 +36,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdUzytkownika { get; set; }
-        public virtual List<Sesja> Sesje { get; set; }
+        //public virtual List<Sesja> Sesje { get; set; }
         public virtual List<WydatekRaz> WydatkiGotowka { get; set; }
         public virtual List<WplywRaz> WplywyGotowka { get; set; }
         public virtual List<Oszczednosc> OszczednosciWGotowce { get; set; }
@@ -47,7 +47,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             Login = login;
             login++;
             Imie = "Podane imie";
-            ListaKont = new ObservableCollection<Konto>();  // Inicjalizacja listy kont
+            ListaKont = new ObservableCollection<Konto>();
             WplywyGotowka = new List<WplywRaz>();
             WydatkiGotowka = new List<WydatekRaz>();
             OszczednosciWGotowce = new List<Oszczednosc>();
@@ -68,13 +68,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         public string Imie { get => imie; set => imie = value; }
         public decimal StanGotowki { get => stanGotowki; set => stanGotowki = value; }
         public long Login { get; }
-        //public List<Konto> ListaKont { get => listaKont; set => listaKont = value; }
-        //public List<WydatekRaz> ListaWydatkowRaz { get => listaWydatkowRaz; set => listaWydatkowRaz = value; }
-        //public List<WydatekStaly> ListaWydatkowSt { get => listaWydatkowSt; set => listaWydatkowSt = value; }
-        //internal List<WplywRaz> ListaWplywowRaz { get => listaWplywowRaz; set => listaWplywowRaz = value; }
-        //internal List<WplywStaly> ListaWplywowSt { get => listaWplywowSt; set => listaWplywowSt = value; }
-        //internal List<Oszczednosc> ListaOszczednosci { get => listaOszczednosci; set => listaOszczednosci = value; }
-
         public void ZapiszDoBazy()
         {
             using var db = new UzytkownikDbContext();
@@ -141,14 +134,6 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             konto.StanKonta += kwota;
             StanGotowki -= kwota;
         }
-        
-        //public void WplywGotowki(decimal kwota, DateTime data, Kategoria kategoria)
-        //{
-        //    StanGotowki += kwota;
-        //    WplywRaz wplyw = new(kwota, data, kategoria);
-        //    this.WplywyGotowka.Add(wplyw);
-        //    OnPropertyChanged(nameof(StanGotowki));
-        //}
         public void DodajWplywGotowki(WplywRaz wplyw)
         {
             this.WplywyGotowka.Add(wplyw);
@@ -157,39 +142,8 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         // dotyczy zakupów gotówką
         public void NowyWydatekGotowka(WydatekRaz wydatek)
         {
-            //this.StanGotowki -= kwota;
-            //WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
-            //this.ListaWydatkowRaz.Add(wydatek);
             this.WydatkiGotowka.Add(wydatek);
-            //OnPropertyChanged(nameof(StanGotowki));
         }
-        //dotyczy zakupów kartą
-        //public void NowyWydatekKonto(decimal kwota, DateTime data, Kategoria kategoria, Konto konto)
-        //{
-        //    konto.StanKonta -= kwota;
-        //    WydatekRaz wydatek = new WydatekRaz(kwota, data, kategoria);
-        //    this.ListaWydatkowRaz.Add(wydatek);
-        //}
-
-        //public void NowyWydatekStaly(CyklWydatku cyklWydatku, bool oplaconyWBiezacymCyklu, bool stalaKwota, decimal kwota, DateTime deadline, Kategoria kategoria)
-        //{
-        //    WydatekStaly wydatek = new WydatekStaly(cyklWydatku, oplaconyWBiezacymCyklu, stalaKwota, kwota, deadline, kategoria);
-        //    this.ListaWydatkowSt.Add(wydatek);
-        //}
-
-        //public void OplacWydatekStaly(WydatekStaly wydatek, Konto konto)
-        //{
-        //    if (konto.StanKonta < wydatek.Kwota)
-        //    {
-        //        throw new BrakSrodkow($"Nie można dokonać wypłaty, ponieważ obecny stan środków wynosi:{konto.StanKonta}");
-        //    }
-        //    konto.StanKonta -= wydatek.Kwota;
-        //    //KategoriaWydatkuSt k = KategoriaWydatkuSt.Inne; // Tu trzeba zmienić
-        //    WydatekRaz nowy = new WydatekRaz(wydatek.Kwota, DateTime.Today, wydatek.Kategoria);
-        //    this.ListaWydatkowRaz.Add(nowy);
-        //    wydatek.OplaconyWBiezacymCyklu = true;
-
-        //}
         public void OdlozGotowke(int kwota, string cel)
         {
             this.StanGotowki -= kwota;
