@@ -161,6 +161,12 @@ namespace WPFApp
                 dgKont.ItemsSource = kontaUzytkownika;
             }
         }
+        private void Zamknij_Click(object sender, RoutedEventArgs e)
+        {
+            InitialView.Visibility = Visibility.Collapsed;
+            LoggedInView.Visibility = Visibility.Visible;
+            WidokKont.Visibility = Visibility.Collapsed;
+        }
         private void Wplywy_Click(object sender, RoutedEventArgs e)
         {
             // Tutaj otwierasz nowe okno Wplyw i przekazujesz zalogowanego użytkownika

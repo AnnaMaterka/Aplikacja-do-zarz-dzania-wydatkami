@@ -44,9 +44,10 @@
             
         </StackPanel>
         <StackPanel x:Name="WidokKont" Visibility="Collapsed"  Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,122,0,0" Grid.RowSpan="2" Height="823" Width="927">
+            <Button Content="Zamknij" Click="Zamknij_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="30" Height="70" Width="200" HorizontalAlignment="Right"/>
             <DataGrid x:Name="dgKont" AutoGenerateColumns="False" FontSize="30" Background="{x:Null}" Foreground="Black">
                 <DataGrid.Resources>
-                    <Style TargetType="TextBlock">
+                    <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="FontSize" Value="50"/>
                     </Style>
                 </DataGrid.Resources>
