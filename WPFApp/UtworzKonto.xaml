@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="UtworzKonto" Height="300" Width="400">
-    <Grid>
+        Title="UtworzKonto" Height="214" Width="243">
+    <Grid Background="#FF5E7E9E">
         <StackPanel Margin="10">
-            <Label Content="Nazwa Konta" />
-            <TextBox x:Name="NazwaKontaTextBox" Text="{Binding Nazwa}" />
+            <Label Content="Nazwa Konta" Foreground="White" FontStyle="Italic" />
+            <TextBox x:Name="NazwaKontaTextBox" Text="{Binding Nazwa}" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1" />
 
-            <Label Content="Nazwa Banku" />
-            <TextBox x:Name="NazwaBankuTextBox" Text="{Binding NazwaBanku}" />
+            <Label Content="Nazwa Banku" Foreground="White" FontStyle="Italic" />
+            <TextBox x:Name="NazwaBankuTextBox" Text="{Binding NazwaBanku}" BorderBrush="White" Background="{x:Null}" BorderThickness="0,0,0,1" />
 
-            <Label Content="Stan Konta" />
-            <TextBox x:Name="StanKontaTextBox" Text="{Binding StanKonta}" />
-            <Button Content="Utwórz Konto" Click="DodajKonto_Click" />
+            <Label Content="Stan Konta" Foreground="White" FontStyle="Italic" />
+            <TextBox x:Name="StanKontaTextBox" Text="{Binding StanKonta}" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1" />
+            <Button Content="Utwórz Konto" Click="DodajKonto_Click" Background="#FF5E7E9E" BorderBrush="{x:Null}" Foreground="White" />
         </StackPanel>
     </Grid>
 </Window>

@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="DodajWydatek" Height="400" Width="400">
-    <Grid>
+        Title="DodajWydatek" Height="318" Width="400">
+    <Grid Background="#FF5E7E9E">
         <StackPanel Margin="10">
-            <Label Content="Kwota" />
-            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="30" Width="380"/>
+            <Label Content="Kwota" FontStyle="Italic" />
+            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="30" Width="380" Background="{x:Null}"/>
 
-            <Label Content="Data" />
+            <Label Content="Data" FontStyle="Italic" />
             <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="30" Width="380"/>
 
-            <Label Content="Wybierz kategorię" />
-            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380"/>
+            <Label Content=" Kategoria" FontStyle="Italic" />
+            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="30" Width="380" Background="{x:Null}"/>
 
-            <Label Content="Wybierz konto" />
+            <Label Content="Wybierz konto" FontStyle="Italic" />
             <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="33" Width="380" SelectedItem="{Binding WybraneKonto}" />
 
-            <Button Content="Dodaj Wplyw" Click="DodajWydatek_Click" Height="30" Width="380" />
+            <Button Content="Dodaj Wplyw" Click="DodajWydatek_Click" Height="30" Width="380" Background="#FF5E7E9E" />
         </StackPanel>
     </Grid>
 </Window>

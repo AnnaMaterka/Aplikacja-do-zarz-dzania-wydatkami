@@ -6,14 +6,8 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         Title="Wydatki" Height="450" Width="800">
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF323B79"/>
-                <GradientStop Color="Gray" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <DataGrid x:Name="WydatkiDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wydatki}" Margin="212,46,70,55">
+    <Grid Background="#FFA8B6C9">
+        <DataGrid x:Name="WydatkiDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wydatki}" Margin="212,46,70,55" Background="{x:Null}" BorderBrush="White">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Data" Binding="{Binding Data}" Width="*" />
                 <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}" Width="*" />
@@ -26,7 +20,7 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
         </DataGrid>
-        <Button Content="Dodaj wydatek" Click="DodajWydatek_Click" Margin="10,10,623,376" Background="#FF6E8ABE"/>
-        <Button Content="Dodaj wydatek stały" Click="DodajWydatekStaly_Click" Margin="10,63,623,323" Background="#FF6E8ABE"/>
+        <Button Content="Dodaj wydatek" Click="DodajWydatek_Click" Margin="39,164,621,222" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button Content="Dodaj wydatek stały" Click="DodajWydatekStaly_Click" Margin="39,217,621,169" Background="{x:Null}" BorderBrush="{x:Null}"/>
     </Grid>
 </Window>

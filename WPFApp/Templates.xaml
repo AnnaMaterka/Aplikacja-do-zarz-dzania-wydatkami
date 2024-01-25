@@ -55,7 +55,7 @@
 
                 <!--// Right Arrow Icon //-->
 
-                <Image Source="Assets/icons8-arrow-50.png"
+                <Image Source="C:\Users\dmazu\Desktop\3 semestr\Programowanie Obiektowe\ProjektSQL\WPFApp\Assets\icons8-arrow-50.png"
                        Stretch="Uniform"
                        Grid.Column="4"
                        Height="30"

@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="WyborTygodnia" Height="200" Width="250">
-    <Grid>
-        <Label Content="Wybierz tydzień&#xD;&#xA;dla którego ma być raport:" HorizontalAlignment="Left" Height="41" Margin="10,10,0,0" VerticalAlignment="Top" Width="233"/>
-        <ComboBox x:Name="cbTydzien" HorizontalAlignment="Left" Margin="19,70,0,0" VerticalAlignment="Top" Width="166" Height="33"/>
-        <Button Content="Zatwierdź" HorizontalAlignment="Left" Height="31" Margin="126,129,0,0" VerticalAlignment="Top" Width="80" Click="Zatwierdz_Click"/>
+        Title="WyborTygodnia" Height="189" Width="219">
+    <Grid Background="#FF1A2A41">
+        <Label Content="Wybierz tydzień&#xD;&#xA;dla którego ma być raport:" HorizontalAlignment="Left" Height="41" Margin="10,10,0,0" VerticalAlignment="Top" Width="233" Background="{x:Null}" Foreground="White"/>
+        <ComboBox x:Name="cbTydzien" HorizontalAlignment="Left" Margin="19,70,0,0" VerticalAlignment="Top" Width="166" Height="33" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button Content="Zatwierdź" HorizontalAlignment="Left" Height="31" Margin="126,129,0,0" VerticalAlignment="Top" Width="80" Click="Zatwierdz_Click" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White"/>
 
     </Grid>
 </Window>
