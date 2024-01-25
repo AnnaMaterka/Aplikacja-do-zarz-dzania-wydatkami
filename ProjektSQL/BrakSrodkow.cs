@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aplikacja_do_zarzadzania_wydatkami
 {
-    internal class BrakSrodkow : Exception
+    public class BrakSrodkow : Exception
     {
         public BrakSrodkow() : base() { }
         public BrakSrodkow(string message) : base(message)
