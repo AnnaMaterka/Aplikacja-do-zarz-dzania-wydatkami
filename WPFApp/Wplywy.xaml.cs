@@ -32,7 +32,7 @@ namespace WPFApp
         public Wplywy(Uzytkownik zalogowanyUzytkownik, UzytkownikDbContext dc)
         {
             InitializeComponent();
-            this.zalogowanyUzytkownik = zalogowanyUzytkownik; // Przekazanie zalogowanego użytkownika
+            this.zalogowanyUzytkownik = zalogowanyUzytkownik;
             this.dc = dc;
             
             WyswietlWplywy();
@@ -42,22 +42,19 @@ namespace WPFApp
         {
             DodajWplyw okno = new DodajWplyw(zalogowanyUzytkownik);
             bool? result = okno.ShowDialog();
+            if (result == true)
+            {
+                WyswietlWplywy();
+            }
         }
         private void DodajWplywStaly_Click(object sender, RoutedEventArgs e)
         {
             DodajWplywStaly okno = new DodajWplywStaly(zalogowanyUzytkownik);
             bool? result = okno.ShowDialog();
-        }
-            private void Zapisz()
-        {
-            if (aktualnaSesja != null)
+            if (result == true)
             {
-                dc.SaveChanges();
+                WyswietlWplywy();
             }
-        }
-        private void Zapisz_Click(object sender, RoutedEventArgs e)
-        {
-            Zapisz();
         }
         private void WyswietlWplywy()
         {
@@ -82,18 +79,6 @@ namespace WPFApp
 
                 WplywyDataGrid.ItemsSource = wszystkieWplywy;
             }
-            //if(zalogowanyUzytkownik != null)
-            //{
-            //    //var wplywy = dc.Konta.SelectMany(k => k.Wplywy).ToList();
-            //    var wplywy = dc.Wplywy.Where(w => dc.Konta.Any(k => k.IdKonta == w.IdKonta && k.Uzytkownik.IdUzytkownika == zalogowanyUzytkownik.IdUzytkownika)).ToList();
-            //    listBoxWplywy.ItemsSource = wplywy;
-            //}
-            // Pobierz wszystkie wpływy z kont użytkownika
-            //var wplywyUzytkownika = zalogowanyUzytkownik.ListaKont
-            //    .SelectMany(konto => konto.Wplywy)
-            //    .ToList();
-
-            //listBoxWplywy.ItemsSource = wplywyUzytkownika;
 
         }
 

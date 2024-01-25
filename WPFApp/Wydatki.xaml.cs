@@ -29,7 +29,7 @@ namespace WPFApp
         public Wydatki(Uzytkownik zalogowanyUzytkownik, UzytkownikDbContext dc)
         {
             InitializeComponent();
-            this.zalogowanyUzytkownik = zalogowanyUzytkownik; // Przekazanie zalogowanego użytkownika
+            this.zalogowanyUzytkownik = zalogowanyUzytkownik; 
             this.dc = dc;
             WyswietlWydatki();
         }

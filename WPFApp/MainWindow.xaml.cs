@@ -75,23 +75,6 @@ namespace WPFApp
                 MessageBox.Show("Użytkownik o podanym loginie nie istnieje.");
             }
         }
-        //private void Wyloguj()
-        //{
-        //    if (aktualnaSesja != null)
-        //    {
-        //        using (var context = new UzytkownikDbContext())
-        //        {
-        //            aktualnaSesja = context.Sesje.Find(aktualnaSesja.Id);
-        //            aktualnaSesja.Zalogowany = false;
-        //            context.SaveChanges();
-        //        }
-
-        //        aktualnaSesja = null;
-        //        WczytajDane();
-        //        InitialView.Visibility = Visibility.Visible;
-        //        LoggedInView.Visibility = Visibility.Collapsed;
-        //    }
-        //}
 
         private void Wyloguj()
         {
@@ -169,14 +152,12 @@ namespace WPFApp
         }
         private void Wplywy_Click(object sender, RoutedEventArgs e)
         {
-            // Tutaj otwierasz nowe okno Wplyw i przekazujesz zalogowanego użytkownika
             Wplywy wplywyWindow = new Wplywy(zalogowanyUzytkownik, dc);
             wplywyWindow.Show();
         }
         
         private void Wydatki_Click(object sender, RoutedEventArgs e)
         {
-            // Tutaj otwierasz nowe okno Wplyw i przekazujesz zalogowanego użytkownika
             Wydatki wydatkiWindow = new Wydatki(zalogowanyUzytkownik, dc);
             wydatkiWindow.Show();
         }

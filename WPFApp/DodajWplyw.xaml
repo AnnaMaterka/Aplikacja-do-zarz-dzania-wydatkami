@@ -14,7 +14,7 @@
             <Label Content="Data" Foreground="White" FontSize="18" FontStyle="Italic" />
             <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="35" Width="380" BorderBrush="{x:Null}" Foreground="Black" FontSize="18"/>
 
-            <Label Content="Wybierz kategorię" Foreground="White" FontSize="18" FontStyle="Italic" />
+            <Label Content="Kategoria" Foreground="White" FontSize="18" FontStyle="Italic" />
             <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="35" Width="380" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" FontSize="18"/>
 
             <Label Content="Wybierz konto" Foreground="White" FontSize="18" FontStyle="Italic" />
