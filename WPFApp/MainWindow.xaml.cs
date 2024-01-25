@@ -43,12 +43,12 @@ namespace WPFApp
                 var zalogowanyUzytkownik = dc.Uzytkownicy.Find(aktualnaSesja.IdUzytkownika);
                 var kontaUzytkownika = dc.Konta.Where(k => k.Uzytkownik.IdUzytkownika == zalogowanyUzytkownik.IdUzytkownika).ToList();
 
-                dgKonta.ItemsSource = kontaUzytkownika;
+                dgKont.ItemsSource = kontaUzytkownika;
                 txtSumaPieniedzy.Text = kontaUzytkownika.Sum(k => k.StanKonta).ToString("C");
             }
             else
             {
-                dgKonta.ItemsSource = null;
+                dgKont.ItemsSource = null;
                 txtSumaPieniedzy.Text = string.Empty;
             }
         }
@@ -66,6 +66,7 @@ namespace WPFApp
                 //Przełączam na widok zalogowanego użytkownika
                 InitialView.Visibility = Visibility.Collapsed;
                 LoggedInView.Visibility = Visibility.Visible;
+                WidokKont.Visibility = Visibility.Collapsed;
                 WczytajDane();
                 MessageBox.Show("Pomyślnie zalogowano.");
             }
@@ -145,9 +146,20 @@ namespace WPFApp
             okno.DataContext = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void WyswietlanieKont_Click(object sender, RoutedEventArgs e)
         {
-
+            InitialView.Visibility = Visibility.Collapsed;
+            LoggedInView.Visibility = Visibility.Collapsed;
+            WidokKont.Visibility = Visibility.Visible;
+            WyswietlanieKont();
+        }
+        private void WyswietlanieKont()
+        {
+            if (zalogowanyUzytkownik != null)
+            {
+                var kontaUzytkownika = dc.Konta.Where(k => k.Uzytkownik.IdUzytkownika == zalogowanyUzytkownik.IdUzytkownika).ToList();
+                dgKont.ItemsSource = kontaUzytkownika;
+            }
         }
         private void Wplywy_Click(object sender, RoutedEventArgs e)
         {
@@ -200,18 +212,6 @@ namespace WPFApp
                 }
             }
 
-        }
-
-        private void WyswietlWplywy()
-        {
-            if (zalogowanyUzytkownik != null)
-            {
-                // Pobierz wszystkie wpływy z kont użytkownika
-                var wplywyUzytkownika = zalogowanyUzytkownik.ListaKont
-                    .SelectMany(konto => konto.Wplywy)
-                    .ToList();
-
-            }
         }
     }
 }
