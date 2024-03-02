@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Design;
 using System.Diagnostics.Eventing.Reader;
@@ -33,6 +34,8 @@ namespace WPFApp
         {
             dc = new UzytkownikDbContext();
             InitializeComponent();
+            Uri iconUri = new Uri("pack://application:,,,/WPFApp;component/Assets/portfel.ico", UriKind.RelativeOrAbsolute);
+            this.Icon = BitmapFrame.Create(iconUri);
             WczytajDane();
         }
 
@@ -52,7 +55,6 @@ namespace WPFApp
                 txtSumaPieniedzy.Text = string.Empty;
             }
         }
-
 
         private void Zaloguj(long login)
         {
@@ -124,9 +126,15 @@ namespace WPFApp
         }
         private void DodajKonto_Click(object sender, RoutedEventArgs e)
         {
-            UtworzKonto okno = new UtworzKonto(zalogowanyUzytkownik);
+            Konto noweKonto = new Konto();
+            UtworzKonto okno = new UtworzKonto(noweKonto, zalogowanyUzytkownik);
             bool? result = okno.ShowDialog();
-            okno.DataContext = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
+            if (result == true)
+            {
+                zalogowanyUzytkownik.DodajKonto(noweKonto);
+                dgKont.ItemsSource = new ObservableCollection<Konto>(zalogowanyUzytkownik.ListaKont);
+            }
+            okno.DataContext = new UtworzKontoViewModel { NoweKonto = noweKonto };
         }
 
         private void WyswietlanieKont_Click(object sender, RoutedEventArgs e)
@@ -199,6 +207,10 @@ namespace WPFApp
                 }
             }
 
+        }
+        private void Aktualizuj_Click(object sender, RoutedEventArgs e)
+        {
+            dgKont.ItemsSource = new ObservableCollection<Konto>(zalogowanyUzytkownik.ListaKont);
         }
     }
 }

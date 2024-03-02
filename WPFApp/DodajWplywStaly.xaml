@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WPFApp"
         xmlns:enums="clr-namespace:Aplikacja_do_zarzadzania_wydatkami;assembly=ProjektSQL"
         mc:Ignorable="d"
-        Title="DodajWplywStaly" Height="500" Width="450" Foreground="White">
-    <Grid Background="#FF5E7E9E">
+        Title="DodajWplywStaly" Height="500" Width="450">
+    <Grid Background="#FF4F7556">
         <StackPanel Margin="10,10,10,10">
             <Label Content="Kwota" Foreground="White" FontStyle="Italic" FontSize="18" />
             <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="35" Width="380" Background="{x:Null}" Foreground="White" FontSize="18"/>
@@ -23,9 +23,8 @@
 
             <Label Content="Wybierz cykl" FontStyle="Italic" Foreground="White" FontSize="18" />
             <ComboBox x:Name="cbCykl" ItemsSource="{Binding Source={x:Static enums:Cykl.Miesięczny}}" SelectedItem="{Binding WybranyCykl}" Height="35" Width="380" Background="#FF9DC3A9" FontSize="18" BorderBrush="{x:Null}" Foreground="Black"/>
-
-            <Button Content="Dodaj wplyw stały" Click="DodajWplywStaly_Click" Height="91" Width="380" Background="{x:Null}" FontFamily="Verdana" Foreground="White" FontSize="18" />
-
         </StackPanel>
+        <Button Content="Dodaj wplyw stały" Click="DodajWplywStaly_Click" Height="66" Width="291" Background="#FF2D4E33" FontFamily="Verdana" Foreground="White" FontSize="18" Margin="80,389,80,29" />
+
     </Grid>
 </Window>

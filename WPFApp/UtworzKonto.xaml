@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         Title="UtworzKonto" Height="350" Width="400" FontSize="18">
-    <Grid Background="#FF5E7E9E">
+    <Grid Background="#FF4F7556">
         <StackPanel Margin="10">
             <Label Content="Nazwa Konta" Foreground="White" FontStyle="Italic" />
             <TextBox x:Name="NazwaKontaTextBox" Text="{Binding Nazwa}" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1" Height="45" Foreground="White" />
@@ -16,7 +16,7 @@
 
             <Label Content="Stan Konta" Foreground="White" FontStyle="Italic" />
             <TextBox x:Name="StanKontaTextBox" Text="{Binding StanKonta}" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1" Height="45" Foreground="White" />
-            <Button Content="Utwórz Konto" Click="DodajKonto_Click" Background="#FF5E7E9E" BorderBrush="{x:Null}" Foreground="White" Height="73" />
+            <Button Content="Utwórz Konto" Click="DodajKonto_Click" Background="#FF2D4E33" BorderBrush="{x:Null}" Foreground="White" Height="73" />
         </StackPanel>
     </Grid>
 </Window>

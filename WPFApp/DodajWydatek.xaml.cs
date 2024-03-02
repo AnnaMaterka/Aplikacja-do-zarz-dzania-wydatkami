@@ -1,6 +1,7 @@
 ﻿using Aplikacja_do_zarzadzania_wydatkami;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,16 +36,13 @@ namespace WPFApp
             db = new UzytkownikDbContext();
             this.ZalogowanyUzytkownik = zalogowanyUzytkownik;
 
-            var listaKont = ZalogowanyUzytkownik.ListaKont;
-            cbKonta.ItemsSource = listaKont;
+            cbKonta.ItemsSource = new BindingList<Konto>(ZalogowanyUzytkownik.ListaKont);
         }
         private void DodajWydatek_Click(object sender, RoutedEventArgs e)
         {
-            // Dodaj logikę sprawdzającą poprawność danych
             if (IsValid())
             {
-                decimal kwota = 0;
-                decimal.TryParse(txtKwota.Text, out kwota);
+                decimal.TryParse(txtKwota.Text, out decimal kwota);
                 Kwota = kwota;
                 Konto selectedKonto = (Konto)cbKonta.SelectedItem;
                 selectedKonto.StanKonta -= Kwota;
@@ -66,7 +64,6 @@ namespace WPFApp
 
         private bool IsValid()
         {
-            // Walidacja danych
             if (Kwota < 0)
                 return false;
 

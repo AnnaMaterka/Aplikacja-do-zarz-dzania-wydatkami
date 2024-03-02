@@ -7,8 +7,8 @@
         xmlns:enums="clr-namespace:Aplikacja_do_zarzadzania_wydatkami;assembly=ProjektSQL"
     mc:Ignorable="d"
     Title="DodajWydatekStaly" Height="500" Width="450">
-    <Grid Background="#FF5E7E9E">
-        <StackPanel Margin="10">
+    <Grid Background="#FF4F7556">
+        <StackPanel Margin="10" Background="#FF4F7556">
             <Label Content="Kwota" FontStyle="Italic" Foreground="White" FontSize="18" />
             <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="35" Width="380" Background="{x:Null}" Foreground="White" FontSize="18"/>
 
@@ -23,8 +23,7 @@
 
             <Label Content="Wybierz cykl" FontStyle="Italic" FontSize="18" Foreground="White" />
             <ComboBox x:Name="cbCykl" ItemsSource="{Binding Source={x:Static enums:Cykl.Miesięczny}}" SelectedItem="{Binding WybranyCykl}" Height="35" Width="380" Background="{x:Null}" FontSize="18"/>
-            <Button Content="Dodaj wydatek staly" Click="DodajWydatekStaly_Click" Height="72" Width="380" Background="#FF5E7E9E" FontSize="18" Foreground="White" />
-
         </StackPanel>
+        <Button Content="Dodaj wydatek staly" Click="DodajWydatekStaly_Click" Height="72" Width="380" Background="#FF2D4E33" FontSize="18" Foreground="White" Margin="35,382,35,30" />
     </Grid>
 </Window>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         Title="Raport" Height="279" Width="559">
-    <Grid Margin="0,0,0,4" Background="#FF1A2A41">
+    <Grid Margin="0,0,0,4" Background="#FF4F7556">
         <Label x:Name ="lblTytul" Content="Label" HorizontalAlignment="Left" Height="38" Margin="21,18,0,0" VerticalAlignment="Top" Width="253" FontSize="24" Foreground="White"/>
         <Label x:Name="lblDotyczy" Content="Label" HorizontalAlignment="Left" Height="34" Margin="21,56,0,0" VerticalAlignment="Top" Width="160" Foreground="White"/>
         <Label x:Name="lblDotyczy_Kopiuj" Content="Suma wpływów:" HorizontalAlignment="Left" Height="34" Margin="21,105,0,0" VerticalAlignment="Top" Width="106" Foreground="White"/>
@@ -15,8 +15,8 @@
         <TextBox x:Name="txtSumaWplywow" IsReadOnly ="True" HorizontalAlignment="Left" Height="26" Margin="132,109,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
         <TextBox x:Name="txtSumaWydatkow" IsReadOnly ="True" HorizontalAlignment="Left" Height="26" Margin="132,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
         <TextBox x:Name="txtSumaOszczednosci" IsReadOnly ="True" HorizontalAlignment="Left" Height="26" Margin="293,177,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="77" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}"/>
-        <Button x:Name="btnHTML" Content="Generuj raport HTML" HorizontalAlignment="Left" Height="37" Margin="412,166,0,0" VerticalAlignment="Top" Width="127" Click="btnHTML_Click" Background="#FF313F6A" Foreground="White" BorderBrush="{x:Null}"/>
-        <Button x:Name="btnZamknij" Content="Zamknij" HorizontalAlignment="Left" Height="37" Margin="412,212,0,0" VerticalAlignment="Top" Width="127" Click="btnZamknij_Click" Foreground="White" Background="#FF313F6A" BorderBrush="{x:Null}"/>
+        <Button x:Name="btnHTML" Content="Generuj raport HTML" HorizontalAlignment="Left" Height="37" Margin="412,166,0,0" VerticalAlignment="Top" Width="127" Click="btnHTML_Click" Background="#FF2D4E33" Foreground="White" BorderBrush="{x:Null}"/>
+        <Button x:Name="btnZamknij" Content="Zamknij" HorizontalAlignment="Left" Height="37" Margin="412,212,0,0" VerticalAlignment="Top" Width="127" Click="btnZamknij_Click" Foreground="White" Background="#FF2D4E33" BorderBrush="{x:Null}"/>
 
     </Grid>
 </Window>

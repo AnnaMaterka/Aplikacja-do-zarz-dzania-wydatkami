@@ -93,6 +93,12 @@ namespace Aplikacja_do_zarzadzania_wydatkami
             StanKonta = stanKonta;
             Uzytkownik = uzytkownik;
         }
+        public Konto(string nazwaBanku, decimal stanKonta, string nazwa) : this()
+        {
+            NazwaBanku = nazwaBanku;
+            StanKonta = stanKonta;
+            Nazwa = nazwa;
+        }
         public Konto(string nazwaBanku, decimal stanKonta, Uzytkownik uzytkownik, string nazwa) : this()
         {
             NazwaBanku = nazwaBanku;

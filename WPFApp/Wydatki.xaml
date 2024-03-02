@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         Title="Wydatki" Height="450" Width="800">
-    <Grid Background="#FFA8B6C9">
-        <DataGrid x:Name="WydatkiDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wydatki}" Margin="212,46,70,55" Background="{x:Null}" BorderBrush="White">
+    <Grid Background="#FF7C9E7E">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="WydatkiDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wydatki}" Margin="212,46,70,55" Background="#FFA6C0AF" BorderBrush="White">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Data" Binding="{Binding Data}" Width="*" />
                 <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}" Width="*" />
@@ -20,7 +23,9 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
         </DataGrid>
-        <Button Content="Dodaj wydatek" Click="DodajWydatek_Click" Margin="39,164,621,222" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <Button Content="Dodaj wydatek stały" Click="DodajWydatekStaly_Click" Margin="39,217,621,169" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <StackPanel Margin="29,167,614,157">
+            <Button Content="Dodaj wydatek" Click="DodajWydatek_Click" Background="#FF2D4E33" BorderBrush="{x:Null}" Width="140" Foreground="White" Height="48"/>
+            <Button Content="Dodaj wydatek stały" Click="DodajWydatekStaly_Click" Background="#FF2D4E33" BorderBrush="{x:Null}" Foreground="White" Height="49" Width="140"/>
+        </StackPanel>
     </Grid>
 </Window>

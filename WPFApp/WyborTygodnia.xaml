@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         Title="WyborTygodnia" Height="325" Width="440">
-    <Grid Background="#FF1A2A41" Margin="0,0,0,-6">
+    <Grid Background="#FF032916" Margin="0,0,0,-6">
         <Label Content="Wybierz tydzień&#xD;&#xA;dla którego ma być raport:" HorizontalAlignment="Left" Height="73" Margin="45,50,0,0" VerticalAlignment="Top" Width="324" Background="{x:Null}" Foreground="White" FontSize="18"/>
         <ComboBox x:Name="cbTydzien" HorizontalAlignment="Left" Margin="45,141,0,0" VerticalAlignment="Top" Width="246" Height="54" Background="{x:Null}" BorderBrush="{x:Null}"/>
         <Button Content="Zatwierdź" HorizontalAlignment="Left"  Margin="251,248,0,0" VerticalAlignment="Top" Width="165" Click="Zatwierdz_Click" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" FontSize="18"/>

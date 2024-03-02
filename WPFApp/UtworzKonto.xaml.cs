@@ -1,5 +1,6 @@
 ﻿using Aplikacja_do_zarzadzania_wydatkami;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
@@ -7,62 +8,33 @@ namespace WPFApp
 {
     public partial class UtworzKonto : Window
     {
-        // Inicjalizacja ViewModel
         public UtworzKontoViewModel ViewModel { get; set; }
+        public Uzytkownik ZalogowanyUzytkownik { get; set; }
 
-        //private Uzytkownik zalogowanyUzytkownik; 
-
-        // Przykładowy zalogowany użytkownik (do dostosowania)
-        //private Uzytkownik zalogowanyUzytkownik => new Uzytkownik { IdUzytkownika = 0000, Imie = "ZalogowanyUzytkownik" };
-        //public UtworzKonto()
-        //{
-        //    InitializeComponent();
-
-        //    // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
-        //    ViewModel = new UtworzKontoViewModel { Uzytkownik = ZalogowanyUzytkownik };
-        //    DataContext = ViewModel;
-
-        //    // Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
-        //    ViewModel.Uzytkownik = ZalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
-        //}
-
-        public UtworzKonto(Uzytkownik zalogowanyUzytkownik)
+        public UtworzKonto(Konto noweKonto, Uzytkownik zalogowanyUzytkownik)
         {
             InitializeComponent();
-
-            // Inicjalizacja ViewModel i przypisanie zalogowanego użytkownika
-            ViewModel = new UtworzKontoViewModel { Uzytkownik = zalogowanyUzytkownik };
+            ZalogowanyUzytkownik = zalogowanyUzytkownik;
+            ViewModel = new UtworzKontoViewModel { NoweKonto = noweKonto};
             DataContext = ViewModel;
-
-            // do usunięcia ?? Przykład ustawienia obecnie zalogowanego użytkownika (do dostosowania)
-            // do usunięcia ?? ViewModel.Uzytkownik = zalogowanyUzytkownik; // Ustaw swojego zalogowanego użytkownika
         }
 
         private void DodajKonto_Click(object sender, RoutedEventArgs e)
         {
-            // Dodaj logikę sprawdzającą poprawność danych
             if (ViewModel.IsValid())
             {
-                // Pobierz informacje o nowym koncie z pól wejściowych w oknie
                 string nazwaKonta = ViewModel.Nazwa;
                 string nazwaBanku = ViewModel.NazwaBanku;
                 decimal saldoPoczatkowe = ViewModel.StanKonta;
 
-                // Utwórz nowe konto
-                Konto noweKonto = new Konto(nazwaBanku, saldoPoczatkowe, ViewModel.Uzytkownik, nazwaKonta);
+                Konto noweKonto = new Konto(nazwaBanku, saldoPoczatkowe, ZalogowanyUzytkownik, nazwaKonta);
 
-                // Dodaj konto do listy kont użytkownika
-                ViewModel.Uzytkownik.DodajKonto(noweKonto);
-
-                // Zapisz zmiany w bazie danych
-                ViewModel.Uzytkownik.ZapiszDoBazy();
-
-                // Zamknij okno
+                ZalogowanyUzytkownik.DodajKonto(noweKonto);
+                ViewModel.NoweKonto.ZapiszDoBazy();
                 this.Close();
             }
             else
             {
-                // Wyświetl komunikat o błędzie walidacji
                 MessageBox.Show("Formularz zawiera błędy. Sprawdź poprawność wprowadzonych danych.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -80,11 +52,10 @@ namespace WPFApp
         [Range(0, double.MaxValue, ErrorMessage = "Stan konta musi być liczbą nieujemną.")]
         public decimal StanKonta { get; set; }
 
-        public Uzytkownik Uzytkownik { get; set; }
+        public Konto NoweKonto { get; set; }
 
         public bool IsValid()
         {
-            // Wykorzystaj Validator.TryValidateObject do walidacji obiektu
             return Validator.TryValidateObject(this, new ValidationContext(this, null, null), null, true);
         }
     }

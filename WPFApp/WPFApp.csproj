@@ -15,6 +15,13 @@
     <None Remove="Assets\icons8-report-file-48.png" />
     <None Remove="Assets\icons8-tips-48.png" />
     <None Remove="Assets\icons8-withdrawal-48.png" />
+    <None Remove="Assets\konta.png" />
+    <None Remove="Assets\portfel.ico" />
+    <None Remove="Assets\raporty.png" />
+    <None Remove="Assets\strzalkaMenu.png" />
+    <None Remove="Assets\transakcje.png" />
+    <None Remove="Assets\wplaty.png" />
+    <None Remove="Assets\wyplaty.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +31,15 @@
     <Content Include="Assets\icons8-report-file-48.png" />
     <Content Include="Assets\icons8-tips-48.png" />
     <Content Include="Assets\icons8-withdrawal-48.png" />
+    <Resource Include="Assets\konta.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\portfel.ico" />
+    <Resource Include="Assets\raporty.png" />
+    <Resource Include="Assets\strzalkaMenu.png" />
+    <Resource Include="Assets\transakcje.png" />
+    <Resource Include="Assets\wplaty.png" />
+    <Resource Include="Assets\wyplaty.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         Title="Wplywy" Height="450" Width="800">
-    <Grid Background="#FFA8B6C9">
-        <DataGrid x:Name="WplywyDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wplywy}" Margin="212,46,70,55" Background="{x:Null}" BorderBrush="White" Foreground="Black">
+    <Grid Background="#FF7C9E7E">
+        <DataGrid x:Name="WplywyDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wplywy}" Margin="212,46,70,55" Background="#FFA6C0AF" BorderBrush="White" Foreground="Black">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Data" Binding="{Binding Data}" Width="*" />
                 <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}" Width="*" />
@@ -20,7 +20,9 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
         </DataGrid>
-        <Button Content="Dodaj wpływ" Click="DodajWplyw_Click" Margin="39,164,621,222" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <Button Content="Dodaj wpływ stały" Click="DodajWplywStaly_Click" Margin="39,217,621,169" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <StackPanel Margin="27,162,616,171">
+            <Button Content="Dodaj wpływ" Click="DodajWplyw_Click" Background="#FF2D4E33" BorderBrush="{x:Null}" Foreground="White" Height="48"  Width="140"/>
+            <Button Content="Dodaj wpływ stały" Click="DodajWplywStaly_Click" Background="#FF2D4E33" BorderBrush="{x:Null}" Foreground="White" Height="49" Width="140"/>
+        </StackPanel>
     </Grid>
 </Window>

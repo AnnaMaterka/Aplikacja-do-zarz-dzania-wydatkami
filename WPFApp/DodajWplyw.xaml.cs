@@ -17,6 +17,7 @@ namespace WPFApp
         public DateTime Data { get; set; }
         public string WpisanaKategoria { get; set; }
         public Konto WybraneKonto { get; set; }
+        public WplywRaz NowyWplyw { get; set; }
 
         public DodajWplyw(Uzytkownik zalogowanyUzytkownik)
         {
@@ -42,26 +43,22 @@ namespace WPFApp
                 WpisanaKategoria = txtKategoria.Text;
                 WybraneKonto = selectedKonto;
                 Data = (DateTime)datePickerData.SelectedDate;
-                WplywRaz wplyw = new WplywRaz(Kwota, Data, WpisanaKategoria, ZalogowanyUzytkownik, WybraneKonto);
-                WybraneKonto.NowyWplywKonto(wplyw);
+                NowyWplyw = new WplywRaz(Kwota, Data, WpisanaKategoria, ZalogowanyUzytkownik, WybraneKonto);
+                WybraneKonto.NowyWplywKonto(NowyWplyw);
                 WybraneKonto.ZapiszDoBazy();
+                db.SaveChanges();
                 this.Close();
             }
             else
             {
-                // Wyświetl komunikat o błędzie walidacji
                 MessageBox.Show("Formularz zawiera błędy. Sprawdź poprawność wprowadzonych danych.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private bool IsValid()
         {
-            // Walidacja danych
             if (Kwota < 0)
                 return false;
-
-            //if (Data == null)
-            //    return false;
 
             if (txtKategoria is null)
                 return false;

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         Title="WyborMiesiacaiRoku" Height="325" Width="440">
-    <Grid Background="#FF1A2A41">
+    <Grid Background="#FF032916">
         <Label Content="Wybierz rok:" HorizontalAlignment="Left" Height="53" Margin="10,60,0,0" VerticalAlignment="Top" Width="163" Foreground="White" FontSize="18"/>
         <Label Content="Wybierz miesiąc:" HorizontalAlignment="Left" Height="50" Margin="10,134,0,0" VerticalAlignment="Top" Width="163" Foreground="White" FontSize="18"/>
         <TextBox x:Name="txtRok" HorizontalAlignment="Left" Height="53" Margin="206,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1.5" FontSize="18"/>

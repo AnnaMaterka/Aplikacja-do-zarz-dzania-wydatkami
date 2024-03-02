@@ -3,6 +3,7 @@ using ProjektSQL;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,6 @@ namespace WPFApp
     public partial class Wydatki : Window
     {
         public Uzytkownik zalogowanyUzytkownik;
-        //public Konto aktualneKonto;
         private Sesja aktualnaSesja;
         private UzytkownikDbContext dc;
         public Wydatki(Uzytkownik zalogowanyUzytkownik, UzytkownikDbContext dc)
@@ -37,32 +37,26 @@ namespace WPFApp
         {
             DodajWydatek okno = new DodajWydatek(zalogowanyUzytkownik);
             bool? result = okno.ShowDialog();
+            dc.SaveChanges();
+            WyswietlWydatki();
         }
         private void DodajWydatekStaly_Click(object sender, RoutedEventArgs e)
         {
             DodajWydatekStaly okno = new DodajWydatekStaly(zalogowanyUzytkownik);
             bool? result = okno.ShowDialog();
-        }
-        private void Zapisz()
-        {
-            if (aktualnaSesja != null)
-            {
-                dc.SaveChanges();
-            }
-        }
-        private void Zapisz_Click(object sender, RoutedEventArgs e)
-        {
-            Zapisz();
+            dc.SaveChanges();
+            WyswietlWydatki();
         }
         private void WyswietlWydatki()
         {
             if (zalogowanyUzytkownik != null)
             {
                 var kontaUzytkownika = dc.Konta.Where(k => k.Uzytkownik.IdUzytkownika == zalogowanyUzytkownik.IdUzytkownika).ToList();
-                ObservableCollection<Wydatek> wszystkieWydatki = new ObservableCollection<Wydatek>();
+                BindingList<Wydatek> wszystkieWydatki = new BindingList<Wydatek>();
+                //ObservableCollection<Wydatek> wszystkieWydatki = new ObservableCollection<Wydatek>();
                 foreach (var konto in kontaUzytkownika)
                 {
-                    var wydatki = dc.Wydatki.Where(w => w.IdKonta == konto.IdKonta).ToList();
+                    var wydatki = dc.WydatkiRaz.Where(w => w.IdKonta == konto.IdKonta).ToList();
                     foreach (var wydatek in wydatki)
                     {
                         wszystkieWydatki.Add(wydatek);
@@ -73,9 +67,9 @@ namespace WPFApp
                         wszystkieWydatki.Add(wydatek);
                     }
                 }
-                wszystkieWydatki = new ObservableCollection<Wydatek>(wszystkieWydatki.OrderBy(w => w.Data));
-
-                WydatkiDataGrid.ItemsSource = wszystkieWydatki;
+                //wszystkieWydatki = new ObservableCollection<Wydatek>(wszystkieWydatki.OrderBy(w => w.Data));
+                WydatkiDataGrid.ItemsSource = new BindingList<Wydatek>(wszystkieWydatki);
+                //WydatkiDataGrid.ItemsSource = wszystkieWydatki;
             }
         }
     }

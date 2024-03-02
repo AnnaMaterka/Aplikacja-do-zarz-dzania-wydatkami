@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-            Title="Dodaj wplyw"  Height="463" Width="610" Background="#FF5E7E9E">
+            Title="Dodaj wplyw"  Height="463" Width="610" Background="#FF4F7556">
     <Grid>
         <StackPanel Margin="10">
             <Label Content="Kwota" Foreground="White" FontSize="18" FontStyle="Italic" />
@@ -19,8 +19,7 @@
 
             <Label Content="Wybierz konto" Foreground="White" FontSize="18" FontStyle="Italic" />
             <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="35" Width="380" SelectedItem="{Binding WybraneKonto}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="18" />
-
-            <Button Content="Dodaj Wplyw" Click="DodajWplyw_Click" Height="105" Width="380" Background="#FF5E7E9E" BorderBrush="{x:Null}" Foreground="White" FontSize="18" />
         </StackPanel>
+        <Button Content="Dodaj Wplyw" Click="DodajWplyw_Click" Height="55" Width="242" Background="#FF2D4E33" BorderBrush="{x:Null}" Foreground="White" FontSize="18" Margin="305,341,63,51" />
     </Grid>
 </Window>

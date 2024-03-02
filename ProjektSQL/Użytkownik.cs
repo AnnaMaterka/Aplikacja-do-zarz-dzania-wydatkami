@@ -36,7 +36,33 @@ namespace Aplikacja_do_zarzadzania_wydatkami
 
         [Key]
         public int IdUzytkownika { get; set; }
-        //public virtual List<Sesja> Sesje { get; set; }
+
+        //private ObservableCollection<Wydatek> listaWydatkow;
+        //public ObservableCollection<Wydatek> ListaWydatkow
+        //{
+        //    get => listaWydatkow;
+        //    set
+        //    {
+        //        if(listaWydatkow != value)
+        //        {
+        //            listaWydatkow = value; 
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private ObservableCollection<Wplyw> listaWplywow;
+        //public ObservableCollection<Wplyw> ListaWplywow
+        //{
+        //    get => listaWplywow;
+        //    set
+        //    {
+        //        if (listaWplywow != value)
+        //        {
+        //            listaWplywow = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
         public virtual List<WydatekRaz> WydatkiGotowka { get; set; }
         public virtual List<WplywRaz> WplywyGotowka { get; set; }
         public virtual List<Oszczednosc> OszczednosciWGotowce { get; set; }

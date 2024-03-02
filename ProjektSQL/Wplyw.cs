@@ -15,6 +15,7 @@ namespace Aplikacja_do_zarzadzania_wydatkami
         private Uzytkownik uzytkownik;
         private Konto konto;
         private string kategoria;
+
         public Wplyw() { }
         protected Wplyw(decimal kwota, DateTime data)
         {
