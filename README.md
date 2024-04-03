@@ -16,89 +16,86 @@ przetrzymywanie jego danych w bazie danych SQL.
 Po otwarciu pokazuje się taki ekran. Pierwsze, co należy zrobić to zarejestrować się, jeśli nie mamy
 jeszcze konta lub się zalogować. Login pierwszego użytkownika to 10000. Przy rejestracji kolejnego użytkownika login zwiększa się o 1.
 
-![Aplikacja](Images/1.png)
+![Aplikacja](Images/2.png)
 
 ## Rejestracja
 Przy rejestracji zostaniemy poproszeni o podanie imienia. Następnie dostaniemy unikatowy login,
 który posłuży do logowania się na konto. Jednocześnie nowy użytkownik zostanie dodany do bazy
 SQL.
 
-![Aplikacja](Images/23.png)
-![Aplikacja](Images/24.png)
-![Aplikacja](Images/25.png)
+![Aplikacja](Images/3.png)
+![Aplikacja](Images/4.png)
+![Aplikacja](Images/5.png)
 
 ## Logowanie
 Gdy podamy w poniższym oknie nasz login uzyskany przy rejestracji, będziemy już mogli korzystać z
 aplikacji. Załadowane zostaną nasze dane przechowywane w bazie SQL.
 
-![Aplikacja](Images/2.png)
+![Aplikacja](Images/6.png)
+![Aplikacja](Images/7.png)
+![Aplikacja](Images/8.png)
+
 
 ## Konto bankowe
 Użytkownik może posiadać wiele kont bankowych, a operacje na nich przeważnie nie są od siebie
 zależne. Po zalogowaniu się powinniśmy więc kliknąć przycisk Dodaj Konto. Zostaniemy poproszeni o
 podanie nazwy konta i banku oraz stanu konta.
 
-![Aplikacja](Images/3.png)
-![Aplikacja](Images/4.png)
+![Aplikacja](Images/11.png)
+![Aplikacja](Images/13.png)
 
 Po kliknięciu pozycji Konta w Menu możemy podejrzeć nasze konta i stany środków na nich.
 
-![Aplikacja](Images/21.png)
+![Aplikacja](Images/15.png)
 
 ## Wplywy
 W zakładce Transakcje, po kliknięciu Wpływów pokaże się nam takie okno. Możemy tam dodawać
 wpływy jednorazowe i stałe, a także oglądać ostatnie wpływy.
 
-![Aplikacja](Images/13.png)
-![Aplikacja](Images/22.png)
+![Aplikacja](Images/17.png)
 
 Przy dodawaniu wpływu jednorazowego zostaniemy poproszeni o datę, kwotę, kategorię oraz konto,
 na które ma on wpłynąć.
 
-![Aplikacja](Images/7.png)
-![Aplikacja](Images/22.png)
+![Aplikacja](Images/19.png)
+![Aplikacja](Images/21.png)
 
 Przy dodawaniu wpływu stałego data, którą podamy to początkowa data jego naliczania. Natomiast
 cykl, to okres czasu co jaki pieniądze wpływać będą na nasze konto. Może to być tydzień, miesiąc, dwa
 miesiące, kwartał, pół roku czy rok
 
-![Aplikacja](Images/8.png)
+![Aplikacja](Images/23.png)
 
 ## Wydatki
 Ich obsługa działa analogicznie do obsługi wpływów. Także możemy podejrzeć historię i dodać
 wydatek jednorazowy lub stały.
 
-![Aplikacja](Images/9.png)
+![Aplikacja](Images/28.png)
 
 Wprowadzanie wydatku jednorazowego:
 
-![Aplikacja](Images/10.png)
+![Aplikacja](Images/24.png)
 
 Wprowadzanie wydatku stałego:
 
-![Aplikacja](Images/11.png)
+![Aplikacja](Images/27.png)
 
 ## Raporty
 Aplikacja pozwala na generowanie raportów tygodniowych, miesięcznych i rocznych, a także
 generowanie ich potem do HTML.
 
-![Aplikacja](Images/12.png)
-
 W raporcie tygodniowym zostaniemy najpierw poproszeni o wybór, czy ma on dotyczyć bieżącego czy
 minionego tygodnia.
 
-![Aplikacja](Images/14.png)
-![Aplikacja](Images/15.png)
-
 Dla raportu miesięcznego zostaniemy poproszeni o wybór roku i miesiąca.
 
-![Aplikacja](Images/16.png)
-![Aplikacja](Images/18.png)
+![Aplikacja](Images/30.png)
 
 A w raporcie roczny, co oczywiste o sam rok.
 
-![Aplikacja](Images/19.png)
-![Aplikacja](Images/20.png)
+![Aplikacja](Images/32.png)
+![Aplikacja](Images/33.png)
+![Aplikacja](Images/35.png)
 
 Oto przykładowy raport roczny wygenerowany do HTML:
 
