@@ -1,0 +1,22 @@
+﻿<Window x:Class="WPFApp.UtworzKonto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        Title="UtworzKonto" Height="350" Width="400" FontSize="18">
+    <Grid Background="#FF4F7556">
+        <StackPanel Margin="10">
+            <Label Content="Nazwa Konta" Foreground="White" FontStyle="Italic" />
+            <TextBox x:Name="NazwaKontaTextBox" Text="{Binding Nazwa}" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1" Height="45" Foreground="White" />
+
+            <Label Content="Nazwa Banku" Foreground="White" FontStyle="Italic" />
+            <TextBox x:Name="NazwaBankuTextBox" Text="{Binding NazwaBanku}" BorderBrush="White" Background="{x:Null}" BorderThickness="0,0,0,1" Height="45" Foreground="White" />
+
+            <Label Content="Stan Konta" Foreground="White" FontStyle="Italic" />
+            <TextBox x:Name="StanKontaTextBox" Text="{Binding StanKonta}" Background="{x:Null}" BorderBrush="White" BorderThickness="0,0,0,1" Height="45" Foreground="White" />
+            <Button Content="Utwórz Konto" Click="DodajKonto_Click" Background="#FF2D4E33" BorderBrush="{x:Null}" Foreground="White" Height="73" />
+        </StackPanel>
+    </Grid>
+</Window>

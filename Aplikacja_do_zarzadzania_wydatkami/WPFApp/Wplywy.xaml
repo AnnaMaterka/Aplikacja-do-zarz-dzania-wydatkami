@@ -1,0 +1,28 @@
+﻿<Window x:Class="WPFApp.Wplywy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        Title="Wplywy" Height="450" Width="800">
+    <Grid Background="#FF7C9E7E">
+        <DataGrid x:Name="WplywyDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Wplywy}" Margin="212,46,70,55" Background="#FFA6C0AF" BorderBrush="White" Foreground="Black">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data" Binding="{Binding Data}" Width="*" />
+                <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}" Width="*" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Kwota}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+        <StackPanel Margin="27,162,616,171">
+            <Button Content="Dodaj wpływ" Click="DodajWplyw_Click" Background="#FF2D4E33" BorderBrush="{x:Null}" Foreground="White" Height="48"  Width="140"/>
+            <Button Content="Dodaj wpływ stały" Click="DodajWplywStaly_Click" Background="#FF2D4E33" BorderBrush="{x:Null}" Foreground="White" Height="49" Width="140"/>
+        </StackPanel>
+    </Grid>
+</Window>

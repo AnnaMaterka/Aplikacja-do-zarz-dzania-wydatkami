@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\icons8-arrow-50.png" />
+    <None Remove="Assets\icons8-deposit-48.png" />
+    <None Remove="Assets\icons8-online-money-transfer-48.png" />
+    <None Remove="Assets\icons8-report-file-48.png" />
+    <None Remove="Assets\icons8-tips-48.png" />
+    <None Remove="Assets\icons8-withdrawal-48.png" />
+    <None Remove="Assets\konta.png" />
+    <None Remove="Assets\portfel.ico" />
+    <None Remove="Assets\raporty.png" />
+    <None Remove="Assets\strzalkaMenu.png" />
+    <None Remove="Assets\transakcje.png" />
+    <None Remove="Assets\wplaty.png" />
+    <None Remove="Assets\wyplaty.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\icons8-arrow-50.png" />
+    <Content Include="Assets\icons8-deposit-48.png" />
+    <Content Include="Assets\icons8-online-money-transfer-48.png" />
+    <Content Include="Assets\icons8-report-file-48.png" />
+    <Content Include="Assets\icons8-tips-48.png" />
+    <Content Include="Assets\icons8-withdrawal-48.png" />
+    <Resource Include="Assets\konta.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\portfel.ico" />
+    <Resource Include="Assets\raporty.png" />
+    <Resource Include="Assets\strzalkaMenu.png" />
+    <Resource Include="Assets\transakcje.png" />
+    <Resource Include="Assets\wplaty.png" />
+    <Resource Include="Assets\wyplaty.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjektSQL\ProjektSQL.csproj" />
+  </ItemGroup>
+
+</Project>

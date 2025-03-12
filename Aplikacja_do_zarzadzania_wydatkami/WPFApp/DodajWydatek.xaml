@@ -1,0 +1,29 @@
+﻿<Window x:Class="WPFApp.DodajWydatek"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        Title="DodajWydatek" Height="463" Width="610">
+    <Grid Background="#FF4F7556">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="197*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10,10,4,10">
+            <Label Content="Kwota" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <TextBox x:Name="txtKwota" Text="{Binding Kwota}" Height="35" Width="380" Background="{x:Null}" FontSize="18" Foreground="White" BorderBrush="{x:Null}"/>
+
+            <Label Content="Data" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <DatePicker x:Name="datePickerData" SelectedDate="{Binding Data}" Height="35" Width="380" BorderBrush="{x:Null}" Foreground="Black" FontSize="18"/>
+
+            <Label Content=" Kategoria" FontStyle="Italic" FontSize="18" Foreground="White" />
+            <TextBox x:Name="txtKategoria" Text="{Binding Kategoria}" Height="35" Width="380" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" FontSize="18"/>
+
+            <Label Content="Wybierz konto" FontStyle="Italic" Foreground="White" FontSize="18" />
+            <ComboBox x:Name="cbKonta" DisplayMemberPath="Nazwa" Height="35" Width="380" SelectedItem="{Binding WybraneKonto}" FontSize="18" />
+        </StackPanel>
+        <Button Content="Dodaj Wydatek" Click="DodajWydatek_Click" Height="68" Width="378" Background="#FF2D4E33" FontSize="18" UseLayoutRounding="True" Foreground="White" Margin="116,318,107,61" />
+    </Grid>
+</Window>

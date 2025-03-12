@@ -1,0 +1,109 @@
+﻿<Window x:Class="WPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        WindowState="Maximized"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        Icon="/WPFApp;component/Assets/portfel.ico"
+        Title="Aplikacja do zarządzania wydatkami" Height="1000" Width="1500">
+
+    <Grid Background="#FF7C9E7E">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1499*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel x:Name="InitialView" Visibility="Visible" Margin="-7,94,0,0" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" Height="147" Width="884" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" VerticalAlignment="Top" >
+                <Button Content="Zaloguj" Click="Zaloguj_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Verdana" FontSize="40" Width="309" Height="150">
+                    <Button.Foreground>
+                        <SolidColorBrush Color="White" Opacity="1"/>
+                    </Button.Foreground>
+                </Button>
+                <Button Content="Zarejestruj użytkownika" Click="ZarejestrujUzytkownika_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="572" FontFamily="Verdana" FontSize="40" FontWeight="Normal" Height="139"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel x:Name="LoggedInView" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,122,24,0" Height="193" Width="441">
+            <Button Content="Dodaj konto" Click="DodajKonto_Click" Height="100" Width="400" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Verdana" FontSize="40"/>
+            <Button Content="Wyloguj" Click="Wyloguj_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Verdana" FontSize="40" Height="100" Width="400"/>
+
+        </StackPanel>
+        <StackPanel x:Name="WidokKont" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="419,51,0,0" Height="892" Width="1045">
+            <Button Content="Zamknij" Click="Zamknij_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="30" Height="70" Width="200" HorizontalAlignment="Right"/>
+            <Button Content="Aktualizuj" Click="Aktualizuj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="30" Height="70" Width="200" HorizontalAlignment="Right"/>
+            <DataGrid x:Name="dgKont" AutoGenerateColumns="False" FontSize="30" Background="{x:Null}" Foreground="Black">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontSize" Value="50"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nazwa konta" Binding="{Binding Nazwa}" Width="2*" />
+                    <DataGridTextColumn Header="Nazwa banku" Binding="{Binding NazwaBanku}" Width="2*"/>
+                    <DataGridTextColumn Header="Stan konta" Binding="{Binding StanKonta}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <!--<DataGrid x:Name="dgUzytkownicy" Visibility="Collapsed" AutoGenerateColumns="True" Margin="68,62,9,318" Grid.Row="1" />-->
+        <!--<<DataGrid x:Name="dgKonta" Visibility="Collapsed" AutoGenerateColumns="True" Margin="25,95,34,25" Grid.Column="2" Grid.Row="1" /> -->
+        <StackPanel Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="383,234,0,0" Width="583" Height="96">
+            <TextBlock Text="Suma na kontach:" Visibility="Visible" FontFamily="Verdana" FontSize="36" TextWrapping="WrapWithOverflow" Foreground="White" Height="102" Width="233" />
+            <TextBox x:Name="txtSumaPieniedzy" Visibility="Visible" IsEnabled="False" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="36" Height="92" Width="350" Background="{x:Null}" Foreground="White" />
+        </StackPanel>
+        <Menu
+                  Background="#FF032916" Foreground="White" FontSize="48" FontFamily="Arial" Margin="0,0,1023,0">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
+            <MenuItem Header="Konta" Click="WyswietlanieKont_Click" Margin="130,200,0,-350">
+                <MenuItem.Icon>
+                    <Image Source="/WPFApp;component/Assets/konta.png"
+                        Stretch="Uniform" Margin="-140,-65,10,-65"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Transakcje" Margin="130,350,0,-503">
+
+                <MenuItem.Icon>
+                    <Image Source="/WPFApp;component/Assets/transakcje.png"
+                        Stretch="Uniform" Margin="-140,-65,0,-65"/>
+                </MenuItem.Icon>
+
+                <MenuItem Header="Wplywy" Click="Wplywy_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/WPFApp;component/Assets/wplywy.png"
+                                Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Wydatki" Click="Wydatki_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/WPFApp;component/Assets/wydatki.png"
+                               Stretch="Uniform"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="  Raporty" Margin="100,500,0,-639">
+
+                <MenuItem Header="Raport tygodniowy" Click =" RaportTygodniowy_Click"/>
+                <MenuItem Header="Raport miesięczny" Click="RaportMiesieczny_Click"/>
+
+                <MenuItem Header="Raport roczny" Click="RaportRoczny_Click"/>
+                <MenuItem.Icon>
+                    <Image Source="/WPFApp;component/Assets/raporty.png"
+                        Stretch="Uniform" Margin="-100,-65,-20,-65"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Label Content="Menu" HorizontalAlignment="Left" Height="150" VerticalAlignment="Center" Width="470" Background="{x:Null}" Foreground="White" FontSize="72" FontWeight="Bold"/>
+
+        </Menu>
+
+    </Grid>
+</Window>
