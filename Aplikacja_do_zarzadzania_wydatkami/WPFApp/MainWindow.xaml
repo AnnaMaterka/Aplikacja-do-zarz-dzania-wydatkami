@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <StackPanel x:Name="InitialView" Visibility="Visible" Margin="-7,94,0,0" Grid.ColumnSpan="2">
+        <StackPanel x:Name="InitialView" Visibility="Visible" Margin="470,10,0,0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" Height="147" Width="884" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" VerticalAlignment="Top" >
                 <Button Content="Zaloguj" Click="Zaloguj_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Verdana" FontSize="40" Width="309" Height="150">
                     <Button.Foreground>
@@ -32,7 +32,7 @@
             <Button Content="Wyloguj" Click="Wyloguj_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Verdana" FontSize="40" Height="100" Width="400"/>
 
         </StackPanel>
-        <StackPanel x:Name="WidokKont" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="419,51,0,0" Height="892" Width="1045">
+        <StackPanel x:Name="WidokKont" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="490,51,0,0" Height="892" Width="1045">
             <Button Content="Zamknij" Click="Zamknij_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="30" Height="70" Width="200" HorizontalAlignment="Right"/>
             <Button Content="Aktualizuj" Click="Aktualizuj_Click" Background="#FF5E7E9E" BorderBrush="#FF5E7E9E" Foreground="White" FontFamily="Verdana" FontSize="30" Height="70" Width="200" HorizontalAlignment="Right"/>
             <DataGrid x:Name="dgKont" AutoGenerateColumns="False" FontSize="30" Background="{x:Null}" Foreground="Black">
@@ -55,20 +55,20 @@
             <TextBox x:Name="txtSumaPieniedzy" Visibility="Visible" IsEnabled="False" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="36" Height="92" Width="350" Background="{x:Null}" Foreground="White" />
         </StackPanel>
         <Menu
-                  Background="#FF032916" Foreground="White" FontSize="48" FontFamily="Arial" Margin="0,0,1023,0">
+                  Background="#FF032916" Foreground="White" FontSize="48" FontFamily="Arial" Margin="0,0,1034,0">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
 
-            <MenuItem Header="Konta" Click="WyswietlanieKont_Click" Margin="130,200,0,-350">
+            <MenuItem Header="Konta" Click="WyswietlanieKont_Click" Margin="130,200,150,-286">
                 <MenuItem.Icon>
                     <Image Source="/WPFApp;component/Assets/konta.png"
                         Stretch="Uniform" Margin="-140,-65,10,-65"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Transakcje" Margin="130,350,0,-503">
+            <MenuItem Header="Transakcje" Margin="127,368,69,-438">
 
                 <MenuItem.Icon>
                     <Image Source="/WPFApp;component/Assets/transakcje.png"
@@ -90,7 +90,7 @@
                 </MenuItem>
             </MenuItem>
 
-            <MenuItem Header="  Raporty" Margin="100,500,0,-639">
+            <MenuItem Header="  Raporty" Margin="100,537,128,-602">
 
                 <MenuItem Header="Raport tygodniowy" Click =" RaportTygodniowy_Click"/>
                 <MenuItem Header="Raport miesięczny" Click="RaportMiesieczny_Click"/>
